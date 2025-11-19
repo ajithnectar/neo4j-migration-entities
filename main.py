@@ -1,0 +1,152 @@
+from __future__ import annotations
+
+import argparse
+import logging
+from typing import Callable, Iterable
+
+from neo4j import Session
+from psycopg2.extensions import connection as _PGConnection
+
+from app_config.settings import EnvName, PostgresTarget, get_config
+from db.neo4j_utils import create_neo4j_driver, neo4j_session
+from db.postgres_utils import pg_connection
+from migrations.domain_migration import migrate_domains
+from migrations.community_migration import migrate_communities
+from migrations.client_migration import migrate_clients
+from migrations.complete_migration import run_migration
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+# Type alias for migration function
+MigrationFn = Callable[[Session, _PGConnection], None]
+
+# Adapter to plug the CSV-based step-by-step flow into the standard signature
+def run_step_by_step_migration(_: Session, conn: _PGConnection) -> None:
+    """Run the interactive CSV migration that only needs PostgreSQL."""
+    run_migration(conn)
+
+
+# Migration configuration: (name, function, postgres_target)
+MIGRATIONS = [
+    ("Domain migration", migrate_domains, "accesscontrol"),
+    ("Community migration", migrate_communities, "nectar_new"),
+    ("Client migration", migrate_clients, "nectar_new"),
+    ("Step-by-step migration", run_step_by_step_migration, "nectar_new"),
+]
+
+MIGRATION_KEY_MAP = {
+    "domain": MIGRATIONS[0],
+    "community": MIGRATIONS[1],
+    "client": MIGRATIONS[2],
+    "step": MIGRATIONS[3],
+}
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description="Neo4j → PostgreSQL data migration")
+    parser.add_argument(
+        "--env",
+        type=str,
+        default="local",
+        choices=["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod"],
+        help="Environment to run migration against",
+    )
+    parser.add_argument(
+        "--migration",
+        choices=["domain", "community", "client", "step", "all"],
+        help="Optional: run specific migration without interactive prompt",
+    )
+    return parser.parse_args()
+
+
+def show_migration_menu() -> list[tuple[str, MigrationFn, PostgresTarget]]:
+    """Display menu and return selected migrations."""
+    print("\n" + "="*50)
+    print("MIGRATION MENU")
+    print("="*50)
+    for idx, (name, _, _) in enumerate(MIGRATIONS, start=1):
+        print(f"{idx}. {name}")
+    print(f"{len(MIGRATIONS) + 1}. Run all migrations")
+    print("="*50)
+
+    while True:
+        choice = input("\nEnter option number: ").strip()
+        
+        # Run all migrations
+        if choice == str(len(MIGRATIONS) + 1):
+            return MIGRATIONS
+        
+        # Run single migration
+        if choice.isdigit():
+            index = int(choice) - 1
+            if 0 <= index < len(MIGRATIONS):
+                return [MIGRATIONS[index]]
+        
+        print("Invalid choice. Please try again.")
+
+
+def get_selected_migrations(arg_choice: str | None) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+    """Resolve which migrations to run based on argument or prompt."""
+    if arg_choice is None:
+        return show_migration_menu()
+    
+    # Map command line choices to migrations
+    if arg_choice == "all":
+        return MIGRATIONS
+
+    migration = MIGRATION_KEY_MAP.get(arg_choice)
+    return [migration] if migration else MIGRATIONS
+
+
+def main() -> None:
+    """Main migration entry point."""
+    args = parse_args()
+    env: EnvName = args.env
+    cfg = get_config(env)
+
+    # Get selected migrations
+    selected_migrations = get_selected_migrations(args.migration)
+    selected_names = ", ".join(name for name, _, _ in selected_migrations)
+    
+    logger.info("Environment: %s", env)
+    logger.info("Selected migrations: %s", selected_names)
+    print(f"\n→ Running: {selected_names}\n")
+
+    # Create Neo4j driver
+    driver = create_neo4j_driver(cfg.neo4j)
+    
+    try:
+        with neo4j_session(driver) as nsession:
+            for name, migration_fn, pg_target in selected_migrations:
+                logger.info("Running '%s' against PostgreSQL target '%s'", name, pg_target)
+                print(f"\n{'='*50}")
+                print(f"Running: {name}")
+                print(f"Target: {pg_target}")
+                print(f"{'='*50}\n")
+                
+                try:
+                    with pg_connection(cfg.get_postgres(pg_target)) as conn:
+                        migration_fn(nsession, conn)
+                    logger.info("✓ %s completed successfully", name)
+                    print(f"\n✓ {name} completed successfully\n")
+                except Exception as e:
+                    logger.error("✗ %s failed: %s", name, str(e))
+                    print(f"\n✗ {name} failed: {str(e)}\n")
+                    raise
+    finally:
+        driver.close()
+        logger.info("Neo4j driver closed")
+
+    logger.info("All migrations finished successfully for env=%s", env)
+    print(f"\n{'='*50}")
+    print("✓ ALL MIGRATIONS COMPLETED SUCCESSFULLY")
+    print(f"{'='*50}\n")
+
+
+if __name__ == "__main__":
+    main()
