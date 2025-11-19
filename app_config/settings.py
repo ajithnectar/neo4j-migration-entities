@@ -34,6 +34,9 @@ class AppConfig:
     env: EnvName
     neo4j: Neo4jConfig
     postgres: Dict[PostgresTarget, PostgresConfig]
+    neo4j_export_batch_size: int = 1000
+    client_domain: str = "ecd"
+    community_domain: str = "ecd"
 
     def get_postgres(self, target: PostgresTarget) -> PostgresConfig:
         try:
@@ -87,6 +90,9 @@ def get_config(env: EnvName) -> AppConfig:
                 password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
             ),
         }
+        neo4j_export_batch_size = 1000
+        client_domain = "ecd"
+        community_domain = "ecd"
 
     elif env == "nec-ofc-stg":
         neo4j = Neo4jConfig(
@@ -111,6 +117,9 @@ def get_config(env: EnvName) -> AppConfig:
                 password=_env_or_default("NECTAR_PG_PASSWORD", "NecOfc@123"),
             ),
         }
+        neo4j_export_batch_size = 6000
+        client_domain = "ecd"
+        community_domain = "ecd"
 
     elif env == "nec-aws-stg":
         neo4j = Neo4jConfig(
@@ -135,6 +144,9 @@ def get_config(env: EnvName) -> AppConfig:
                 password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
             ),
         }
+        neo4j_export_batch_size = 1000
+        client_domain = "ecd"
+        community_domain = "ecd"
 
     else:  # nec-aws-prod
         neo4j = Neo4jConfig(
@@ -159,7 +171,17 @@ def get_config(env: EnvName) -> AppConfig:
                 password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
             ),
         }
-
-    return AppConfig(env=env, neo4j=neo4j, postgres=pg)
+        neo4j_export_batch_size = 1000
+        client_domain = "ecd"
+        community_domain = "ecd"
+    
+    return AppConfig(
+        env=env,
+        neo4j=neo4j,
+        postgres=pg,
+        neo4j_export_batch_size=neo4j_export_batch_size,
+        client_domain=client_domain,
+        community_domain=community_domain,
+    )
 
 

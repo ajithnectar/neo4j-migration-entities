@@ -30,7 +30,16 @@ def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[di
                 # Map 'identifier' to 'asset_id' for backward compatibility
                 if clean_key == 'identifier':
                     clean_key = 'asset_id'
-                cleaned_row[clean_key] = v if v else None
+                
+                # Strip quotes and whitespace from values, convert empty strings to None
+                if v is None:
+                    cleaned_row[clean_key] = None
+                elif isinstance(v, str):
+                    # Strip quotes from beginning and end, then strip whitespace
+                    v = v.strip().strip('"').strip("'").strip()
+                    cleaned_row[clean_key] = v if v else None
+                else:
+                    cleaned_row[clean_key] = v
             rows.append(cleaned_row)
         return rows
 
@@ -303,26 +312,34 @@ def get_asset_space_rows(data: list[dict]) -> list[tuple]:
 
 
 def get_data_point_rows(data: list[dict]) -> list[tuple[str, tuple]]:
-    """Extract unique data points.
+    """Extract unique data points based on point_name (name field).
     
     Returns:
         list: List of (csv_data_point_id, row_data) tuples to maintain order
     """
-    seen = set()
+    seen = set()  # Track seen point_name values
     rows = []
     
     for record in data:
         csv_data_point_id = record.get("data_point_id")
-        if not csv_data_point_id or csv_data_point_id in seen:
+        point_name = record.get("point_name")
+        
+        # Skip if point_name is missing
+        if not point_name:
             continue
-        seen.add(csv_data_point_id)
+        
+        # Skip if we've already seen this point_name (deduplicate by point_name)
+        if point_name in seen:
+            continue
+        
+        seen.add(point_name)
         
         # Row without id (will be auto-generated)
         row_data = (
             record.get("access_type"),
             record.get("point_data_type"),
             record.get("point_display_name"),
-            record.get("point_name"),
+            point_name,  # This is the unique field
             record.get("remote_data_type"),
             record.get("point_status") or "ACTIVE",
             record.get("point_symbol"),
@@ -441,6 +458,48 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
         print("No subcommunities to migrate")
         return
     
+    # Filter out subcommunities where community_id doesn't exist in clients table
+    valid_rows = []
+    skipped_community_count = 0
+    with conn.cursor() as cur:
+        for row in rows:
+            community_id = row[4]  # community_id is at index 4 in the tuple
+            
+            # Skip if community_id is null or empty
+            if not community_id:
+                skipped_community_count += 1
+                logger.warning("Skipping subcommunity %s due to missing community_id", row[0])
+                continue
+            
+            # Check if community_id exists in clients table (case-insensitive check)
+            cur.execute("""
+                SELECT client_id FROM public.clients
+                WHERE LOWER(client_id) = LOWER(%s)
+                LIMIT 1
+            """, (community_id,))
+            result = cur.fetchone()
+            
+            if not result:
+                skipped_community_count += 1
+                logger.warning("Skipping subcommunity %s: community_id '%s' does not exist in clients table", row[0], community_id)
+                continue
+            
+            # Use the actual client_id from the database (in case of case mismatch)
+            actual_client_id = result[0]
+            # Update the row with the correct client_id
+            row_list = list(row)
+            row_list[4] = actual_client_id
+            valid_rows.append(tuple(row_list))
+    
+    if not valid_rows:
+        print("No valid subcommunities to migrate (all subcommunities have invalid or missing community_id)")
+        if skipped_community_count > 0:
+            print(f"Skipped {skipped_community_count} subcommunities due to invalid/missing community_id")
+        return
+    
+    if skipped_community_count > 0:
+        logger.info(f"Skipped {skipped_community_count} subcommunities due to invalid/missing community_id")
+    
     sql = """
         INSERT INTO public.sub_community (
             identifier, geo_location, name, status, community_id, domain, type
@@ -453,8 +512,8 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
             domain = EXCLUDED.domain,
             type = EXCLUDED.type
     """
-    batch_insert(conn, sql, rows)
-    print(f"✓ Migrated {len(rows)} subcommunities")
+    batch_insert(conn, sql, valid_rows)
+    print(f"✓ Migrated {len(valid_rows)} subcommunities")
 
 
 def migrate_buildings(conn: _PGConnection, data: list[dict]) -> None:
@@ -616,12 +675,13 @@ def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
             data_point_id = str(uuid.uuid4())
             point_id = data_point_id  # point_id should be the same as id
             
-            # Check if record already exists using name and display_name
+            # Check if record already exists using name (point_name) - this should be unique
+            point_name = row_data[3]  # name is index 3
             cur.execute("""
                 SELECT id, point_id FROM public.data_point
-                WHERE name = %s AND display_name = %s
+                WHERE name = %s
                 LIMIT 1
-            """, (row_data[3], row_data[2]))  # name is index 3, display_name is index 2
+            """, (point_name,))
             existing_result = cur.fetchone()
             
             if existing_result:
@@ -629,18 +689,46 @@ def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
                 db_id, existing_point_id = existing_result
                 point_id = existing_point_id if existing_point_id else db_id
                 inserted_data_points.append((csv_data_point_id, db_id, point_id))
+                logger.debug("Data point with name '%s' already exists, using existing id: %s", point_name, db_id)
             else:
                 # Insert new row with generated UUID
                 # row_data structure: (access_type, data_type, display_name, name, remote_data_type, status, symbol, unit)
                 # Cast UUID strings to UUID type for PostgreSQL
+                # Use ON CONFLICT to handle uniqueness constraint on name
                 cur.execute("""
                     INSERT INTO public.data_point (
                         id, access_type, data_type, display_name, name,
                         point_id, remote_data_type, status, symbol, unit
                     ) VALUES (%s::uuid, %s, %s, %s, %s, %s::uuid, %s, %s, %s, %s)
+                    ON CONFLICT (name) DO UPDATE SET
+                        access_type = EXCLUDED.access_type,
+                        data_type = EXCLUDED.data_type,
+                        display_name = EXCLUDED.display_name,
+                        remote_data_type = EXCLUDED.remote_data_type,
+                        status = EXCLUDED.status,
+                        symbol = EXCLUDED.symbol,
+                        unit = EXCLUDED.unit
+                    RETURNING id, point_id
                 """, (data_point_id, row_data[0], row_data[1], row_data[2], row_data[3], 
                       point_id, row_data[4], row_data[5], row_data[6], row_data[7]))
-                inserted_data_points.append((csv_data_point_id, data_point_id, point_id))
+                
+                result = cur.fetchone()
+                if result:
+                    db_id, returned_point_id = result
+                    point_id = returned_point_id if returned_point_id else db_id
+                    inserted_data_points.append((csv_data_point_id, db_id, point_id))
+                else:
+                    # If RETURNING didn't work, query again
+                    cur.execute("""
+                        SELECT id, point_id FROM public.data_point
+                        WHERE name = %s
+                        LIMIT 1
+                    """, (point_name,))
+                    result = cur.fetchone()
+                    if result:
+                        db_id, returned_point_id = result
+                        point_id = returned_point_id if returned_point_id else db_id
+                        inserted_data_points.append((csv_data_point_id, db_id, point_id))
     
     conn.commit()
     print(f"✓ Migrated {len(inserted_data_points)} data points")

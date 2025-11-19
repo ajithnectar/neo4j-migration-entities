@@ -1,0 +1,218 @@
+id,name,parent_name,status,template_name,analytics_profile_id,client_id
+1,Equipment,Asset,ACTIVE,Equipment,NULL,nectarit
+2,ELECTRICAL SYSTEMS,Equipment,ACTIVE,Electrical,NULL,nectarit
+3,Control Systems,Equipment,ACTIVE,ControlSystems,NULL,nectarit
+4,Wind Monitor System,Equipment,ACTIVE,WindMonitorSystem,NULL,nectarit
+5,MECHANICAL SYSTEMS,Equipment,ACTIVE,Mechanical,NULL,nectarit
+6,LIFE & SAFETY SYSTEMS,Equipment,ACTIVE,LifeAndSafety,NULL,nectarit
+7,PLUMBING SYSTEMS,Equipment,ACTIVE,Plumbing,NULL,nectarit
+8,HVAC SYSTEMS,Equipment,ACTIVE,HVAC,NULL,nectarit
+9,Photovoltaic Light Power Meter,Electrical,ACTIVE,PhotovoltaicLightPowerMeter,NULL,nectarit
+10,Variable Frequency Drive,Electrical,ACTIVE,VariableFrequencyDrive,NULL,nectarit
+11,Power Factor Correction Unit,Electrical,ACTIVE,PowerFactorCorrectionUnit,NULL,nectarit
+12,Virtual Machine,Electrical,ACTIVE,VirtualMachine,NULL,nectarit
+13,Metering,Electrical,ACTIVE,Metering,NULL,nectarit
+14,Emergency Power,Electrical,ACTIVE,EmergencyPower,NULL,nectarit
+15,Clean Agent System,Electrical,ACTIVE,CleanAgentSystem,NULL,nectarit
+16,Electrical Panels,Electrical,ACTIVE,ElectricalPanels,NULL,nectarit
+17,Photovoltaic System,Electrical,ACTIVE,PhotovoltaicSystem,NULL,nectarit
+18,Distribution Boards,Electrical,ACTIVE,DistributionBoards,NULL,nectarit
+19,Lighting,Electrical,ACTIVE,Lighting,NULL,nectarit
+20,Photovoltaic Light Power,Electrical,ACTIVE,PhotovoltaicLightPower,NULL,nectarit
+21,SMDB PV Meter,Metering,ACTIVE,SMDBPVMeter,NULL,nectarit
+22,BTU Sub Meter,Metering,ACTIVE,BTUSubMeter,NULL,nectarit
+23,Generator Meter,Metering,ACTIVE,GeneratorMeter,NULL,nectarit
+24,BTU Meter,Metering,ACTIVE,BTUMeter,NULL,nectarit
+25,LV Panel Sub Meter,Metering,ACTIVE,LVPSubMeter,NULL,nectarit
+26,LV Panel Meter,Metering,ACTIVE,LVPMeter,NULL,nectarit
+27,Water Meter,Metering,ACTIVE,WaterMeter,NULL,nectarit
+28,Renewable Meter,Metering,ACTIVE,RenewableMeter,NULL,nectarit
+29,LV Panel,Metering,ACTIVE,LVPanel,NULL,nectarit
+30,DB Meter,Metering,ACTIVE,DBMeter,NULL,nectarit
+31,MCCP Meter,Metering,ACTIVE,MCCPMeter,NULL,nectarit
+32,SMDB Meter,Metering,ACTIVE,SMDBMeter,NULL,nectarit
+33,Solar Energy Sub Meter,RenewableMeter,ACTIVE,SolarEnergySubMeter,NULL,nectarit
+34,Solar Energy Meter,RenewableMeter,ACTIVE,SolarEnergyMeter,NULL,nectarit
+35,UPS,EmergencyPower,ACTIVE,UPS,NULL,nectarit
+36,Generator,EmergencyPower,ACTIVE,Generator,NULL,nectarit
+37,Central Battery System,EmergencyPower,ACTIVE,CBS,NULL,nectarit
+38,ACB Panel,ElectricalPanels,ACTIVE,ACBPanel,NULL,nectarit
+39,ACS Panel,ElectricalPanels,ACTIVE,ACSPanel,NULL,nectarit
+40,Capacitor Bank,ElectricalPanels,ACTIVE,CapacitorBank,NULL,nectarit
+41,Leak Detection Panel,ElectricalPanels,ACTIVE,LeakDetectionPanel,NULL,nectarit
+42,HMI Panel,ElectricalPanels,ACTIVE,HMIPanel,NULL,nectarit
+43,EMCC Panel,ElectricalPanels,ACTIVE,EMCCPanel,NULL,nectarit
+44,ATS Panel,ElectricalPanels,ACTIVE,ATSPanel,NULL,nectarit
+45,MCC Panel,ElectricalPanels,ACTIVE,MCCPanel,NULL,nectarit
+46,Solar Panel,PhotovoltaicSystem,ACTIVE,SolarPanel,NULL,nectarit
+47,E Tree,SolarPanel,ACTIVE,ETree,NULL,nectarit
+48,Emergency SMDB,DistributionBoards,ACTIVE,ESMDB,NULL,nectarit
+49,SMDB,DistributionBoards,ACTIVE,SMDB,NULL,nectarit
+50,MDB,DistributionBoards,ACTIVE,MDB,NULL,nectarit
+51,Lighting Control System,Lighting,ACTIVE,LightingControls,NULL,nectarit
+52,DDC Controller,ControlSystems,ACTIVE,DDCController,NULL,nectarit
+53,Oil Tank,Mechanical,ACTIVE,OilTank,NULL,nectarit
+54,Entrance Door,Mechanical,ACTIVE,EntranceDoor,NULL,nectarit
+55,Gate Barrier,Mechanical,ACTIVE,GateBarrier,NULL,nectarit
+56,Steam Generator,Mechanical,ACTIVE,SteamGenerator,NULL,nectarit
+57,Grease Separator,Mechanical,ACTIVE,GreaseSeparator,NULL,nectarit
+58,Vertical/Horizontal Transport,Mechanical,ACTIVE,VerticalHorizontalTransport,NULL,nectarit
+59,Escalator,Mechanical,ACTIVE,Escalator,NULL,nectarit
+60,Lift,VerticalHorizontalTransport,ACTIVE,Lift,NULL,nectarit
+61,Lift Pressure Sensor,Lift,ACTIVE,LiftPressureSensor,NULL,nectarit
+62,Fire Water Tank Common,LifeAndSafety,ACTIVE,FireWaterTankCommon,NULL,nectarit
+63,Fire Suppression System,LifeAndSafety,ACTIVE,FireSuppressionSystem,NULL,nectarit
+64,LPG Gas Network,LifeAndSafety,ACTIVE,LPGGasNetwork,NULL,nectarit
+65,Fire Fighting,LifeAndSafety,ACTIVE,FireFighting,NULL,nectarit
+66,Fire Alarm,LifeAndSafety,ACTIVE,FireAlarm,NULL,nectarit
+67,Pre Action System,LifeAndSafety,ACTIVE,PreActionSystem,NULL,nectarit
+68,Fire Electrical Pump,LifeAndSafety,ACTIVE,FireElectricalPump,NULL,nectarit
+69,Fire Diesel Pump,LifeAndSafety,ACTIVE,FireDieselPump,NULL,nectarit
+70,Fire Jockey Pump,LifeAndSafety,ACTIVE,FireJockeyPump,NULL,nectarit
+71,Fire Water Tank,LifeAndSafety,ACTIVE,FireWaterTank,NULL,nectarit
+72,Foam System,LifeAndSafety,ACTIVE,FoamSystem,NULL,nectarit
+73,Gas Monitoring System,LifeAndSafety,ACTIVE,GasMonitoringSystem,NULL,nectarit
+74,Central Monitoring Panel,LifeAndSafety,ACTIVE,CentralMonitoringPanel,NULL,nectarit
+75,Gas Panel,LPGGasNetwork,ACTIVE,GasPanel,NULL,nectarit
+76,SmokeExtractFan,FireFighting,ACTIVE,SEF,NULL,nectarit
+77,Staircase Pressurization Fan,FireFighting,ACTIVE,SPF,NULL,nectarit
+78,Motorized Smoke Fire Damper,FireFighting,ACTIVE,MSFD,NULL,nectarit
+79,Fire Shutter Panel,FireAlarm,ACTIVE,FireShutterPanel,NULL,nectarit
+80,Fire Duct Door,FireAlarm,ACTIVE,FireDuctDoor,NULL,nectarit
+81,Zone Data,FireAlarm,ACTIVE,ZoneData,NULL,nectarit
+82,Fire Alarm System,FireAlarm,ACTIVE,FireAlarmSystem,NULL,nectarit
+83,LPG,GasMonitoringSystem,ACTIVE,LPG,NULL,nectarit
+84,Flue Gas Sensor,GasMonitoringSystem,ACTIVE,FlueGasSensor,NULL,nectarit
+85,Condensate Water Tank,Plumbing,ACTIVE,CondensateWaterTank,NULL,nectarit
+86,Water Treatment Plant,Plumbing,ACTIVE,WaterTreatmentPlant,NULL,nectarit
+87,Chemical Treatment,Plumbing,ACTIVE,ChemicalTreatment,NULL,nectarit
+88,Water Circulation Pump,Plumbing,ACTIVE,WaterCirculationPump,NULL,nectarit
+89,Water Filtration System,Plumbing,ACTIVE,WaterFiltrationSystem,NULL,nectarit
+90,SHCP Heater,Plumbing,ACTIVE,SHCPHeater,NULL,nectarit
+91,Fuel Oil System,Plumbing,ACTIVE,FuelOilSystem,NULL,nectarit
+92,Heater,Plumbing,ACTIVE,Heater,NULL,nectarit
+93,Penstock Valve,Plumbing,ACTIVE,PenstockValve,NULL,nectarit
+94,Filteration Pump,Plumbing,ACTIVE,FilterationPump,NULL,nectarit
+95,Irrigation Pump Common,Plumbing,ACTIVE,IrrigationPumpCommon,NULL,nectarit
+96,Irrigation Pump,Plumbing,ACTIVE,IrrigationPump,NULL,nectarit
+97,Grease Interceptor Control Panel,Plumbing,ACTIVE,GreaseInterceptorControlPanel,NULL,nectarit
+98,Oil Interceptor Control Panel,Plumbing,ACTIVE,OilInterceptorControlPanel,NULL,nectarit
+99,Grease Water Pump Common,Plumbing,ACTIVE,GreaseWaterPumpCommon,NULL,nectarit
+100,Grease Water Pump,Plumbing,ACTIVE,GreaseWaterPump,NULL,nectarit
+101,Black Water Process System,Plumbing,ACTIVE,BlackWaterProcessSystem,NULL,nectarit
+102,Condensate Water Process System,Plumbing,ACTIVE,CondensateWaterProcessSystem,NULL,nectarit
+103,Grey Water Process System,Plumbing,ACTIVE,GreyWaterProcessSystem,NULL,nectarit
+104,Non Port Water Tank Common,Plumbing,ACTIVE,NonPortWaterTankCommon,NULL,nectarit
+105,Non Port Water Tank,Plumbing,ACTIVE,NonPortWaterTank,NULL,nectarit
+106,Treated Water Tank,Plumbing,ACTIVE,TreatedWaterTank,NULL,nectarit
+107,Deionization Filteration Unit,Plumbing,ACTIVE,DeionizationFilterationUnit,NULL,nectarit
+108,Condensate Water Tank Common,Plumbing,ACTIVE,CondensateWaterTankCommon,NULL,nectarit
+109,Water Tanks,Plumbing,ACTIVE,WaterTanks,NULL,nectarit
+110,Pumps,Plumbing,ACTIVE,Pumps,NULL,nectarit
+111,Potable Water Tank,Plumbing,ACTIVE,PotableWaterTank,NULL,nectarit
+112,Potable Water Tank Common,Plumbing,ACTIVE,PotableWaterTankCommon,NULL,nectarit
+113,Circulation Pump,Plumbing,ACTIVE,CirculationPump,NULL,nectarit
+114,Water Tank,Plumbing,ACTIVE,WaterTank,NULL,nectarit
+115,Water Tank Common,Plumbing,ACTIVE,WaterTankCommon,NULL,nectarit
+116,Solar Disinfection System,Plumbing,ACTIVE,SolarDisinfectionSystem,NULL,nectarit
+117,Solar Disinfection System Tank,Plumbing,ACTIVE,SolarDisinfectionSystemTank,NULL,nectarit
+118,Storm Water Pump,Plumbing,ACTIVE,StormWaterPump,NULL,nectarit
+119,Storm Water Pump Common,Plumbing,ACTIVE,StormWaterPumpCommon,NULL,nectarit
+120,Circulation Pump Common,Plumbing,ACTIVE,CirculationPumpCommon,NULL,nectarit
+121,Grey Water Tank,Plumbing,ACTIVE,GreyWaterTank,NULL,nectarit
+122,Grey Water Tank Common,Plumbing,ACTIVE,GreyWaterTankCommon,NULL,nectarit
+123,Sand Filters,WaterFiltrationSystem,ACTIVE,SandFilters,NULL,nectarit
+124,Ionization Unit,WaterFiltrationSystem,ACTIVE,IonizationUnit,NULL,nectarit
+125,Carbon Filters,WaterFiltrationSystem,ACTIVE,CarbonFilters,NULL,nectarit
+126,Calorifier Tank,WaterTanks,ACTIVE,CalorifierTank,NULL,nectarit
+127,Pressure Reducing Valve,WaterTanks,ACTIVE,PRV,NULL,nectarit
+128,Irrigation Tank,WaterTanks,ACTIVE,IrrigationTank,NULL,nectarit
+129,Storm Water Tank,WaterTanks,ACTIVE,StormWaterTank,NULL,nectarit
+130,Brackish Water Process System,WaterTanks,ACTIVE,BrackishWaterProcessSystem,NULL,nectarit
+131,Brackish Water Tank,WaterTanks,ACTIVE,BrackishWaterTank,NULL,nectarit
+132,Water Booster Pump,Pumps,ACTIVE,WaterBoosterPump,NULL,nectarit
+133,Sweeper Pump,Pumps,ACTIVE,SweeperPump,NULL,nectarit
+134,Grinder Pump Common,Pumps,ACTIVE,GrinderPumpCommon,NULL,nectarit
+135,Booster Pump Common,Pumps,ACTIVE,BoosterPumpCommon,NULL,nectarit
+136,Water Booster Pump Common,Pumps,ACTIVE,WaterBoosterPumpCommon,NULL,nectarit
+137,Chlorine System,Pumps,ACTIVE,ChlorineSystem,NULL,nectarit
+138,Vacuum Degasser,Pumps,ACTIVE,VacuumDegasser,NULL,nectarit
+139,Side Stream Filteration Unit,Pumps,ACTIVE,SideStreamFilterationUnit,NULL,nectarit
+140,Solar Water Pump,Pumps,ACTIVE,SolarWaterPump,NULL,nectarit
+141,Recirculation Pump,Pumps,ACTIVE,RecirculationPump,NULL,nectarit
+142,Grinder Pump,Pumps,ACTIVE,GrinderPump,NULL,nectarit
+143,Chemical Dosing Unit,Pumps,ACTIVE,ChemicalDosingUnit,NULL,nectarit
+144,Lifting Pump,Pumps,ACTIVE,LiftingPump,NULL,nectarit
+145,Transfer Pump,Pumps,ACTIVE,TransferPump,NULL,nectarit
+146,Transfer Pump Common,Pumps,ACTIVE,TransferPumpCommon,NULL,nectarit
+147,Makeup Pump,Pumps,ACTIVE,MakeUpPump,NULL,nectarit
+148,Makeup Pump Common,Pumps,ACTIVE,MakeupPumpCommon,NULL,nectarit
+149,Booster Pump,Pumps,ACTIVE,BoosterPump,NULL,nectarit
+150,Sump Pump,Pumps,ACTIVE,SumpPump,NULL,nectarit
+151,Sump Pump Common,Pumps,ACTIVE,SumpPumpCommon,NULL,nectarit
+152,Storm Pump,Pumps,ACTIVE,StormPump,NULL,nectarit
+153,Storm Pump Common,Pumps,ACTIVE,StormPumpCommon,NULL,nectarit
+154,Sweeper System Pump,Pumps,ACTIVE,SweeperSystemPump,NULL,nectarit
+155,Sludge Sump Pump,SumpPump,ACTIVE,SludgeSumpPump,NULL,nectarit
+156,Expansion Tank,WaterTank,ACTIVE,ExpansionTank,NULL,nectarit
+157,GRP Water Tank,WaterTank,ACTIVE,GRPWaterTank,NULL,nectarit
+158,DX Unit,HVAC,ACTIVE,DXUnit,NULL,nectarit
+159,Condensate Pump Common,HVAC,ACTIVE,CondensatePumpCommon,NULL,nectarit
+160,Secondary Pump Common,HVAC,ACTIVE,SecondaryPumpCommon,NULL,nectarit
+161,Package Unit,HVAC,ACTIVE,PackageUnit,NULL,nectarit
+162,Cooling Tower Common,HVAC,ACTIVE,CoolingTowerCommon,NULL,nectarit
+163,Cooling Tower,HVAC,ACTIVE,CoolingTower,NULL,nectarit
+164,Expansion Vessels,HVAC,ACTIVE,ExpansionVessels,NULL,nectarit
+165,Chemical Feeder,HVAC,ACTIVE,ChemicalFeeder,NULL,nectarit
+166,Emergency Cooler,HVAC,ACTIVE,EmergencyCooler,NULL,nectarit
+167,Thermostat,HVAC,ACTIVE,Thermostat,NULL,nectarit
+168,Dampers,HVAC,ACTIVE,Dampers,NULL,nectarit
+169,Chiller Common,HVAC,ACTIVE,ChillerCommon,NULL,nectarit
+170,Temperature Sensor,HVAC,ACTIVE,TemperatureSensor,NULL,nectarit
+171,Air Side,HVAC,ACTIVE,AirSide,NULL,nectarit
+172,Water Side,HVAC,ACTIVE,WaterSide,NULL,nectarit
+173,Fans,HVAC,ACTIVE,Fans,NULL,nectarit
+174,AOVD,HVAC,ACTIVE,AOVD,NULL,nectarit
+175,Computer Room Air Conditioning,HVAC,ACTIVE,CRAC,NULL,nectarit
+176,VRF,HVAC,ACTIVE,VRF,NULL,nectarit
+177,Cold Room,HVAC,ACTIVE,ColdRoom,NULL,nectarit
+178,VRF System,HVAC,ACTIVE,VRFSystem,NULL,nectarit
+179,Air Quality System,HVAC,ACTIVE,AirQualitySystem,NULL,nectarit
+180,Condensor Pump,HVAC,ACTIVE,CondensorPump,NULL,nectarit
+181,Dosing Pump,ChemicalFeeder,ACTIVE,DosingPump,NULL,nectarit
+182,Room Data,Thermostat,ACTIVE,RoomData,NULL,nectarit
+183,Global,TemperatureSensor,ACTIVE,Global,NULL,nectarit
+184,VRV System,AirSide,ACTIVE,VRVSystem,NULL,nectarit
+185,Air Handling Unit,AirSide,ACTIVE,AHU,NULL,nectarit
+186,Fresh Air Handling Unit,AirSide,ACTIVE,FAHU,NULL,nectarit
+187,Fan Coil Unit,AirSide,ACTIVE,FanCoilUnit,NULL,nectarit
+188,VAV,AirSide,ACTIVE,VAV,NULL,nectarit
+189,CAV,AirSide,ACTIVE,CAV,NULL,nectarit
+190,Air Curtain,AirSide,ACTIVE,AirCurtain,NULL,nectarit
+191,Close Control Unit,AirSide,ACTIVE,CCU,NULL,nectarit
+192,Recirculating Air Handling Unit,AirSide,ACTIVE,RecirculatingAirHandlingUnit,NULL,nectarit
+193,Makeup Air Fan,AirSide,ACTIVE,MakeupAirFan,NULL,nectarit
+194,Chilled Water Station,WaterSide,ACTIVE,ChilledWaterStation,NULL,nectarit
+195,Pressurization Unit,WaterSide,ACTIVE,PressurizationUnit,NULL,nectarit
+196,Dosing Unit,WaterSide,ACTIVE,DosingUnit,NULL,nectarit
+197,Heat Exchanger,WaterSide,ACTIVE,HeatExchanger,NULL,nectarit
+198,Secondary Pump,WaterSide,ACTIVE,SecondaryPump,NULL,nectarit
+199,Primary Pump,WaterSide,ACTIVE,PrimaryPump,NULL,nectarit
+200,Chilled Water Common Header,WaterSide,ACTIVE,CHWCommonHeader,NULL,nectarit
+201,Chiller,WaterSide,ACTIVE,Chiller,NULL,nectarit
+202,Transformer Room Fan,Fans,ACTIVE,TransformerRoomFan,NULL,nectarit
+203,Ecology Unit,Fans,ACTIVE,EcologyUnit,NULL,nectarit
+204,Exhaust Fan,Fans,ACTIVE,ExhaustFan,NULL,nectarit
+205,Makeup Fan,Fans,ACTIVE,MakeupFan,NULL,nectarit
+206,Smoke Exhaust Fan,Fans,ACTIVE,SmokeExhaustFan,NULL,nectarit
+207,Fresh Air Fan,Fans,ACTIVE,FreshAirFan,NULL,nectarit
+208,Fresh Air Fan Common,Fans,ACTIVE,FreshAirFanCommon,NULL,nectarit
+209,Transformer Room Extract Fan,Fans,ACTIVE,TransformerRoomExtractFan,NULL,nectarit
+210,Lift Pressurization Fan,Fans,ACTIVE,LiftPressurizationFan,NULL,nectarit
+211,Extract Fan,Fans,ACTIVE,ExtractFan,NULL,nectarit
+212,Air Quality Sensor,AirQualitySystem,ACTIVE,AirQualitySensor,NULL,nectarit
+213,CO Monitoring Panel,AirQualitySystem,ACTIVE,COMonitoringPanel,NULL,nectarit
+214,Carbon Monoxide Sensor,AirQualitySystem,ACTIVE,CarbonMonoxideSensor,NULL,nectarit
+215,CO Sensor,AirQualitySystem,ACTIVE,COSensor,NULL,nectarit
+216,CO2 Sensor,AirQualitySystem,ACTIVE,CO2Sensor,NULL,nectarit
+217,POD,Equipment,ACTIVE,POD,NULL,nectarit

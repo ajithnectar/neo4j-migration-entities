@@ -1,218 +1,513 @@
-id,name,parent_name,status,template_name,analytics_profile_id,client_id
-1,Equipment,Asset,ACTIVE,Equipment,NULL,nectarit
-2,ELECTRICAL SYSTEMS,Equipment,ACTIVE,Electrical,NULL,nectarit
-3,Control Systems,Equipment,ACTIVE,ControlSystems,NULL,nectarit
-4,Wind Monitor System,Equipment,ACTIVE,WindMonitorSystem,NULL,nectarit
-5,MECHANICAL SYSTEMS,Equipment,ACTIVE,Mechanical,NULL,nectarit
-6,LIFE & SAFETY SYSTEMS,Equipment,ACTIVE,LifeAndSafety,NULL,nectarit
-7,PLUMBING SYSTEMS,Equipment,ACTIVE,Plumbing,NULL,nectarit
-8,HVAC SYSTEMS,Equipment,ACTIVE,HVAC,NULL,nectarit
-9,Photovoltaic Light Power Meter,Electrical,ACTIVE,PhotovoltaicLightPowerMeter,NULL,nectarit
-10,Variable Frequency Drive,Electrical,ACTIVE,VariableFrequencyDrive,NULL,nectarit
-11,Power Factor Correction Unit,Electrical,ACTIVE,PowerFactorCorrectionUnit,NULL,nectarit
-12,Virtual Machine,Electrical,ACTIVE,VirtualMachine,NULL,nectarit
-13,Metering,Electrical,ACTIVE,Metering,NULL,nectarit
-14,Emergency Power,Electrical,ACTIVE,EmergencyPower,NULL,nectarit
-15,Clean Agent System,Electrical,ACTIVE,CleanAgentSystem,NULL,nectarit
-16,Electrical Panels,Electrical,ACTIVE,ElectricalPanels,NULL,nectarit
-17,Photovoltaic System,Electrical,ACTIVE,PhotovoltaicSystem,NULL,nectarit
-18,Distribution Boards,Electrical,ACTIVE,DistributionBoards,NULL,nectarit
-19,Lighting,Electrical,ACTIVE,Lighting,NULL,nectarit
-20,Photovoltaic Light Power,Electrical,ACTIVE,PhotovoltaicLightPower,NULL,nectarit
-21,SMDB PV Meter,Metering,ACTIVE,SMDBPVMeter,NULL,nectarit
-22,BTU Sub Meter,Metering,ACTIVE,BTUSubMeter,NULL,nectarit
-23,Generator Meter,Metering,ACTIVE,GeneratorMeter,NULL,nectarit
-24,BTU Meter,Metering,ACTIVE,BTUMeter,NULL,nectarit
-25,LV Panel Sub Meter,Metering,ACTIVE,LVPSubMeter,NULL,nectarit
-26,LV Panel Meter,Metering,ACTIVE,LVPMeter,NULL,nectarit
-27,Water Meter,Metering,ACTIVE,WaterMeter,NULL,nectarit
-28,Renewable Meter,Metering,ACTIVE,RenewableMeter,NULL,nectarit
-29,LV Panel,Metering,ACTIVE,LVPanel,NULL,nectarit
-30,DB Meter,Metering,ACTIVE,DBMeter,NULL,nectarit
-31,MCCP Meter,Metering,ACTIVE,MCCPMeter,NULL,nectarit
-32,SMDB Meter,Metering,ACTIVE,SMDBMeter,NULL,nectarit
-33,Solar Energy Sub Meter,RenewableMeter,ACTIVE,SolarEnergySubMeter,NULL,nectarit
-34,Solar Energy Meter,RenewableMeter,ACTIVE,SolarEnergyMeter,NULL,nectarit
-35,UPS,EmergencyPower,ACTIVE,UPS,NULL,nectarit
-36,Generator,EmergencyPower,ACTIVE,Generator,NULL,nectarit
-37,Central Battery System,EmergencyPower,ACTIVE,CBS,NULL,nectarit
-38,ACB Panel,ElectricalPanels,ACTIVE,ACBPanel,NULL,nectarit
-39,ACS Panel,ElectricalPanels,ACTIVE,ACSPanel,NULL,nectarit
-40,Capacitor Bank,ElectricalPanels,ACTIVE,CapacitorBank,NULL,nectarit
-41,Leak Detection Panel,ElectricalPanels,ACTIVE,LeakDetectionPanel,NULL,nectarit
-42,HMI Panel,ElectricalPanels,ACTIVE,HMIPanel,NULL,nectarit
-43,EMCC Panel,ElectricalPanels,ACTIVE,EMCCPanel,NULL,nectarit
-44,ATS Panel,ElectricalPanels,ACTIVE,ATSPanel,NULL,nectarit
-45,MCC Panel,ElectricalPanels,ACTIVE,MCCPanel,NULL,nectarit
-46,Solar Panel,PhotovoltaicSystem,ACTIVE,SolarPanel,NULL,nectarit
-47,E Tree,SolarPanel,ACTIVE,ETree,NULL,nectarit
-48,Emergency SMDB,DistributionBoards,ACTIVE,ESMDB,NULL,nectarit
-49,SMDB,DistributionBoards,ACTIVE,SMDB,NULL,nectarit
-50,MDB,DistributionBoards,ACTIVE,MDB,NULL,nectarit
-51,Lighting Control System,Lighting,ACTIVE,LightingControls,NULL,nectarit
-52,DDC Controller,ControlSystems,ACTIVE,DDCController,NULL,nectarit
-53,Oil Tank,Mechanical,ACTIVE,OilTank,NULL,nectarit
-54,Entrance Door,Mechanical,ACTIVE,EntranceDoor,NULL,nectarit
-55,Gate Barrier,Mechanical,ACTIVE,GateBarrier,NULL,nectarit
-56,Steam Generator,Mechanical,ACTIVE,SteamGenerator,NULL,nectarit
-57,Grease Separator,Mechanical,ACTIVE,GreaseSeparator,NULL,nectarit
-58,Vertical/Horizontal Transport,Mechanical,ACTIVE,VerticalHorizontalTransport,NULL,nectarit
-59,Escalator,Mechanical,ACTIVE,Escalator,NULL,nectarit
-60,Lift,VerticalHorizontalTransport,ACTIVE,Lift,NULL,nectarit
-61,Lift Pressure Sensor,Lift,ACTIVE,LiftPressureSensor,NULL,nectarit
-62,Fire Water Tank Common,LifeAndSafety,ACTIVE,FireWaterTankCommon,NULL,nectarit
-63,Fire Suppression System,LifeAndSafety,ACTIVE,FireSuppressionSystem,NULL,nectarit
-64,LPG Gas Network,LifeAndSafety,ACTIVE,LPGGasNetwork,NULL,nectarit
-65,Fire Fighting,LifeAndSafety,ACTIVE,FireFighting,NULL,nectarit
-66,Fire Alarm,LifeAndSafety,ACTIVE,FireAlarm,NULL,nectarit
-67,Pre Action System,LifeAndSafety,ACTIVE,PreActionSystem,NULL,nectarit
-68,Fire Electrical Pump,LifeAndSafety,ACTIVE,FireElectricalPump,NULL,nectarit
-69,Fire Diesel Pump,LifeAndSafety,ACTIVE,FireDieselPump,NULL,nectarit
-70,Fire Jockey Pump,LifeAndSafety,ACTIVE,FireJockeyPump,NULL,nectarit
-71,Fire Water Tank,LifeAndSafety,ACTIVE,FireWaterTank,NULL,nectarit
-72,Foam System,LifeAndSafety,ACTIVE,FoamSystem,NULL,nectarit
-73,Gas Monitoring System,LifeAndSafety,ACTIVE,GasMonitoringSystem,NULL,nectarit
-74,Central Monitoring Panel,LifeAndSafety,ACTIVE,CentralMonitoringPanel,NULL,nectarit
-75,Gas Panel,LPGGasNetwork,ACTIVE,GasPanel,NULL,nectarit
-76,SmokeExtractFan,FireFighting,ACTIVE,SEF,NULL,nectarit
-77,Staircase Pressurization Fan,FireFighting,ACTIVE,SPF,NULL,nectarit
-78,Motorized Smoke Fire Damper,FireFighting,ACTIVE,MSFD,NULL,nectarit
-79,Fire Shutter Panel,FireAlarm,ACTIVE,FireShutterPanel,NULL,nectarit
-80,Fire Duct Door,FireAlarm,ACTIVE,FireDuctDoor,NULL,nectarit
-81,Zone Data,FireAlarm,ACTIVE,ZoneData,NULL,nectarit
-82,Fire Alarm System,FireAlarm,ACTIVE,FireAlarmSystem,NULL,nectarit
-83,LPG,GasMonitoringSystem,ACTIVE,LPG,NULL,nectarit
-84,Flue Gas Sensor,GasMonitoringSystem,ACTIVE,FlueGasSensor,NULL,nectarit
-85,Condensate Water Tank,Plumbing,ACTIVE,CondensateWaterTank,NULL,nectarit
-86,Water Treatment Plant,Plumbing,ACTIVE,WaterTreatmentPlant,NULL,nectarit
-87,Chemical Treatment,Plumbing,ACTIVE,ChemicalTreatment,NULL,nectarit
-88,Water Circulation Pump,Plumbing,ACTIVE,WaterCirculationPump,NULL,nectarit
-89,Water Filtration System,Plumbing,ACTIVE,WaterFiltrationSystem,NULL,nectarit
-90,SHCP Heater,Plumbing,ACTIVE,SHCPHeater,NULL,nectarit
-91,Fuel Oil System,Plumbing,ACTIVE,FuelOilSystem,NULL,nectarit
-92,Heater,Plumbing,ACTIVE,Heater,NULL,nectarit
-93,Penstock Valve,Plumbing,ACTIVE,PenstockValve,NULL,nectarit
-94,Filteration Pump,Plumbing,ACTIVE,FilterationPump,NULL,nectarit
-95,Irrigation Pump Common,Plumbing,ACTIVE,IrrigationPumpCommon,NULL,nectarit
-96,Irrigation Pump,Plumbing,ACTIVE,IrrigationPump,NULL,nectarit
-97,Grease Interceptor Control Panel,Plumbing,ACTIVE,GreaseInterceptorControlPanel,NULL,nectarit
-98,Oil Interceptor Control Panel,Plumbing,ACTIVE,OilInterceptorControlPanel,NULL,nectarit
-99,Grease Water Pump Common,Plumbing,ACTIVE,GreaseWaterPumpCommon,NULL,nectarit
-100,Grease Water Pump,Plumbing,ACTIVE,GreaseWaterPump,NULL,nectarit
-101,Black Water Process System,Plumbing,ACTIVE,BlackWaterProcessSystem,NULL,nectarit
-102,Condensate Water Process System,Plumbing,ACTIVE,CondensateWaterProcessSystem,NULL,nectarit
-103,Grey Water Process System,Plumbing,ACTIVE,GreyWaterProcessSystem,NULL,nectarit
-104,Non Port Water Tank Common,Plumbing,ACTIVE,NonPortWaterTankCommon,NULL,nectarit
-105,Non Port Water Tank,Plumbing,ACTIVE,NonPortWaterTank,NULL,nectarit
-106,Treated Water Tank,Plumbing,ACTIVE,TreatedWaterTank,NULL,nectarit
-107,Deionization Filteration Unit,Plumbing,ACTIVE,DeionizationFilterationUnit,NULL,nectarit
-108,Condensate Water Tank Common,Plumbing,ACTIVE,CondensateWaterTankCommon,NULL,nectarit
-109,Water Tanks,Plumbing,ACTIVE,WaterTanks,NULL,nectarit
-110,Pumps,Plumbing,ACTIVE,Pumps,NULL,nectarit
-111,Potable Water Tank,Plumbing,ACTIVE,PotableWaterTank,NULL,nectarit
-112,Potable Water Tank Common,Plumbing,ACTIVE,PotableWaterTankCommon,NULL,nectarit
-113,Circulation Pump,Plumbing,ACTIVE,CirculationPump,NULL,nectarit
-114,Water Tank,Plumbing,ACTIVE,WaterTank,NULL,nectarit
-115,Water Tank Common,Plumbing,ACTIVE,WaterTankCommon,NULL,nectarit
-116,Solar Disinfection System,Plumbing,ACTIVE,SolarDisinfectionSystem,NULL,nectarit
-117,Solar Disinfection System Tank,Plumbing,ACTIVE,SolarDisinfectionSystemTank,NULL,nectarit
-118,Storm Water Pump,Plumbing,ACTIVE,StormWaterPump,NULL,nectarit
-119,Storm Water Pump Common,Plumbing,ACTIVE,StormWaterPumpCommon,NULL,nectarit
-120,Circulation Pump Common,Plumbing,ACTIVE,CirculationPumpCommon,NULL,nectarit
-121,Grey Water Tank,Plumbing,ACTIVE,GreyWaterTank,NULL,nectarit
-122,Grey Water Tank Common,Plumbing,ACTIVE,GreyWaterTankCommon,NULL,nectarit
-123,Sand Filters,WaterFiltrationSystem,ACTIVE,SandFilters,NULL,nectarit
-124,Ionization Unit,WaterFiltrationSystem,ACTIVE,IonizationUnit,NULL,nectarit
-125,Carbon Filters,WaterFiltrationSystem,ACTIVE,CarbonFilters,NULL,nectarit
-126,Calorifier Tank,WaterTanks,ACTIVE,CalorifierTank,NULL,nectarit
-127,Pressure Reducing Valve,WaterTanks,ACTIVE,PRV,NULL,nectarit
-128,Irrigation Tank,WaterTanks,ACTIVE,IrrigationTank,NULL,nectarit
-129,Storm Water Tank,WaterTanks,ACTIVE,StormWaterTank,NULL,nectarit
-130,Brackish Water Process System,WaterTanks,ACTIVE,BrackishWaterProcessSystem,NULL,nectarit
-131,Brackish Water Tank,WaterTanks,ACTIVE,BrackishWaterTank,NULL,nectarit
-132,Water Booster Pump,Pumps,ACTIVE,WaterBoosterPump,NULL,nectarit
-133,Sweeper Pump,Pumps,ACTIVE,SweeperPump,NULL,nectarit
-134,Grinder Pump Common,Pumps,ACTIVE,GrinderPumpCommon,NULL,nectarit
-135,Booster Pump Common,Pumps,ACTIVE,BoosterPumpCommon,NULL,nectarit
-136,Water Booster Pump Common,Pumps,ACTIVE,WaterBoosterPumpCommon,NULL,nectarit
-137,Chlorine System,Pumps,ACTIVE,ChlorineSystem,NULL,nectarit
-138,Vacuum Degasser,Pumps,ACTIVE,VacuumDegasser,NULL,nectarit
-139,Side Stream Filteration Unit,Pumps,ACTIVE,SideStreamFilterationUnit,NULL,nectarit
-140,Solar Water Pump,Pumps,ACTIVE,SolarWaterPump,NULL,nectarit
-141,Recirculation Pump,Pumps,ACTIVE,RecirculationPump,NULL,nectarit
-142,Grinder Pump,Pumps,ACTIVE,GrinderPump,NULL,nectarit
-143,Chemical Dosing Unit,Pumps,ACTIVE,ChemicalDosingUnit,NULL,nectarit
-144,Lifting Pump,Pumps,ACTIVE,LiftingPump,NULL,nectarit
-145,Transfer Pump,Pumps,ACTIVE,TransferPump,NULL,nectarit
-146,Transfer Pump Common,Pumps,ACTIVE,TransferPumpCommon,NULL,nectarit
-147,Makeup Pump,Pumps,ACTIVE,MakeUpPump,NULL,nectarit
-148,Makeup Pump Common,Pumps,ACTIVE,MakeupPumpCommon,NULL,nectarit
-149,Booster Pump,Pumps,ACTIVE,BoosterPump,NULL,nectarit
-150,Sump Pump,Pumps,ACTIVE,SumpPump,NULL,nectarit
-151,Sump Pump Common,Pumps,ACTIVE,SumpPumpCommon,NULL,nectarit
-152,Storm Pump,Pumps,ACTIVE,StormPump,NULL,nectarit
-153,Storm Pump Common,Pumps,ACTIVE,StormPumpCommon,NULL,nectarit
-154,Sweeper System Pump,Pumps,ACTIVE,SweeperSystemPump,NULL,nectarit
-155,Sludge Sump Pump,SumpPump,ACTIVE,SludgeSumpPump,NULL,nectarit
-156,Expansion Tank,WaterTank,ACTIVE,ExpansionTank,NULL,nectarit
-157,GRP Water Tank,WaterTank,ACTIVE,GRPWaterTank,NULL,nectarit
-158,DX Unit,HVAC,ACTIVE,DXUnit,NULL,nectarit
-159,Condensate Pump Common,HVAC,ACTIVE,CondensatePumpCommon,NULL,nectarit
-160,Secondary Pump Common,HVAC,ACTIVE,SecondaryPumpCommon,NULL,nectarit
-161,Package Unit,HVAC,ACTIVE,PackageUnit,NULL,nectarit
-162,Cooling Tower Common,HVAC,ACTIVE,CoolingTowerCommon,NULL,nectarit
-163,Cooling Tower,HVAC,ACTIVE,CoolingTower,NULL,nectarit
-164,Expansion Vessels,HVAC,ACTIVE,ExpansionVessels,NULL,nectarit
-165,Chemical Feeder,HVAC,ACTIVE,ChemicalFeeder,NULL,nectarit
-166,Emergency Cooler,HVAC,ACTIVE,EmergencyCooler,NULL,nectarit
-167,Thermostat,HVAC,ACTIVE,Thermostat,NULL,nectarit
-168,Dampers,HVAC,ACTIVE,Dampers,NULL,nectarit
-169,Chiller Common,HVAC,ACTIVE,ChillerCommon,NULL,nectarit
-170,Temperature Sensor,HVAC,ACTIVE,TemperatureSensor,NULL,nectarit
-171,Air Side,HVAC,ACTIVE,AirSide,NULL,nectarit
-172,Water Side,HVAC,ACTIVE,WaterSide,NULL,nectarit
-173,Fans,HVAC,ACTIVE,Fans,NULL,nectarit
-174,AOVD,HVAC,ACTIVE,AOVD,NULL,nectarit
-175,Computer Room Air Conditioning,HVAC,ACTIVE,CRAC,NULL,nectarit
-176,VRF,HVAC,ACTIVE,VRF,NULL,nectarit
-177,Cold Room,HVAC,ACTIVE,ColdRoom,NULL,nectarit
-178,VRF System,HVAC,ACTIVE,VRFSystem,NULL,nectarit
-179,Air Quality System,HVAC,ACTIVE,AirQualitySystem,NULL,nectarit
-180,Condensor Pump,HVAC,ACTIVE,CondensorPump,NULL,nectarit
-181,Dosing Pump,ChemicalFeeder,ACTIVE,DosingPump,NULL,nectarit
-182,Room Data,Thermostat,ACTIVE,RoomData,NULL,nectarit
-183,Global,TemperatureSensor,ACTIVE,Global,NULL,nectarit
-184,VRV System,AirSide,ACTIVE,VRVSystem,NULL,nectarit
-185,Air Handling Unit,AirSide,ACTIVE,AHU,NULL,nectarit
-186,Fresh Air Handling Unit,AirSide,ACTIVE,FAHU,NULL,nectarit
-187,Fan Coil Unit,AirSide,ACTIVE,FanCoilUnit,NULL,nectarit
-188,VAV,AirSide,ACTIVE,VAV,NULL,nectarit
-189,CAV,AirSide,ACTIVE,CAV,NULL,nectarit
-190,Air Curtain,AirSide,ACTIVE,AirCurtain,NULL,nectarit
-191,Close Control Unit,AirSide,ACTIVE,CCU,NULL,nectarit
-192,Recirculating Air Handling Unit,AirSide,ACTIVE,RecirculatingAirHandlingUnit,NULL,nectarit
-193,Makeup Air Fan,AirSide,ACTIVE,MakeupAirFan,NULL,nectarit
-194,Chilled Water Station,WaterSide,ACTIVE,ChilledWaterStation,NULL,nectarit
-195,Pressurization Unit,WaterSide,ACTIVE,PressurizationUnit,NULL,nectarit
-196,Dosing Unit,WaterSide,ACTIVE,DosingUnit,NULL,nectarit
-197,Heat Exchanger,WaterSide,ACTIVE,HeatExchanger,NULL,nectarit
-198,Secondary Pump,WaterSide,ACTIVE,SecondaryPump,NULL,nectarit
-199,Primary Pump,WaterSide,ACTIVE,PrimaryPump,NULL,nectarit
-200,Chilled Water Common Header,WaterSide,ACTIVE,CHWCommonHeader,NULL,nectarit
-201,Chiller,WaterSide,ACTIVE,Chiller,NULL,nectarit
-202,Transformer Room Fan,Fans,ACTIVE,TransformerRoomFan,NULL,nectarit
-203,Ecology Unit,Fans,ACTIVE,EcologyUnit,NULL,nectarit
-204,Exhaust Fan,Fans,ACTIVE,ExhaustFan,NULL,nectarit
-205,Makeup Fan,Fans,ACTIVE,MakeupFan,NULL,nectarit
-206,Smoke Exhaust Fan,Fans,ACTIVE,SmokeExhaustFan,NULL,nectarit
-207,Fresh Air Fan,Fans,ACTIVE,FreshAirFan,NULL,nectarit
-208,Fresh Air Fan Common,Fans,ACTIVE,FreshAirFanCommon,NULL,nectarit
-209,Transformer Room Extract Fan,Fans,ACTIVE,TransformerRoomExtractFan,NULL,nectarit
-210,Lift Pressurization Fan,Fans,ACTIVE,LiftPressurizationFan,NULL,nectarit
-211,Extract Fan,Fans,ACTIVE,ExtractFan,NULL,nectarit
-212,Air Quality Sensor,AirQualitySystem,ACTIVE,AirQualitySensor,NULL,nectarit
-213,CO Monitoring Panel,AirQualitySystem,ACTIVE,COMonitoringPanel,NULL,nectarit
-214,Carbon Monoxide Sensor,AirQualitySystem,ACTIVE,CarbonMonoxideSensor,NULL,nectarit
-215,CO Sensor,AirQualitySystem,ACTIVE,COSensor,NULL,nectarit
-216,CO2 Sensor,AirQualitySystem,ACTIVE,CO2Sensor,NULL,nectarit
-217,POD,Equipment,ACTIVE,POD,NULL,nectarit
+"id","name","parent_name","status","template_name","analytics_profile_id","client_id"
+"1","Electrical","Equipment","ACTIVE","ELECTRICAL SYSTEMS",NULL,"nectarit"
+"2","POD","Equipment","ACTIVE","POD",NULL,"nectarit"
+"3","ControlSystems","Equipment","ACTIVE","Control Systems",NULL,"nectarit"
+"4","WindMonitorSystem","Equipment","ACTIVE","Wind Monitor System",NULL,"nectarit"
+"5","Mechanical","Equipment","ACTIVE","MECHANICAL SYSTEMS",NULL,"nectarit"
+"6","LifeAndSafety","Equipment","ACTIVE","LIFE & SAFETY SYSTEMS",NULL,"nectarit"
+"7","Plumbing","Equipment","ACTIVE","PLUMBING SYSTEMS",NULL,"nectarit"
+"8","HVAC","Equipment","ACTIVE","HVAC SYSTEMS",NULL,"nectarit"
+"9","PhotovoltaicLightPowerMeter","Electrical","ACTIVE","Photovoltaic Light Power Meter",NULL,"nectarit"
+"10","VariableFrequencyDrive","Electrical","ACTIVE","Variable Frequency Drive",NULL,"nectarit"
+"11","PowerFactorCorrectionUnit","Electrical","ACTIVE","Power Factor Correction Unit",NULL,"nectarit"
+"12","VirtualMachine","Electrical","ACTIVE","Virtual Machine",NULL,"nectarit"
+"13","Metering","Electrical","ACTIVE","Metering",NULL,"nectarit"
+"14","EmergencyPower","Electrical","ACTIVE","Emergency Power",NULL,"nectarit"
+"15","CleanAgentSystem","Electrical","ACTIVE","Clean Agent System",NULL,"nectarit"
+"16","ElectricalPanels","Electrical","ACTIVE","Electrical Panels",NULL,"nectarit"
+"17","PhotovoltaicSystem","Electrical","ACTIVE","Photovoltaic System",NULL,"nectarit"
+"18","DistributionBoards","Electrical","ACTIVE","Distribution Boards",NULL,"nectarit"
+"19","Lighting","Electrical","ACTIVE","Lighting",NULL,"nectarit"
+"20","PhotovoltaicLightPower","Electrical","ACTIVE","Photovoltaic Light Power",NULL,"nectarit"
+"21","SMDBPVMeter","Metering","ACTIVE","SMDB PV Meter",NULL,"nectarit"
+"22","EmergencySMDBMeter","Metering","ACTIVE","Emergency SMDBMeter",NULL,"nectarit"
+"23","EmergencySMDB","Metering","ACTIVE","Emergency SMDB",NULL,"nectarit"
+"24","EmergencyMCCMeter","Metering","ACTIVE","Emergency MCC Meter",NULL,"nectarit"
+"25","WaterSubMeter","Metering","ACTIVE","Water Sub Meter",NULL,"nectarit"
+"26","BTUSubMeter","Metering","ACTIVE","BTU Sub Meter",NULL,"nectarit"
+"27","GeneratorMeter","Metering","ACTIVE","Generator Meter",NULL,"nectarit"
+"28","BTUMeter","Metering","ACTIVE","BTU Meter",NULL,"nectarit"
+"29","LVPSubMeter","Metering","ACTIVE","LV Panel Sub Meter",NULL,"nectarit"
+"30","LVPMeter","Metering","ACTIVE","LV Panel Meter",NULL,"nectarit"
+"31","WaterMeter","Metering","ACTIVE","Water Meter",NULL,"nectarit"
+"32","RenewableMeter","Metering","ACTIVE","Renewable Meter",NULL,"nectarit"
+"33","LVPanel","Metering","ACTIVE","LV Panel",NULL,"nectarit"
+"34","DBMeter","Metering","ACTIVE","DB Meter",NULL,"nectarit"
+"35","MCCPMeter","Metering","ACTIVE","MCCP Meter",NULL,"nectarit"
+"36","SMDBMeter","Metering","ACTIVE","SMDB Meter",NULL,"nectarit"
+"37","SolarEnergySubMeter","RenewableMeter","ACTIVE","Solar Energy Sub Meter",NULL,"nectarit"
+"38","SolarEnergyMeter","RenewableMeter","ACTIVE","Solar Energy Meter",NULL,"nectarit"
+"39","UPS","EmergencyPower","ACTIVE","UPS",NULL,"nectarit"
+"40","Generator","EmergencyPower","ACTIVE","Generator",NULL,"nectarit"
+"41","CBS","EmergencyPower","ACTIVE","Central Battery System",NULL,"nectarit"
+"42","MCCPanel","ElectricalPanels","ACTIVE","MCC Panel",NULL,"nectarit"
+"43","AccessControlSystemCommon","ElectricalPanels","ACTIVE","Access Control System Common",NULL,"nectarit"
+"44","ATSPanel","ElectricalPanels","ACTIVE","ATS Panel",NULL,"nectarit"
+"45","EMCCPanel","ElectricalPanels","ACTIVE","EMCC Panel",NULL,"nectarit"
+"46","HMIPanel","ElectricalPanels","ACTIVE","HMI Panel",NULL,"nectarit"
+"47","LeakDetectionPanel","ElectricalPanels","ACTIVE","Leak Detection Panel",NULL,"nectarit"
+"48","CapacitorBank","ElectricalPanels","ACTIVE","Capacitor Bank",NULL,"nectarit"
+"49","ACSPanel","ElectricalPanels","ACTIVE","ACS Panel",NULL,"nectarit"
+"50","ACBPanel","ElectricalPanels","ACTIVE","ACB Panel",NULL,"nectarit"
+"51","SolarPanel","PhotovoltaicSystem","ACTIVE","Solar Panel",NULL,"nectarit"
+"52","ETree","SolarPanel","ACTIVE","E Tree",NULL,"nectarit"
+"53","FeederPanel","DistributionBoards","ACTIVE","Feeder Panel",NULL,"nectarit"
+"54","ESMDB","DistributionBoards","ACTIVE","Emergency SMDB",NULL,"nectarit"
+"55","SMDB","DistributionBoards","ACTIVE","SMDB",NULL,"nectarit"
+"56","MDB","DistributionBoards","ACTIVE","MDB",NULL,"nectarit"
+"57","EmergencyLightingPanel","Lighting","ACTIVE","Emergency Lighting Panel",NULL,"nectarit"
+"58","AircraftWarningLight","Lighting","ACTIVE","Aircraft Warning Light",NULL,"nectarit"
+"59","LightingControls","Lighting","ACTIVE","Lighting Control System",NULL,"nectarit"
+"60","AVPOD","POD","ACTIVE","AV POD",NULL,"nectarit"
+"61","AVPODCommon","AVPOD","ACTIVE","AV POD Common",NULL,"nectarit"
+"62","Server","ControlSystems","ACTIVE","Server",NULL,"nectarit"
+"63","DDCController","ControlSystems","ACTIVE","DDC Controller",NULL,"nectarit"
+"64","Escalator","Mechanical","ACTIVE","Escalator",NULL,"nectarit"
+"65","FuelTank","Mechanical","ACTIVE","Fuel Tank",NULL,"nectarit"
+"66","DieselTank","Mechanical","ACTIVE","Diesel Tank",NULL,"nectarit"
+"67","VerticalHorizontalTransport","Mechanical","ACTIVE","Vertical/Horizontal Transport",NULL,"nectarit"
+"68","GreaseSeparator","Mechanical","ACTIVE","Grease Separator",NULL,"nectarit"
+"69","SteamGenerator","Mechanical","ACTIVE","Steam Generator",NULL,"nectarit"
+"70","GateBarrier","Mechanical","ACTIVE","Gate Barrier",NULL,"nectarit"
+"71","EntranceDoor","Mechanical","ACTIVE","Entrance Door",NULL,"nectarit"
+"72","OilTank","Mechanical","ACTIVE","Oil Tank",NULL,"nectarit"
+"73","LiftPanel","VerticalHorizontalTransport","ACTIVE","Lift Panel",NULL,"nectarit"
+"74","Lift","VerticalHorizontalTransport","ACTIVE","Lift",NULL,"nectarit"
+"75","LiftPressureSensor","Lift","ACTIVE","Lift Pressure Sensor",NULL,"nectarit"
+"76","FireWaterTankCommon","LifeAndSafety","ACTIVE","Fire Water Tank Common",NULL,"nectarit"
+"77","WetControlPanel","LifeAndSafety","ACTIVE","Wet Control Panel",NULL,"nectarit"
+"78","FirePumpSetCommon","LifeAndSafety","ACTIVE","Fire Pump Set Common",NULL,"nectarit"
+"79","PublicAddressSystem","LifeAndSafety","ACTIVE","Public Address System",NULL,"nectarit"
+"80","FireSuppressionSystem","LifeAndSafety","ACTIVE","Fire Suppression System",NULL,"nectarit"
+"81","LPGGasNetwork","LifeAndSafety","ACTIVE","LPG Gas Network",NULL,"nectarit"
+"82","FireFighting","LifeAndSafety","ACTIVE","Fire Fighting",NULL,"nectarit"
+"83","FireAlarm","LifeAndSafety","ACTIVE","Fire Alarm",NULL,"nectarit"
+"84","PreActionSystem","LifeAndSafety","ACTIVE","Pre Action System",NULL,"nectarit"
+"85","FireElectricalPump","LifeAndSafety","ACTIVE","Fire Electrical Pump",NULL,"nectarit"
+"86","FireDieselPump","LifeAndSafety","ACTIVE","Fire Diesel Pump",NULL,"nectarit"
+"87","FireJockeyPump","LifeAndSafety","ACTIVE","Fire Jockey Pump",NULL,"nectarit"
+"88","FireWaterTank","LifeAndSafety","ACTIVE","Fire Water Tank",NULL,"nectarit"
+"89","FoamSystem","LifeAndSafety","ACTIVE","Foam System",NULL,"nectarit"
+"90","GasMonitoringSystem","LifeAndSafety","ACTIVE","Gas Monitoring System",NULL,"nectarit"
+"91","CentralMonitoringPanel","LifeAndSafety","ACTIVE","Central Monitoring Panel",NULL,"nectarit"
+"92","GasMeter","LPGGasNetwork","ACTIVE","Gas Meter",NULL,"nectarit"
+"93","GasPanel","LPGGasNetwork","ACTIVE","Gas Panel",NULL,"nectarit"
+"94","FM200","FireFighting","ACTIVE","FM 200",NULL,"nectarit"
+"95","SmokeExtractFanCommon","FireFighting","ACTIVE","Smoke Extract Fan Common",NULL,"nectarit"
+"96","SEF","FireFighting","ACTIVE","Smoke Extract Fan",NULL,"nectarit"
+"97","SPF","FireFighting","ACTIVE","Staircase Pressurization Fan",NULL,"nectarit"
+"98","MSFD","FireFighting","ACTIVE","Motorized Smoke Fire Damper",NULL,"nectarit"
+"99","FireAlarmSystem","FireAlarm","ACTIVE","Fire Alarm System",NULL,"nectarit"
+"100","ZoneData","FireAlarm","ACTIVE","Zone Data",NULL,"nectarit"
+"101","FireDuctDoor","FireAlarm","ACTIVE","Fire Duct Door",NULL,"nectarit"
+"102","FireShutterPanel","FireAlarm","ACTIVE","Fire Shutter Panel",NULL,"nectarit"
+"103","LPG","GasMonitoringSystem","ACTIVE","LPG",NULL,"nectarit"
+"104","FlueGasSensor","GasMonitoringSystem","ACTIVE","Flue Gas Sensor",NULL,"nectarit"
+"105","CondensateWaterTank","Plumbing","ACTIVE","Condensate Water Tank",NULL,"nectarit"
+"106","WaterTreatmentPlant","Plumbing","ACTIVE","Water Treatment Plant",NULL,"nectarit"
+"107","ChemicalTreatment","Plumbing","ACTIVE","Chemical Treatment",NULL,"nectarit"
+"108","WaterCirculationPump","Plumbing","ACTIVE","Water Circulation Pump",NULL,"nectarit"
+"109","WaterFiltrationSystem","Plumbing","ACTIVE","Water Filtration System",NULL,"nectarit"
+"110","SHCPHeater","Plumbing","ACTIVE","SHCP Heater",NULL,"nectarit"
+"111","FuelOilSystem","Plumbing","ACTIVE","Fuel Oil System",NULL,"nectarit"
+"112","Heater","Plumbing","ACTIVE","Heater",NULL,"nectarit"
+"113","PenstockValve","Plumbing","ACTIVE","Penstock Valve",NULL,"nectarit"
+"114","FilterationPump","Plumbing","ACTIVE","Filteration Pump",NULL,"nectarit"
+"115","IrrigationPumpCommon","Plumbing","ACTIVE","Irrigation Pump Common",NULL,"nectarit"
+"116","IrrigationPump","Plumbing","ACTIVE","Irrigation Pump",NULL,"nectarit"
+"117","GreaseInterceptorControlPanel","Plumbing","ACTIVE","Grease Interceptor Control Panel",NULL,"nectarit"
+"118","OilInterceptorControlPanel","Plumbing","ACTIVE","Oil Interceptor Control Panel",NULL,"nectarit"
+"119","GreaseWaterPumpCommon","Plumbing","ACTIVE","Grease Water Pump Common",NULL,"nectarit"
+"120","GreaseWaterPump","Plumbing","ACTIVE","Grease Water Pump",NULL,"nectarit"
+"121","BlackWaterProcessSystem","Plumbing","ACTIVE","Black Water Process System",NULL,"nectarit"
+"122","CondensateWaterProcessSystem","Plumbing","ACTIVE","Condensate Water Process System",NULL,"nectarit"
+"123","GreyWaterProcessSystem","Plumbing","ACTIVE","Grey Water Process System",NULL,"nectarit"
+"124","NonPortWaterTankCommon","Plumbing","ACTIVE","Non Port Water Tank Common",NULL,"nectarit"
+"125","NonPortWaterTank","Plumbing","ACTIVE","Non Port Water Tank",NULL,"nectarit"
+"126","TreatedWaterTank","Plumbing","ACTIVE","Treated Water Tank",NULL,"nectarit"
+"127","DeionizationFilterationUnit","Plumbing","ACTIVE","Deionization Filteration Unit",NULL,"nectarit"
+"128","CondensateWaterTankCommon","Plumbing","ACTIVE","Condensate Water Tank Common",NULL,"nectarit"
+"129","WaterTanks","Plumbing","ACTIVE","Water Tanks",NULL,"nectarit"
+"130","Pumps","Plumbing","ACTIVE","Pumps",NULL,"nectarit"
+"131","PotableWaterTank","Plumbing","ACTIVE","Potable Water Tank",NULL,"nectarit"
+"132","PotableWaterTankCommon","Plumbing","ACTIVE","Potable Water Tank Common",NULL,"nectarit"
+"133","CirculationPump","Plumbing","ACTIVE","Circulation Pump",NULL,"nectarit"
+"134","WaterTank","Plumbing","ACTIVE","Water Tank",NULL,"nectarit"
+"135","WaterTankCommon","Plumbing","ACTIVE","Water Tank Common",NULL,"nectarit"
+"136","SolarDisinfectionSystem","Plumbing","ACTIVE","Solar Disinfection System",NULL,"nectarit"
+"137","SolarDisinfectionSystemTank","Plumbing","ACTIVE","Solar Disinfection System Tank",NULL,"nectarit"
+"138","StormWaterPump","Plumbing","ACTIVE","Storm Water Pump",NULL,"nectarit"
+"139","StormWaterPumpCommon","Plumbing","ACTIVE","Storm Water Pump Common",NULL,"nectarit"
+"140","CirculationPumpCommon","Plumbing","ACTIVE","Circulation Pump Common",NULL,"nectarit"
+"141","GreyWaterTank","Plumbing","ACTIVE","Grey Water Tank",NULL,"nectarit"
+"142","GreyWaterTankCommon","Plumbing","ACTIVE","Grey Water Tank Common",NULL,"nectarit"
+"143","SandFilters","WaterFiltrationSystem","ACTIVE","Sand Filters",NULL,"nectarit"
+"144","IonizationUnit","WaterFiltrationSystem","ACTIVE","Ionization Unit",NULL,"nectarit"
+"145","CarbonFilters","WaterFiltrationSystem","ACTIVE","Carbon Filters",NULL,"nectarit"
+"146","CalorifierTank","WaterTanks","ACTIVE","Calorifier Tank",NULL,"nectarit"
+"147","PRV","WaterTanks","ACTIVE","PIR Activated Motorized Valve",NULL,"nectarit"
+"148","IrrigationTank","WaterTanks","ACTIVE","Irrigation Tank",NULL,"nectarit"
+"149","StormWaterTank","WaterTanks","ACTIVE","Storm Water Tank",NULL,"nectarit"
+"150","BrackishWaterProcessSystem","WaterTanks","ACTIVE","Brackish Water Process System",NULL,"nectarit"
+"151","BrackishWaterTank","WaterTanks","ACTIVE","Brackish Water Tank",NULL,"nectarit"
+"152","WaterBoosterPump","Pumps","ACTIVE","Water Booster Pump",NULL,"nectarit"
+"153","CondensatePump","Pumps","ACTIVE","Condensate Pump",NULL,"nectarit"
+"154","WasteWaterPump","Pumps","ACTIVE","Waste Water Pump",NULL,"nectarit"
+"155","CarParkWaterPump","Pumps","ACTIVE","Car Park Water Pump",NULL,"nectarit"
+"156","CarParkWaterPump","Pumps","ACTIVE","Car Park Water Pump",NULL,"nectarit"
+"157","FoulWaterPump","Pumps","ACTIVE","Foul Water Pump",NULL,"nectarit"
+"158","RecyclingPump","Pumps","ACTIVE","Recycling Pump",NULL,"nectarit"
+"159","LiftingPumpCommon","Pumps","ACTIVE","Lifting Pump Common",NULL,"nectarit"
+"160","SweeperPump","Pumps","ACTIVE","Sweeper Pump",NULL,"nectarit"
+"161","GrinderPumpCommon","Pumps","ACTIVE","Grinder Pump Common",NULL,"nectarit"
+"162","BoosterPumpCommon","Pumps","ACTIVE","Booster Pump Common",NULL,"nectarit"
+"163","WaterBoosterPumpCommon","Pumps","ACTIVE","Water Booster Pump Common",NULL,"nectarit"
+"164","ChlorineSystem","Pumps","ACTIVE","Chlorine System",NULL,"nectarit"
+"165","VacuumDegasser","Pumps","ACTIVE","Vacuum Degasser",NULL,"nectarit"
+"166","SideStreamFilterationUnit","Pumps","ACTIVE","Side Stream Filteration Unit",NULL,"nectarit"
+"167","SolarWaterPump","Pumps","ACTIVE","Solar Water Pump",NULL,"nectarit"
+"168","RecirculationPump","Pumps","ACTIVE","Recirculation Pump",NULL,"nectarit"
+"169","GrinderPump","Pumps","ACTIVE","Grinder Pump",NULL,"nectarit"
+"170","ChemicalDosingUnit","Pumps","ACTIVE","Chemical Dosing Unit",NULL,"nectarit"
+"171","LiftingPump","Pumps","ACTIVE","Lifting Pump",NULL,"nectarit"
+"172","TransferPump","Pumps","ACTIVE","Transfer Pump",NULL,"nectarit"
+"173","TransferPumpCommon","Pumps","ACTIVE","Transfer Pump Common",NULL,"nectarit"
+"174","MakeUpPump","Pumps","ACTIVE","Makeup Pump",NULL,"nectarit"
+"175","MakeupPumpCommon","Pumps","ACTIVE","Makeup Pump Common",NULL,"nectarit"
+"176","BoosterPump","Pumps","ACTIVE","Booster Pump",NULL,"nectarit"
+"177","SumpPump","Pumps","ACTIVE","Sump Pump",NULL,"nectarit"
+"178","SumpPumpCommon","Pumps","ACTIVE","Sump Pump Common",NULL,"nectarit"
+"179","StormPump","Pumps","ACTIVE","Storm Pump",NULL,"nectarit"
+"180","StormPumpCommon","Pumps","ACTIVE","Storm Pump Common",NULL,"nectarit"
+"181","SweeperSystemPump","Pumps","ACTIVE","Sweeper System Pump",NULL,"nectarit"
+"182","SludgeSumpPump","SumpPump","ACTIVE","Sludge Sump Pump",NULL,"nectarit"
+"183","CarParkDischargePump","SumpPump","ACTIVE","Car Park Discharge Pump",NULL,"nectarit"
+"184","ExpansionTank","WaterTank","ACTIVE","Expansion Tank",NULL,"nectarit"
+"185","GRPWaterTankCommon","WaterTank","ACTIVE","GRP Water Tank Common",NULL,"nectarit"
+"186","GRPWaterTank","WaterTank","ACTIVE","GRP Water Tank",NULL,"nectarit"
+"187","DXUnit","HVAC","ACTIVE","DX Unit",NULL,"nectarit"
+"188","ACSplitUnit","HVAC","ACTIVE","AC Split Unit",NULL,"nectarit"
+"189","PrimaryPumpCommon","HVAC","ACTIVE","Primary Pump Common",NULL,"nectarit"
+"190","HeatPumpCommon","HVAC","ACTIVE","Heat Pump Common",NULL,"nectarit"
+"191","HeatPump","HVAC","ACTIVE","Heat Pump",NULL,"nectarit"
+"192","CondenserMakeupPanel","HVAC","ACTIVE","Condenser Makeup Panel",NULL,"nectarit"
+"193","CondensatePumpCommon","HVAC","ACTIVE","Condensate Pump Common",NULL,"nectarit"
+"194","SecondaryPumpCommon","HVAC","ACTIVE","Secondary Pump Common",NULL,"nectarit"
+"195","PackageUnit","HVAC","ACTIVE","Package Unit",NULL,"nectarit"
+"196","CoolingTowerCommon","HVAC","ACTIVE","Cooling Tower Common",NULL,"nectarit"
+"197","CoolingTower","HVAC","ACTIVE","Cooling Tower",NULL,"nectarit"
+"198","ExpansionVessels","HVAC","ACTIVE","Expansion Vessels",NULL,"nectarit"
+"199","ChemicalFeeder","HVAC","ACTIVE","Chemical Feeder",NULL,"nectarit"
+"200","EmergencyCooler","HVAC","ACTIVE","Emergency Cooler",NULL,"nectarit"
+"201","Thermostat","HVAC","ACTIVE","Thermostat",NULL,"nectarit"
+"202","Dampers","HVAC","ACTIVE","Dampers",NULL,"nectarit"
+"203","ChillerCommon","HVAC","ACTIVE","Chiller Common",NULL,"nectarit"
+"204","TemperatureSensor","HVAC","ACTIVE","Temperature Sensor",NULL,"nectarit"
+"205","AirSide","HVAC","ACTIVE","Air Side",NULL,"nectarit"
+"206","WaterSide","HVAC","ACTIVE","Water Side",NULL,"nectarit"
+"207","Fans","HVAC","ACTIVE","Fans",NULL,"nectarit"
+"208","AOVD","HVAC","ACTIVE","AOVD",NULL,"nectarit"
+"209","CRAC","HVAC","ACTIVE","Computer Room Air Conditioning",NULL,"nectarit"
+"210","VRF","HVAC","ACTIVE","VRF",NULL,"nectarit"
+"211","ColdRoom","HVAC","ACTIVE","Cold Room",NULL,"nectarit"
+"212","VRFSystem","HVAC","ACTIVE","VRF System",NULL,"nectarit"
+"213","AirQualitySystem","HVAC","ACTIVE","Air Quality System",NULL,"nectarit"
+"214","CondensorPump","HVAC","ACTIVE","Condenser Pump",NULL,"nectarit"
+"215","DosingPump","ChemicalFeeder","ACTIVE","Dosing Pump",NULL,"nectarit"
+"216","RoomData","Thermostat","ACTIVE","Room Data",NULL,"nectarit"
+"217","Global","TemperatureSensor","ACTIVE","Global",NULL,"nectarit"
+"218","SpaceTemperature","TemperatureSensor","ACTIVE","Space Temperature",NULL,"nectarit"
+"219","VRVSystem","AirSide","ACTIVE","VRV System",NULL,"nectarit"
+"220","MAHU","AirSide","ACTIVE","MAHU",NULL,"nectarit"
+"221","MotorizedVolumeControlDamper","AirSide","ACTIVE","Motorized Volume Control Damper",NULL,"nectarit"
+"222","AHU","AirSide","ACTIVE","Air Handling Unit",NULL,"nectarit"
+"223","FAHU","AirSide","ACTIVE","Fresh Air Handling Unit",NULL,"nectarit"
+"224","FanCoilUnit","AirSide","ACTIVE","Fan Coil Unit",NULL,"nectarit"
+"225","VAV","AirSide","ACTIVE","VAV",NULL,"nectarit"
+"226","CAV","AirSide","ACTIVE","CAV",NULL,"nectarit"
+"227","AirCurtain","AirSide","ACTIVE","Air Curtain",NULL,"nectarit"
+"228","CCU","AirSide","ACTIVE","Close Control Unit",NULL,"nectarit"
+"229","RecirculatingAirHandlingUnit","AirSide","ACTIVE","Recirculating Air Handling Unit",NULL,"nectarit"
+"230","MakeupAirFan","AirSide","ACTIVE","Makeup Air Fan",NULL,"nectarit"
+"231","HybridFCU","FanCoilUnit","ACTIVE","Hybrid Fan Coil Unit",NULL,"nectarit"
+"232","Chiller","WaterSide","ACTIVE","Chiller",NULL,"nectarit"
+"233","CHWCommonHeader","WaterSide","ACTIVE","Chilled Water Common Header",NULL,"nectarit"
+"234","PrimaryPump","WaterSide","ACTIVE","Primary Pump",NULL,"nectarit"
+"235","SecondaryPump","WaterSide","ACTIVE","Secondary Pump",NULL,"nectarit"
+"236","HeatExchanger","WaterSide","ACTIVE","Heat Exchanger",NULL,"nectarit"
+"237","DosingUnit","WaterSide","ACTIVE","Dosing Unit",NULL,"nectarit"
+"238","PressurizationUnit","WaterSide","ACTIVE","Pressurization Unit",NULL,"nectarit"
+"239","ChilledWaterStation","WaterSide","ACTIVE","Chilled Water Station",NULL,"nectarit"
+"240","HeatExchangerCommon","WaterSide","ACTIVE","Heat Exchanger Common",NULL,"nectarit"
+"241","TransformerRoomFan","Fans","ACTIVE","Transformer Room Fan",NULL,"nectarit"
+"242","EcologyUnit","Fans","ACTIVE","Ecology Unit",NULL,"nectarit"
+"243","ExhaustFan","Fans","ACTIVE","Exhaust Fan",NULL,"nectarit"
+"244","MakeupFan","Fans","ACTIVE","Makeup Fan",NULL,"nectarit"
+"245","SmokeExhaustFan","Fans","ACTIVE","Smoke Exhaust Fan",NULL,"nectarit"
+"246","FreshAirFan","Fans","ACTIVE","Fresh Air Fan",NULL,"nectarit"
+"247","FreshAirFanCommon","Fans","ACTIVE","Fresh Air Fan Common",NULL,"nectarit"
+"248","TransformerRoomExtractFan","Fans","ACTIVE","Transformer Room Extract Fan",NULL,"nectarit"
+"249","LiftPressurizationFan","Fans","ACTIVE","Lift Pressurization Fan",NULL,"nectarit"
+"250","ExtractFan","Fans","ACTIVE","Extract Fan",NULL,"nectarit"
+"251","CO2Sensor","AirQualitySystem","ACTIVE","CO2 Sensor",NULL,"nectarit"
+"252","COSensor","AirQualitySystem","ACTIVE","CO Sensor",NULL,"nectarit"
+"253","CarbonMonoxideSensor","AirQualitySystem","ACTIVE","Carbon Monoxide Sensor",NULL,"nectarit"
+"254","COMonitoringPanel","AirQualitySystem","ACTIVE","CO Monitoring Panel",NULL,"nectarit"
+"255","AirQualitySensor","AirQualitySystem","ACTIVE","Air Quality Sensor",NULL,"nectarit"
+"256","AmbientTemperatureSensor","AirQualitySystem","ACTIVE","Ambient Temperature Sensor",NULL,"nectarit"
+"257","Electrical","Equipment","ACTIVE","ELECTRICAL SYSTEMS",NULL,"nectarit"
+"258","POD","Equipment","ACTIVE","POD",NULL,"nectarit"
+"259","ControlSystems","Equipment","ACTIVE","Control Systems",NULL,"nectarit"
+"260","WindMonitorSystem","Equipment","ACTIVE","Wind Monitor System",NULL,"nectarit"
+"261","Mechanical","Equipment","ACTIVE","MECHANICAL SYSTEMS",NULL,"nectarit"
+"262","LifeAndSafety","Equipment","ACTIVE","LIFE & SAFETY SYSTEMS",NULL,"nectarit"
+"263","Plumbing","Equipment","ACTIVE","PLUMBING SYSTEMS",NULL,"nectarit"
+"264","HVAC","Equipment","ACTIVE","HVAC SYSTEMS",NULL,"nectarit"
+"265","PhotovoltaicLightPowerMeter","Electrical","ACTIVE","Photovoltaic Light Power Meter",NULL,"nectarit"
+"266","VariableFrequencyDrive","Electrical","ACTIVE","Variable Frequency Drive",NULL,"nectarit"
+"267","PowerFactorCorrectionUnit","Electrical","ACTIVE","Power Factor Correction Unit",NULL,"nectarit"
+"268","VirtualMachine","Electrical","ACTIVE","Virtual Machine",NULL,"nectarit"
+"269","Metering","Electrical","ACTIVE","Metering",NULL,"nectarit"
+"270","EmergencyPower","Electrical","ACTIVE","Emergency Power",NULL,"nectarit"
+"271","CleanAgentSystem","Electrical","ACTIVE","Clean Agent System",NULL,"nectarit"
+"272","ElectricalPanels","Electrical","ACTIVE","Electrical Panels",NULL,"nectarit"
+"273","PhotovoltaicSystem","Electrical","ACTIVE","Photovoltaic System",NULL,"nectarit"
+"274","DistributionBoards","Electrical","ACTIVE","Distribution Boards",NULL,"nectarit"
+"275","Lighting","Electrical","ACTIVE","Lighting",NULL,"nectarit"
+"276","PhotovoltaicLightPower","Electrical","ACTIVE","Photovoltaic Light Power",NULL,"nectarit"
+"277","SMDBPVMeter","Metering","ACTIVE","SMDB PV Meter",NULL,"nectarit"
+"278","EmergencySMDBMeter","Metering","ACTIVE","Emergency SMDBMeter",NULL,"nectarit"
+"279","EmergencySMDB","Metering","ACTIVE","Emergency SMDB",NULL,"nectarit"
+"280","EmergencyMCCMeter","Metering","ACTIVE","Emergency MCC Meter",NULL,"nectarit"
+"281","WaterSubMeter","Metering","ACTIVE","Water Sub Meter",NULL,"nectarit"
+"282","BTUSubMeter","Metering","ACTIVE","BTU Sub Meter",NULL,"nectarit"
+"283","GeneratorMeter","Metering","ACTIVE","Generator Meter",NULL,"nectarit"
+"284","BTUMeter","Metering","ACTIVE","BTU Meter",NULL,"nectarit"
+"285","LVPSubMeter","Metering","ACTIVE","LV Panel Sub Meter",NULL,"nectarit"
+"286","LVPMeter","Metering","ACTIVE","LV Panel Meter",NULL,"nectarit"
+"287","WaterMeter","Metering","ACTIVE","Water Meter",NULL,"nectarit"
+"288","RenewableMeter","Metering","ACTIVE","Renewable Meter",NULL,"nectarit"
+"289","LVPanel","Metering","ACTIVE","LV Panel",NULL,"nectarit"
+"290","DBMeter","Metering","ACTIVE","DB Meter",NULL,"nectarit"
+"291","MCCPMeter","Metering","ACTIVE","MCCP Meter",NULL,"nectarit"
+"292","SMDBMeter","Metering","ACTIVE","SMDB Meter",NULL,"nectarit"
+"293","SolarEnergySubMeter","RenewableMeter","ACTIVE","Solar Energy Sub Meter",NULL,"nectarit"
+"294","SolarEnergyMeter","RenewableMeter","ACTIVE","Solar Energy Meter",NULL,"nectarit"
+"295","UPS","EmergencyPower","ACTIVE","UPS",NULL,"nectarit"
+"296","Generator","EmergencyPower","ACTIVE","Generator",NULL,"nectarit"
+"297","CBS","EmergencyPower","ACTIVE","Central Battery System",NULL,"nectarit"
+"298","MCCPanel","ElectricalPanels","ACTIVE","MCC Panel",NULL,"nectarit"
+"299","AccessControlSystemCommon","ElectricalPanels","ACTIVE","Access Control System Common",NULL,"nectarit"
+"300","ATSPanel","ElectricalPanels","ACTIVE","ATS Panel",NULL,"nectarit"
+"301","EMCCPanel","ElectricalPanels","ACTIVE","EMCC Panel",NULL,"nectarit"
+"302","HMIPanel","ElectricalPanels","ACTIVE","HMI Panel",NULL,"nectarit"
+"303","LeakDetectionPanel","ElectricalPanels","ACTIVE","Leak Detection Panel",NULL,"nectarit"
+"304","CapacitorBank","ElectricalPanels","ACTIVE","Capacitor Bank",NULL,"nectarit"
+"305","ACSPanel","ElectricalPanels","ACTIVE","ACS Panel",NULL,"nectarit"
+"306","ACBPanel","ElectricalPanels","ACTIVE","ACB Panel",NULL,"nectarit"
+"307","SolarPanel","PhotovoltaicSystem","ACTIVE","Solar Panel",NULL,"nectarit"
+"308","ETree","SolarPanel","ACTIVE","E Tree",NULL,"nectarit"
+"309","FeederPanel","DistributionBoards","ACTIVE","Feeder Panel",NULL,"nectarit"
+"310","ESMDB","DistributionBoards","ACTIVE","Emergency SMDB",NULL,"nectarit"
+"311","SMDB","DistributionBoards","ACTIVE","SMDB",NULL,"nectarit"
+"312","MDB","DistributionBoards","ACTIVE","MDB",NULL,"nectarit"
+"313","EmergencyLightingPanel","Lighting","ACTIVE","Emergency Lighting Panel",NULL,"nectarit"
+"314","AircraftWarningLight","Lighting","ACTIVE","Aircraft Warning Light",NULL,"nectarit"
+"315","LightingControls","Lighting","ACTIVE","Lighting Control System",NULL,"nectarit"
+"316","AVPOD","POD","ACTIVE","AV POD",NULL,"nectarit"
+"317","AVPODCommon","AVPOD","ACTIVE","AV POD Common",NULL,"nectarit"
+"318","Server","ControlSystems","ACTIVE","Server",NULL,"nectarit"
+"319","DDCController","ControlSystems","ACTIVE","DDC Controller",NULL,"nectarit"
+"320","Escalator","Mechanical","ACTIVE","Escalator",NULL,"nectarit"
+"321","FuelTank","Mechanical","ACTIVE","Fuel Tank",NULL,"nectarit"
+"322","DieselTank","Mechanical","ACTIVE","Diesel Tank",NULL,"nectarit"
+"323","VerticalHorizontalTransport","Mechanical","ACTIVE","Vertical/Horizontal Transport",NULL,"nectarit"
+"324","GreaseSeparator","Mechanical","ACTIVE","Grease Separator",NULL,"nectarit"
+"325","SteamGenerator","Mechanical","ACTIVE","Steam Generator",NULL,"nectarit"
+"326","GateBarrier","Mechanical","ACTIVE","Gate Barrier",NULL,"nectarit"
+"327","EntranceDoor","Mechanical","ACTIVE","Entrance Door",NULL,"nectarit"
+"328","OilTank","Mechanical","ACTIVE","Oil Tank",NULL,"nectarit"
+"329","LiftPanel","VerticalHorizontalTransport","ACTIVE","Lift Panel",NULL,"nectarit"
+"330","Lift","VerticalHorizontalTransport","ACTIVE","Lift",NULL,"nectarit"
+"331","LiftPressureSensor","Lift","ACTIVE","Lift Pressure Sensor",NULL,"nectarit"
+"332","FireWaterTankCommon","LifeAndSafety","ACTIVE","Fire Water Tank Common",NULL,"nectarit"
+"333","WetControlPanel","LifeAndSafety","ACTIVE","Wet Control Panel",NULL,"nectarit"
+"334","FirePumpSetCommon","LifeAndSafety","ACTIVE","Fire Pump Set Common",NULL,"nectarit"
+"335","PublicAddressSystem","LifeAndSafety","ACTIVE","Public Address System",NULL,"nectarit"
+"336","FireSuppressionSystem","LifeAndSafety","ACTIVE","Fire Suppression System",NULL,"nectarit"
+"337","LPGGasNetwork","LifeAndSafety","ACTIVE","LPG Gas Network",NULL,"nectarit"
+"338","FireFighting","LifeAndSafety","ACTIVE","Fire Fighting",NULL,"nectarit"
+"339","FireAlarm","LifeAndSafety","ACTIVE","Fire Alarm",NULL,"nectarit"
+"340","PreActionSystem","LifeAndSafety","ACTIVE","Pre Action System",NULL,"nectarit"
+"341","FireElectricalPump","LifeAndSafety","ACTIVE","Fire Electrical Pump",NULL,"nectarit"
+"342","FireDieselPump","LifeAndSafety","ACTIVE","Fire Diesel Pump",NULL,"nectarit"
+"343","FireJockeyPump","LifeAndSafety","ACTIVE","Fire Jockey Pump",NULL,"nectarit"
+"344","FireWaterTank","LifeAndSafety","ACTIVE","Fire Water Tank",NULL,"nectarit"
+"345","FoamSystem","LifeAndSafety","ACTIVE","Foam System",NULL,"nectarit"
+"346","GasMonitoringSystem","LifeAndSafety","ACTIVE","Gas Monitoring System",NULL,"nectarit"
+"347","CentralMonitoringPanel","LifeAndSafety","ACTIVE","Central Monitoring Panel",NULL,"nectarit"
+"348","GasMeter","LPGGasNetwork","ACTIVE","Gas Meter",NULL,"nectarit"
+"349","GasPanel","LPGGasNetwork","ACTIVE","Gas Panel",NULL,"nectarit"
+"350","FM200","FireFighting","ACTIVE","FM 200",NULL,"nectarit"
+"351","SmokeExtractFanCommon","FireFighting","ACTIVE","Smoke Extract Fan Common",NULL,"nectarit"
+"352","SEF","FireFighting","ACTIVE","Smoke Extract Fan",NULL,"nectarit"
+"353","SPF","FireFighting","ACTIVE","Staircase Pressurization Fan",NULL,"nectarit"
+"354","MSFD","FireFighting","ACTIVE","Motorized Smoke Fire Damper",NULL,"nectarit"
+"355","FireAlarmSystem","FireAlarm","ACTIVE","Fire Alarm System",NULL,"nectarit"
+"356","ZoneData","FireAlarm","ACTIVE","Zone Data",NULL,"nectarit"
+"357","FireDuctDoor","FireAlarm","ACTIVE","Fire Duct Door",NULL,"nectarit"
+"358","FireShutterPanel","FireAlarm","ACTIVE","Fire Shutter Panel",NULL,"nectarit"
+"359","LPG","GasMonitoringSystem","ACTIVE","LPG",NULL,"nectarit"
+"360","FlueGasSensor","GasMonitoringSystem","ACTIVE","Flue Gas Sensor",NULL,"nectarit"
+"361","CondensateWaterTank","Plumbing","ACTIVE","Condensate Water Tank",NULL,"nectarit"
+"362","WaterTreatmentPlant","Plumbing","ACTIVE","Water Treatment Plant",NULL,"nectarit"
+"363","ChemicalTreatment","Plumbing","ACTIVE","Chemical Treatment",NULL,"nectarit"
+"364","WaterCirculationPump","Plumbing","ACTIVE","Water Circulation Pump",NULL,"nectarit"
+"365","WaterFiltrationSystem","Plumbing","ACTIVE","Water Filtration System",NULL,"nectarit"
+"366","SHCPHeater","Plumbing","ACTIVE","SHCP Heater",NULL,"nectarit"
+"367","FuelOilSystem","Plumbing","ACTIVE","Fuel Oil System",NULL,"nectarit"
+"368","Heater","Plumbing","ACTIVE","Heater",NULL,"nectarit"
+"369","PenstockValve","Plumbing","ACTIVE","Penstock Valve",NULL,"nectarit"
+"370","FilterationPump","Plumbing","ACTIVE","Filteration Pump",NULL,"nectarit"
+"371","IrrigationPumpCommon","Plumbing","ACTIVE","Irrigation Pump Common",NULL,"nectarit"
+"372","IrrigationPump","Plumbing","ACTIVE","Irrigation Pump",NULL,"nectarit"
+"373","GreaseInterceptorControlPanel","Plumbing","ACTIVE","Grease Interceptor Control Panel",NULL,"nectarit"
+"374","OilInterceptorControlPanel","Plumbing","ACTIVE","Oil Interceptor Control Panel",NULL,"nectarit"
+"375","GreaseWaterPumpCommon","Plumbing","ACTIVE","Grease Water Pump Common",NULL,"nectarit"
+"376","GreaseWaterPump","Plumbing","ACTIVE","Grease Water Pump",NULL,"nectarit"
+"377","BlackWaterProcessSystem","Plumbing","ACTIVE","Black Water Process System",NULL,"nectarit"
+"378","CondensateWaterProcessSystem","Plumbing","ACTIVE","Condensate Water Process System",NULL,"nectarit"
+"379","GreyWaterProcessSystem","Plumbing","ACTIVE","Grey Water Process System",NULL,"nectarit"
+"380","NonPortWaterTankCommon","Plumbing","ACTIVE","Non Port Water Tank Common",NULL,"nectarit"
+"381","NonPortWaterTank","Plumbing","ACTIVE","Non Port Water Tank",NULL,"nectarit"
+"382","TreatedWaterTank","Plumbing","ACTIVE","Treated Water Tank",NULL,"nectarit"
+"383","DeionizationFilterationUnit","Plumbing","ACTIVE","Deionization Filteration Unit",NULL,"nectarit"
+"384","CondensateWaterTankCommon","Plumbing","ACTIVE","Condensate Water Tank Common",NULL,"nectarit"
+"385","WaterTanks","Plumbing","ACTIVE","Water Tanks",NULL,"nectarit"
+"386","Pumps","Plumbing","ACTIVE","Pumps",NULL,"nectarit"
+"387","PotableWaterTank","Plumbing","ACTIVE","Potable Water Tank",NULL,"nectarit"
+"388","PotableWaterTankCommon","Plumbing","ACTIVE","Potable Water Tank Common",NULL,"nectarit"
+"389","CirculationPump","Plumbing","ACTIVE","Circulation Pump",NULL,"nectarit"
+"390","WaterTank","Plumbing","ACTIVE","Water Tank",NULL,"nectarit"
+"391","WaterTankCommon","Plumbing","ACTIVE","Water Tank Common",NULL,"nectarit"
+"392","SolarDisinfectionSystem","Plumbing","ACTIVE","Solar Disinfection System",NULL,"nectarit"
+"393","SolarDisinfectionSystemTank","Plumbing","ACTIVE","Solar Disinfection System Tank",NULL,"nectarit"
+"394","StormWaterPump","Plumbing","ACTIVE","Storm Water Pump",NULL,"nectarit"
+"395","StormWaterPumpCommon","Plumbing","ACTIVE","Storm Water Pump Common",NULL,"nectarit"
+"396","CirculationPumpCommon","Plumbing","ACTIVE","Circulation Pump Common",NULL,"nectarit"
+"397","GreyWaterTank","Plumbing","ACTIVE","Grey Water Tank",NULL,"nectarit"
+"398","GreyWaterTankCommon","Plumbing","ACTIVE","Grey Water Tank Common",NULL,"nectarit"
+"399","SandFilters","WaterFiltrationSystem","ACTIVE","Sand Filters",NULL,"nectarit"
+"400","IonizationUnit","WaterFiltrationSystem","ACTIVE","Ionization Unit",NULL,"nectarit"
+"401","CarbonFilters","WaterFiltrationSystem","ACTIVE","Carbon Filters",NULL,"nectarit"
+"402","CalorifierTank","WaterTanks","ACTIVE","Calorifier Tank",NULL,"nectarit"
+"403","PRV","WaterTanks","ACTIVE","PIR Activated Motorized Valve",NULL,"nectarit"
+"404","IrrigationTank","WaterTanks","ACTIVE","Irrigation Tank",NULL,"nectarit"
+"405","StormWaterTank","WaterTanks","ACTIVE","Storm Water Tank",NULL,"nectarit"
+"406","BrackishWaterProcessSystem","WaterTanks","ACTIVE","Brackish Water Process System",NULL,"nectarit"
+"407","BrackishWaterTank","WaterTanks","ACTIVE","Brackish Water Tank",NULL,"nectarit"
+"408","WaterBoosterPump","Pumps","ACTIVE","Water Booster Pump",NULL,"nectarit"
+"409","CondensatePump","Pumps","ACTIVE","Condensate Pump",NULL,"nectarit"
+"410","WasteWaterPump","Pumps","ACTIVE","Waste Water Pump",NULL,"nectarit"
+"411","CarParkWaterPump","Pumps","ACTIVE","Car Park Water Pump",NULL,"nectarit"
+"412","CarParkWaterPump","Pumps","ACTIVE","Car Park Water Pump",NULL,"nectarit"
+"413","FoulWaterPump","Pumps","ACTIVE","Foul Water Pump",NULL,"nectarit"
+"414","RecyclingPump","Pumps","ACTIVE","Recycling Pump",NULL,"nectarit"
+"415","LiftingPumpCommon","Pumps","ACTIVE","Lifting Pump Common",NULL,"nectarit"
+"416","SweeperPump","Pumps","ACTIVE","Sweeper Pump",NULL,"nectarit"
+"417","GrinderPumpCommon","Pumps","ACTIVE","Grinder Pump Common",NULL,"nectarit"
+"418","BoosterPumpCommon","Pumps","ACTIVE","Booster Pump Common",NULL,"nectarit"
+"419","WaterBoosterPumpCommon","Pumps","ACTIVE","Water Booster Pump Common",NULL,"nectarit"
+"420","ChlorineSystem","Pumps","ACTIVE","Chlorine System",NULL,"nectarit"
+"421","VacuumDegasser","Pumps","ACTIVE","Vacuum Degasser",NULL,"nectarit"
+"422","SideStreamFilterationUnit","Pumps","ACTIVE","Side Stream Filteration Unit",NULL,"nectarit"
+"423","SolarWaterPump","Pumps","ACTIVE","Solar Water Pump",NULL,"nectarit"
+"424","RecirculationPump","Pumps","ACTIVE","Recirculation Pump",NULL,"nectarit"
+"425","GrinderPump","Pumps","ACTIVE","Grinder Pump",NULL,"nectarit"
+"426","ChemicalDosingUnit","Pumps","ACTIVE","Chemical Dosing Unit",NULL,"nectarit"
+"427","LiftingPump","Pumps","ACTIVE","Lifting Pump",NULL,"nectarit"
+"428","TransferPump","Pumps","ACTIVE","Transfer Pump",NULL,"nectarit"
+"429","TransferPumpCommon","Pumps","ACTIVE","Transfer Pump Common",NULL,"nectarit"
+"430","MakeUpPump","Pumps","ACTIVE","Makeup Pump",NULL,"nectarit"
+"431","MakeupPumpCommon","Pumps","ACTIVE","Makeup Pump Common",NULL,"nectarit"
+"432","BoosterPump","Pumps","ACTIVE","Booster Pump",NULL,"nectarit"
+"433","SumpPump","Pumps","ACTIVE","Sump Pump",NULL,"nectarit"
+"434","SumpPumpCommon","Pumps","ACTIVE","Sump Pump Common",NULL,"nectarit"
+"435","StormPump","Pumps","ACTIVE","Storm Pump",NULL,"nectarit"
+"436","StormPumpCommon","Pumps","ACTIVE","Storm Pump Common",NULL,"nectarit"
+"437","SweeperSystemPump","Pumps","ACTIVE","Sweeper System Pump",NULL,"nectarit"
+"438","SludgeSumpPump","SumpPump","ACTIVE","Sludge Sump Pump",NULL,"nectarit"
+"439","CarParkDischargePump","SumpPump","ACTIVE","Car Park Discharge Pump",NULL,"nectarit"
+"440","ExpansionTank","WaterTank","ACTIVE","Expansion Tank",NULL,"nectarit"
+"441","GRPWaterTankCommon","WaterTank","ACTIVE","GRP Water Tank Common",NULL,"nectarit"
+"442","GRPWaterTank","WaterTank","ACTIVE","GRP Water Tank",NULL,"nectarit"
+"443","DXUnit","HVAC","ACTIVE","DX Unit",NULL,"nectarit"
+"444","ACSplitUnit","HVAC","ACTIVE","AC Split Unit",NULL,"nectarit"
+"445","PrimaryPumpCommon","HVAC","ACTIVE","Primary Pump Common",NULL,"nectarit"
+"446","HeatPumpCommon","HVAC","ACTIVE","Heat Pump Common",NULL,"nectarit"
+"447","HeatPump","HVAC","ACTIVE","Heat Pump",NULL,"nectarit"
+"448","CondenserMakeupPanel","HVAC","ACTIVE","Condenser Makeup Panel",NULL,"nectarit"
+"449","CondensatePumpCommon","HVAC","ACTIVE","Condensate Pump Common",NULL,"nectarit"
+"450","SecondaryPumpCommon","HVAC","ACTIVE","Secondary Pump Common",NULL,"nectarit"
+"451","PackageUnit","HVAC","ACTIVE","Package Unit",NULL,"nectarit"
+"452","CoolingTowerCommon","HVAC","ACTIVE","Cooling Tower Common",NULL,"nectarit"
+"453","CoolingTower","HVAC","ACTIVE","Cooling Tower",NULL,"nectarit"
+"454","ExpansionVessels","HVAC","ACTIVE","Expansion Vessels",NULL,"nectarit"
+"455","ChemicalFeeder","HVAC","ACTIVE","Chemical Feeder",NULL,"nectarit"
+"456","EmergencyCooler","HVAC","ACTIVE","Emergency Cooler",NULL,"nectarit"
+"457","Thermostat","HVAC","ACTIVE","Thermostat",NULL,"nectarit"
+"458","Dampers","HVAC","ACTIVE","Dampers",NULL,"nectarit"
+"459","ChillerCommon","HVAC","ACTIVE","Chiller Common",NULL,"nectarit"
+"460","TemperatureSensor","HVAC","ACTIVE","Temperature Sensor",NULL,"nectarit"
+"461","AirSide","HVAC","ACTIVE","Air Side",NULL,"nectarit"
+"462","WaterSide","HVAC","ACTIVE","Water Side",NULL,"nectarit"
+"463","Fans","HVAC","ACTIVE","Fans",NULL,"nectarit"
+"464","AOVD","HVAC","ACTIVE","AOVD",NULL,"nectarit"
+"465","CRAC","HVAC","ACTIVE","Computer Room Air Conditioning",NULL,"nectarit"
+"466","VRF","HVAC","ACTIVE","VRF",NULL,"nectarit"
+"467","ColdRoom","HVAC","ACTIVE","Cold Room",NULL,"nectarit"
+"468","VRFSystem","HVAC","ACTIVE","VRF System",NULL,"nectarit"
+"469","AirQualitySystem","HVAC","ACTIVE","Air Quality System",NULL,"nectarit"
+"470","CondensorPump","HVAC","ACTIVE","Condenser Pump",NULL,"nectarit"
+"471","DosingPump","ChemicalFeeder","ACTIVE","Dosing Pump",NULL,"nectarit"
+"472","RoomData","Thermostat","ACTIVE","Room Data",NULL,"nectarit"
+"473","Global","TemperatureSensor","ACTIVE","Global",NULL,"nectarit"
+"474","SpaceTemperature","TemperatureSensor","ACTIVE","Space Temperature",NULL,"nectarit"
+"475","VRVSystem","AirSide","ACTIVE","VRV System",NULL,"nectarit"
+"476","MAHU","AirSide","ACTIVE","MAHU",NULL,"nectarit"
+"477","MotorizedVolumeControlDamper","AirSide","ACTIVE","Motorized Volume Control Damper",NULL,"nectarit"
+"478","AHU","AirSide","ACTIVE","Air Handling Unit",NULL,"nectarit"
+"479","FAHU","AirSide","ACTIVE","Fresh Air Handling Unit",NULL,"nectarit"
+"480","FanCoilUnit","AirSide","ACTIVE","Fan Coil Unit",NULL,"nectarit"
+"481","VAV","AirSide","ACTIVE","VAV",NULL,"nectarit"
+"482","CAV","AirSide","ACTIVE","CAV",NULL,"nectarit"
+"483","AirCurtain","AirSide","ACTIVE","Air Curtain",NULL,"nectarit"
+"484","CCU","AirSide","ACTIVE","Close Control Unit",NULL,"nectarit"
+"485","RecirculatingAirHandlingUnit","AirSide","ACTIVE","Recirculating Air Handling Unit",NULL,"nectarit"
+"486","MakeupAirFan","AirSide","ACTIVE","Makeup Air Fan",NULL,"nectarit"
+"487","HybridFCU","FanCoilUnit","ACTIVE","Hybrid Fan Coil Unit",NULL,"nectarit"
+"488","Chiller","WaterSide","ACTIVE","Chiller",NULL,"nectarit"
+"489","CHWCommonHeader","WaterSide","ACTIVE","Chilled Water Common Header",NULL,"nectarit"
+"490","PrimaryPump","WaterSide","ACTIVE","Primary Pump",NULL,"nectarit"
+"491","SecondaryPump","WaterSide","ACTIVE","Secondary Pump",NULL,"nectarit"
+"492","HeatExchanger","WaterSide","ACTIVE","Heat Exchanger",NULL,"nectarit"
+"493","DosingUnit","WaterSide","ACTIVE","Dosing Unit",NULL,"nectarit"
+"494","PressurizationUnit","WaterSide","ACTIVE","Pressurization Unit",NULL,"nectarit"
+"495","ChilledWaterStation","WaterSide","ACTIVE","Chilled Water Station",NULL,"nectarit"
+"496","HeatExchangerCommon","WaterSide","ACTIVE","Heat Exchanger Common",NULL,"nectarit"
+"497","TransformerRoomFan","Fans","ACTIVE","Transformer Room Fan",NULL,"nectarit"
+"498","EcologyUnit","Fans","ACTIVE","Ecology Unit",NULL,"nectarit"
+"499","ExhaustFan","Fans","ACTIVE","Exhaust Fan",NULL,"nectarit"
+"500","MakeupFan","Fans","ACTIVE","Makeup Fan",NULL,"nectarit"
+"501","SmokeExhaustFan","Fans","ACTIVE","Smoke Exhaust Fan",NULL,"nectarit"
+"502","FreshAirFan","Fans","ACTIVE","Fresh Air Fan",NULL,"nectarit"
+"503","FreshAirFanCommon","Fans","ACTIVE","Fresh Air Fan Common",NULL,"nectarit"
+"504","TransformerRoomExtractFan","Fans","ACTIVE","Transformer Room Extract Fan",NULL,"nectarit"
+"505","LiftPressurizationFan","Fans","ACTIVE","Lift Pressurization Fan",NULL,"nectarit"
+"506","ExtractFan","Fans","ACTIVE","Extract Fan",NULL,"nectarit"
+"507","CO2Sensor","AirQualitySystem","ACTIVE","CO2 Sensor",NULL,"nectarit"
+"508","COSensor","AirQualitySystem","ACTIVE","CO Sensor",NULL,"nectarit"
+"509","CarbonMonoxideSensor","AirQualitySystem","ACTIVE","Carbon Monoxide Sensor",NULL,"nectarit"
+"510","COMonitoringPanel","AirQualitySystem","ACTIVE","CO Monitoring Panel",NULL,"nectarit"
+"511","AirQualitySensor","AirQualitySystem","ACTIVE","Air Quality Sensor",NULL,"nectarit"
+"512","AmbientTemperatureSensor","AirQualitySystem","ACTIVE","Ambient Temperature Sensor",NULL,"nectarit"

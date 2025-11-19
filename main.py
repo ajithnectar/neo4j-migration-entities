@@ -15,6 +15,8 @@ from migrations.community_migration import migrate_communities
 from migrations.client_migration import migrate_clients
 from migrations.complete_migration import run_migration
 from migrations.type_migration import migrate_types
+from migrations.asset_type_migration import migrate_asset_types
+from migrations.neo4j_export import export_neo4j_to_csv
 
 logging.basicConfig(
     level=logging.INFO,
@@ -37,21 +39,62 @@ def run_type_migration(_: Session, conn: _PGConnection) -> None:
     migrate_types(_, conn)
 
 
-# Migration configuration: (name, function, postgres_target)
-MIGRATIONS = [
-    ("Domain migration", migrate_domains, "accesscontrol"),
-    ("Community migration", migrate_communities, "nectar_new"),
-    ("Client migration", migrate_clients, "nectar_new"),
-    ("Type migration", run_type_migration, "nectar_new"),
-    ("Step-by-step migration", run_step_by_step_migration, "nectar_new"),
+# Adapter for asset type migration (CSV-based)
+def run_asset_type_migration(_: Session, conn: _PGConnection) -> None:
+    """Run the asset type migration from CSV file."""
+    migrate_asset_types(_, conn)
+
+
+# Factory functions that create migration functions with config values
+def create_neo4j_export_fn(cfg) -> MigrationFn:
+    """Create a Neo4j export function with config values."""
+    def run_neo4j_export(session: Session, _: _PGConnection) -> None:
+        """Export data from Neo4j to CSV files."""
+        export_neo4j_to_csv(
+            session, 
+            _, 
+            batch_size=cfg.neo4j_export_batch_size, 
+            domain=cfg.community_domain
+        )
+    return run_neo4j_export
+
+
+def create_community_migration_fn(cfg) -> MigrationFn:
+    """Create a community migration function with config values."""
+    def run_community_migration(session: Session, conn: _PGConnection) -> None:
+        """Run the community migration with configurable domain."""
+        migrate_communities(session, conn, domain=cfg.community_domain)
+    return run_community_migration
+
+
+# Migration configuration factory: (name, factory_function, postgres_target)
+# Factory functions receive config and return the actual migration function
+MIGRATION_FACTORIES = [
+    ("Neo4j to CSV export", create_neo4j_export_fn, "nectar_new"),
+    ("Domain migration", lambda cfg: migrate_domains, "accesscontrol"),
+    ("Community migration", create_community_migration_fn, "nectar_new"),
+    ("Client migration", lambda cfg: migrate_clients, "nectar_new"),
+    ("Type migration", lambda cfg: run_type_migration, "nectar_new"),
+    ("Asset type migration", lambda cfg: run_asset_type_migration, "nectar_new"),
+    ("Step-by-step migration", lambda cfg: run_step_by_step_migration, "nectar_new"),
 ]
 
-MIGRATION_KEY_MAP = {
-    "domain": MIGRATIONS[0],
-    "community": MIGRATIONS[1],
-    "client": MIGRATIONS[2],
-    "type": MIGRATIONS[3],
-    "step": MIGRATIONS[4],
+def build_migrations(cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+    """Build migration list from factories with config."""
+    return [
+        (name, factory(cfg), pg_target)
+        for name, factory, pg_target in MIGRATION_FACTORIES
+    ]
+
+MIGRATION_KEY_MAP_INDICES = {
+    "export": 0,
+    "neo4j-export": 0,
+    "domain": 1,
+    "community": 2,
+    "client": 3,
+    "type": 4,
+    "asset-type": 5,
+    "step": 6,
 }
 
 
@@ -67,49 +110,55 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--migration",
-        choices=["domain", "community", "client", "type", "step", "all"],
+        choices=["export", "neo4j-export", "domain", "community", "client", "type", "asset-type", "step", "all"],
         help="Optional: run specific migration without interactive prompt",
     )
     return parser.parse_args()
 
 
-def show_migration_menu() -> list[tuple[str, MigrationFn, PostgresTarget]]:
+def show_migration_menu(cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
     """Display menu and return selected migrations."""
+    migrations = build_migrations(cfg)
     print("\n" + "="*50)
     print("MIGRATION MENU")
     print("="*50)
-    for idx, (name, _, _) in enumerate(MIGRATIONS, start=1):
+    for idx, (name, _, _) in enumerate(migrations, start=1):
         print(f"{idx}. {name}")
-    print(f"{len(MIGRATIONS) + 1}. Run all migrations")
+    print(f"{len(migrations) + 1}. Run all migrations")
     print("="*50)
 
     while True:
         choice = input("\nEnter option number: ").strip()
         
         # Run all migrations
-        if choice == str(len(MIGRATIONS) + 1):
-            return MIGRATIONS
+        if choice == str(len(migrations) + 1):
+            return migrations
         
         # Run single migration
         if choice.isdigit():
             index = int(choice) - 1
-            if 0 <= index < len(MIGRATIONS):
-                return [MIGRATIONS[index]]
+            if 0 <= index < len(migrations):
+                return [migrations[index]]
         
         print("Invalid choice. Please try again.")
 
 
-def get_selected_migrations(arg_choice: str | None) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+def get_selected_migrations(arg_choice: str | None, cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
     """Resolve which migrations to run based on argument or prompt."""
+    migrations = build_migrations(cfg)
+    
     if arg_choice is None:
-        return show_migration_menu()
+        return show_migration_menu(cfg)
     
     # Map command line choices to migrations
     if arg_choice == "all":
-        return MIGRATIONS
+        return migrations
 
-    migration = MIGRATION_KEY_MAP.get(arg_choice)
-    return [migration] if migration else MIGRATIONS
+    index = MIGRATION_KEY_MAP_INDICES.get(arg_choice)
+    if index is not None and 0 <= index < len(migrations):
+        return [migrations[index]]
+    
+    return migrations
 
 
 def main() -> None:
@@ -118,8 +167,8 @@ def main() -> None:
     env: EnvName = args.env
     cfg = get_config(env)
 
-    # Get selected migrations
-    selected_migrations = get_selected_migrations(args.migration)
+    # Get selected migrations (with config to build migration functions)
+    selected_migrations = get_selected_migrations(args.migration, cfg)
     selected_names = ", ".join(name for name, _, _ in selected_migrations)
     
     logger.info("Environment: %s", env)

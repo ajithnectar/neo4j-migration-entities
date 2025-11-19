@@ -12,10 +12,10 @@ from db.postgres_utils import batch_insert
 logger = logging.getLogger(__name__)
 
 
-def fetch_communities(session: Session) -> Iterable[dict]:
-    logger.info("Fetching communities from Neo4j")
-    cypher = """
-    MATCH (n:Community {domain: 'ecd'})
+def fetch_communities(session: Session, domain: str = "ecd") -> Iterable[dict]:
+    logger.info("Fetching communities from Neo4j with domain: %s", domain)
+    cypher = f"""
+    MATCH (n:Community {{domain: '{domain}'}})
     RETURN
         n.clientId AS client_id,
         n.clientName AS client_name,
@@ -93,10 +93,10 @@ def map_communities_to_rows(communities: Iterable[dict]) -> Sequence[tuple]:
     return rows
 
 
-def migrate_communities(session: Session, conn: _PGConnection) -> None:
-    logger.info("Starting community migration")
+def migrate_communities(session: Session, conn: _PGConnection, domain: str = "ecd") -> None:
+    logger.info("Starting community migration with domain: %s", domain)
     try:
-        communities = fetch_communities(session)
+        communities = fetch_communities(session, domain)
         rows = map_communities_to_rows(communities)
 
         if not rows:
