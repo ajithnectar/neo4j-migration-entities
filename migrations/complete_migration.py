@@ -17,9 +17,21 @@ def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[di
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
     
-    with open(csv_path, 'r', encoding='utf-8') as f:
+    with open(csv_path, 'r', encoding='utf-8-sig') as f:  # utf-8-sig handles BOM
         reader = csv.DictReader(f)
-        return [{k: v if v else None for k, v in row.items()} for row in reader]
+        rows = []
+        for row in reader:
+            # Clean up keys (remove BOM if present) and normalize asset_id/identifier
+            cleaned_row = {}
+            for k, v in row.items():
+                # Remove BOM from key names
+                clean_key = k.lstrip('\ufeff')
+                # Map 'identifier' to 'asset_id' for backward compatibility
+                if clean_key == 'identifier':
+                    clean_key = 'asset_id'
+                cleaned_row[clean_key] = v if v else None
+            rows.append(cleaned_row)
+        return rows
 
 
 def get_subcommunity_rows(data: list[dict]) -> list[tuple]:
@@ -130,9 +142,13 @@ def get_asset_rows(data: list[dict], asset_type_map: dict[str, str]) -> list[tup
     """Extract unique assets."""
     seen = set()
     rows = []
+    skipped_count = 0
     for record in data:
-        asset_id = record.get("asset_name")
-        if not asset_id or asset_id in seen:
+        asset_id = record.get("asset_id")
+        if not asset_id:
+            skipped_count += 1
+            continue
+        if asset_id in seen:
             continue
         seen.add(asset_id)
 
@@ -172,7 +188,7 @@ def get_asset_space_rows(data: list[dict]) -> list[tuple]:
     seen = set()
     rows = []
     for record in data:
-        asset_id = record.get("asset_name")
+        asset_id = record.get("asset_id")  # Use CSV asset_id (UUID) instead of asset_name
         space_id = record.get("spaces_id")
         
         if not asset_id or not space_id:
@@ -231,7 +247,7 @@ def get_asset_point_rows(data: list[dict], csv_to_point_id_map: dict[str, str]) 
     seen = set()
     rows = []
     for record in data:
-        asset_id = record.get("asset_name")
+        asset_id = record.get("asset_id")
         csv_data_point_id = record.get("data_point_id")
         
         if not asset_id or not csv_data_point_id:
@@ -265,7 +281,7 @@ def get_asset_point_rows(data: list[dict], csv_to_point_id_map: dict[str, str]) 
             record.get("point_symbol"),
             record.get("point_unit"),
             asset_id,
-            point_id,  # Use auto-generated point_id
+            point_id,
         ))
     return rows
 
@@ -404,7 +420,12 @@ def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
     rows = get_asset_rows(data, asset_type_map)
     if not rows:
         print("No assets to migrate")
+        logger.warning("No asset rows found. Check if asset_id values exist in CSV.")
         return
+
+    logger.info(f"Preparing to insert {len(rows)} assets")
+    if rows:
+        logger.debug(f"First asset identifier: {rows[0][0]}")
 
     sql = """
         INSERT INTO public.assets (
@@ -433,8 +454,12 @@ def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
             active_contract = EXCLUDED.active_contract,
             type = EXCLUDED.type
     """
-    batch_insert(conn, sql, rows)
-    print(f"✓ Migrated {len(rows)} assets")
+    try:
+        batch_insert(conn, sql, rows)
+        print(f"✓ Migrated {len(rows)} assets")
+    except Exception as e:
+        logger.error(f"Error inserting assets: {e}")
+        raise
     
     # Migrate asset-space relationships
     asset_space_rows = get_asset_space_rows(data)
