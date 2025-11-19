@@ -28,4 +28,47 @@ pip install -r requirements.txt
 python main.py --env local
 ```
 
+### Migration Process
+
+Follow these steps in order to migrate data:
+
+1. **Create typeToMigrate.csv (types table) and import to program**
+   - Ensure `typeToMigrate.csv` file exists in the project root
+   - The CSV should contain columns: `parent_name`, `child_name`, `child_display_name`, `child_template_name`
+
+2. **Run type migration - type will be inserted to psql**
+   ```bash
+   python main.py --env local --migration type
+   ```
+   Or select "Type migration" from the interactive menu
+
+3. **Go to clients migration and change the query domain and save and run the client migration**
+   - Edit `migrations/client_migration.py` and update the domain in the Cypher query
+   - Run client migration:
+   ```bash
+   python main.py --env local --migration client
+   ```
+
+4. **Go to community migration and change the query domain and save and run the community migration**
+   - Edit `migrations/community_migration.py` and update the domain in the Cypher query
+   - Run community migration:
+   ```bash
+   python main.py --env local --migration community
+   ```
+
+5. **Run again and select Start from Subcommunity it will insert subcommunity, building, space, asset, points**
+   ```bash
+   python main.py --env local --migration step
+   ```
+   - Select option "1. Start from Subcommunity" from the menu
+   - This will migrate: subcommunity → building → space → asset → points
+
+### Available Migrations
+
+- **Domain migration**: Migrates domains from Neo4j to PostgreSQL
+- **Community migration**: Migrates communities from Neo4j to PostgreSQL
+- **Client migration**: Migrates clients from Neo4j to PostgreSQL
+- **Type migration**: Migrates types from `typeToMigrate.csv` to PostgreSQL
+- **Step-by-step migration**: Interactive CSV-based migration for subcommunities, buildings, spaces, assets, and points
+
 

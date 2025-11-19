@@ -14,6 +14,7 @@ from migrations.domain_migration import migrate_domains
 from migrations.community_migration import migrate_communities
 from migrations.client_migration import migrate_clients
 from migrations.complete_migration import run_migration
+from migrations.type_migration import migrate_types
 
 logging.basicConfig(
     level=logging.INFO,
@@ -30,11 +31,18 @@ def run_step_by_step_migration(_: Session, conn: _PGConnection) -> None:
     run_migration(conn)
 
 
+# Adapter for type migration (CSV-based)
+def run_type_migration(_: Session, conn: _PGConnection) -> None:
+    """Run the type migration from CSV file."""
+    migrate_types(_, conn)
+
+
 # Migration configuration: (name, function, postgres_target)
 MIGRATIONS = [
     ("Domain migration", migrate_domains, "accesscontrol"),
     ("Community migration", migrate_communities, "nectar_new"),
     ("Client migration", migrate_clients, "nectar_new"),
+    ("Type migration", run_type_migration, "nectar_new"),
     ("Step-by-step migration", run_step_by_step_migration, "nectar_new"),
 ]
 
@@ -42,7 +50,8 @@ MIGRATION_KEY_MAP = {
     "domain": MIGRATIONS[0],
     "community": MIGRATIONS[1],
     "client": MIGRATIONS[2],
-    "step": MIGRATIONS[3],
+    "type": MIGRATIONS[3],
+    "step": MIGRATIONS[4],
 }
 
 
@@ -58,7 +67,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--migration",
-        choices=["domain", "community", "client", "step", "all"],
+        choices=["domain", "community", "client", "type", "step", "all"],
         help="Optional: run specific migration without interactive prompt",
     )
     return parser.parse_args()

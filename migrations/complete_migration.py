@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import logging
+import re
 import uuid
 from pathlib import Path
 from psycopg2.extensions import connection as _PGConnection
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[dict]:
-    """Read data from CSV file."""
+    """Read data from a single CSV file."""
     csv_path = Path(csv_file_path)
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
@@ -32,6 +33,82 @@ def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[di
                 cleaned_row[clean_key] = v if v else None
             rows.append(cleaned_row)
         return rows
+
+
+def read_multiple_csv_files(csv_file_pattern: str | Path = "data_*.csv", base_dir: str | Path = "data") -> list[dict]:
+    """Read data from multiple CSV files matching a pattern.
+    
+    This function reads ALL matching CSV files first, then returns the combined data.
+    Deduplication happens later during migration processing.
+    
+    Args:
+        csv_file_pattern: Pattern to match CSV files (e.g., "data_*.csv" or "data_1.csv")
+                         If a base filename is provided, it will automatically look for numbered variants
+                         (e.g., data_1.csv, data_2.csv, data_3.csv, etc.)
+        base_dir: Base directory to search for CSV files (default: "data")
+    
+    Returns:
+        Combined list of all records from all matching CSV files (before deduplication)
+    """
+    base_path = Path(base_dir)
+    pattern = str(csv_file_pattern)
+    
+    # If pattern doesn't contain wildcards, check for numbered variants
+    if '*' not in pattern and '?' not in pattern:
+        csv_path = base_path / pattern
+        base_name = csv_path.stem  # e.g., "data_1" -> "data_"
+        extension = csv_path.suffix  # e.g., ".csv"
+        
+        # Extract base prefix (e.g., "data_" from "data_1")
+        # Try to find the pattern by removing trailing digits
+        base_prefix = re.sub(r'\d+$', '', base_name)  # Remove trailing numbers
+        if not base_prefix:
+            base_prefix = base_name
+        
+        # Look for all files matching the pattern (e.g., data_1.csv, data_2.csv, etc.)
+        pattern = f"{base_prefix}*{extension}"
+    
+    # Find all matching CSV files
+    csv_files = list(base_path.glob(pattern))
+    
+    if not csv_files:
+        raise FileNotFoundError(f"No CSV files found matching pattern: {pattern} in {base_path}")
+    
+    # Sort files naturally (handles numbered files correctly: data_1, data_2, data_10 instead of data_1, data_10, data_2)
+    def natural_sort_key(path: Path) -> tuple:
+        """Natural sort key that handles numbers in filenames."""
+        parts = re.split(r'(\d+)', str(path.name))
+        return tuple(int(part) if part.isdigit() else part.lower() for part in parts)
+    
+    csv_files = sorted(csv_files, key=natural_sort_key)
+    
+    all_rows = []
+    total_files = len(csv_files)
+    
+    print(f"Found {total_files} CSV file(s) to process:")
+    for idx, csv_file in enumerate(csv_files, 1):
+        print(f"  {idx}. {csv_file.name}")
+    
+    # STEP 1: Read ALL files first (don't process/insert yet)
+    print(f"\n{'='*60}")
+    print("STEP 1: Reading all CSV files...")
+    print(f"{'='*60}")
+    for idx, csv_file in enumerate(csv_files, 1):
+        print(f"\nReading file {idx}/{total_files}: {csv_file.name}...")
+        try:
+            rows = read_csv_data(csv_file)
+            all_rows.extend(rows)
+            print(f"  ✓ Loaded {len(rows)} records from {csv_file.name}")
+        except Exception as e:
+            logger.error(f"Error reading {csv_file.name}: {e}")
+            print(f"  ✗ Error reading {csv_file.name}: {e}")
+            raise
+    
+    print(f"\n{'='*60}")
+    print(f"✓ All files read. Total records loaded: {len(all_rows)} from {total_files} file(s)")
+    print(f"{'='*60}\n")
+    
+    return all_rows
 
 
 def get_subcommunity_rows(data: list[dict]) -> list[tuple]:
@@ -83,19 +160,30 @@ def get_space_rows(data: list[dict]) -> list[tuple]:
     """Extract unique spaces."""
     seen = set()
     rows = []
+    skipped_count = 0
     for record in data:
         space_id = record.get("spaces_id")
+        if not space_id:
+            skipped_count += 1
+            continue
+        if space_id == "null":
+            continue
+        
+        if space_id in seen:
+            continue
+        
         building_id = record.get("building_id")
         layout_raw = record.get("spaces_layout")
         try:
             layout = int(layout_raw)
         except (TypeError, ValueError):
             layout = 0
-        if not space_id or space_id in seen:
-            continue
+        
         if not building_id:
             logger.warning("Skipping space %s due to missing building_id", space_id)
+            skipped_count += 1
             continue
+        
         seen.add(space_id)
         rows.append(
             (
@@ -108,6 +196,10 @@ def get_space_rows(data: list[dict]) -> list[tuple]:
                 record.get("spaces_type"),
             )
         )
+    
+    if skipped_count > 0:
+        logger.info(f"Skipped {skipped_count} records with missing or empty space_id")
+    
     return rows
 
 
@@ -191,6 +283,11 @@ def get_asset_space_rows(data: list[dict]) -> list[tuple]:
         asset_id = record.get("asset_id")  # Use CSV asset_id (UUID) instead of asset_name
         space_id = record.get("spaces_id")
         
+        # Skip if asset_id or space_id is missing, None, or empty/whitespace
+        if not asset_id or not space_id:
+            continue
+        asset_id = str(asset_id).strip()
+        space_id = str(space_id).strip()
         if not asset_id or not space_id:
             continue
         
@@ -393,6 +490,7 @@ def migrate_buildings(conn: _PGConnection, data: list[dict]) -> None:
 def migrate_spaces(conn: _PGConnection, data: list[dict]) -> None:
     """Migrate spaces to PostgreSQL."""
     rows = get_space_rows(data)
+    print(rows) 
     if not rows:
         print("No spaces to migrate")
         return
@@ -464,14 +562,34 @@ def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
     # Migrate asset-space relationships
     asset_space_rows = get_asset_space_rows(data)
     if asset_space_rows:
-        asset_space_sql = """
-            INSERT INTO public.asset_spaces (
-                identifier, spaces_identifier
-            ) VALUES (%s, %s)
-            ON CONFLICT DO NOTHING
-        """
-        batch_insert(conn, asset_space_sql, asset_space_rows)
-        print(f"✓ Migrated {len(asset_space_rows)} asset-space relationships")
+        # Filter out spaces that don't exist in the database
+        valid_asset_space_rows = []
+        with conn.cursor() as cur:
+            for asset_id, space_id in asset_space_rows:
+                # Check if space exists
+                cur.execute("""
+                    SELECT identifier FROM public.space
+                    WHERE identifier = %s
+                    LIMIT 1
+                """, (space_id,))
+                if cur.fetchone():
+                    valid_asset_space_rows.append((asset_id, space_id))
+                else:
+                    logger.warning("Skipping asset-space relationship: space '%s' does not exist", space_id)
+        
+        if valid_asset_space_rows:
+            asset_space_sql = """
+                INSERT INTO public.asset_spaces (
+                    identifier, spaces_identifier
+                ) VALUES (%s, %s)
+                ON CONFLICT DO NOTHING
+            """
+            batch_insert(conn, asset_space_sql, valid_asset_space_rows)
+            print(f"✓ Migrated {len(valid_asset_space_rows)} asset-space relationships")
+        else:
+            print("No valid asset-space relationships to migrate (all spaces missing)")
+    else:
+        print("No asset-space relationships to migrate")
 
 
 def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | Path = "assetType.csv") -> None:
@@ -514,11 +632,12 @@ def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
             else:
                 # Insert new row with generated UUID
                 # row_data structure: (access_type, data_type, display_name, name, remote_data_type, status, symbol, unit)
+                # Cast UUID strings to UUID type for PostgreSQL
                 cur.execute("""
                     INSERT INTO public.data_point (
                         id, access_type, data_type, display_name, name,
                         point_id, remote_data_type, status, symbol, unit
-                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ) VALUES (%s::uuid, %s, %s, %s, %s, %s::uuid, %s, %s, %s, %s)
                 """, (data_point_id, row_data[0], row_data[1], row_data[2], row_data[3], 
                       point_id, row_data[4], row_data[5], row_data[6], row_data[7]))
                 inserted_data_points.append((csv_data_point_id, data_point_id, point_id))
@@ -617,12 +736,49 @@ def show_menu() -> str:
         print("Invalid choice. Please enter a number between 1 and 6.")
 
 
-def run_migration(conn: _PGConnection, csv_file_path: str | Path = "buildingdemodata.csv") -> None:
-    """Main migration function with menu-driven selection."""
+def run_migration(conn: _PGConnection, csv_file_path: str | Path = "data_*.csv", data_dir: str | Path = "data") -> None:
+    """Main migration function with menu-driven selection.
+    
+    This function:
+    1. Reads ALL CSV files from the data folder first
+    2. Combines all data from all files
+    3. Then processes unique data during migration (deduplication happens in get_*_rows functions)
+    
+    Args:
+        conn: PostgreSQL connection
+        csv_file_path: CSV file path or pattern (e.g., "data_*.csv" or "data_1.csv")
+                      Default: "data_*.csv" - will find all data_*.csv files in the data folder
+        data_dir: Directory containing CSV files (default: "data")
+    """
+    # Print database name
+    with conn.cursor() as cur:
+        cur.execute("SELECT current_database()")
+        db_name = cur.fetchone()[0]
+        print(f"Database: {db_name}\n")
+    
     try:
-        print("Reading CSV data...")
-        data = read_csv_data(csv_file_path)
-        print(f"✓ Loaded {len(data)} records\n")
+        print("="*60)
+        print("CSV DATA LOADING")
+        print("="*60)
+        # Automatically detect and process multiple CSV files
+        # If pattern contains wildcards, use it directly; otherwise look for numbered variants
+        csv_path = Path(csv_file_path)
+        csv_path_str = str(csv_file_path)
+        
+        if '*' in csv_path_str or '?' in csv_path_str:
+            # Pattern provided, use it directly
+            base_dir = csv_path.parent if csv_path.parent != Path('.') else Path(data_dir)
+            pattern = csv_path.name if csv_path.parent == Path('.') else csv_path_str
+            data = read_multiple_csv_files(pattern, base_dir)
+        else:
+            # Single file name - automatically look for numbered variants
+            base_dir = csv_path.parent if csv_path.parent != Path('.') else Path(data_dir)
+            pattern = csv_path.name
+            data = read_multiple_csv_files(pattern, base_dir)
+        
+        print(f"\n{'='*60}")
+        print(f"STEP 2: Processing unique data from {len(data)} total records...")
+        print(f"{'='*60}\n")
     except Exception as e:
         logger.error(f"Failed to read CSV: {e}")
         print(f"✗ Error: {e}")
@@ -636,18 +792,22 @@ def run_migration(conn: _PGConnection, csv_file_path: str | Path = "buildingdemo
         migrate_buildings(conn, data)
         migrate_spaces(conn, data)
         migrate_assets(conn, data)
+        migrate_points(conn, data)
     elif choice == '2':
         print("\n→ Migrating Buildings...")
         migrate_buildings(conn, data)
         migrate_spaces(conn, data)
         migrate_assets(conn, data)
+        migrate_points(conn, data)
     elif choice == '3':
         print("\n→ Migrating Spaces...")
         migrate_spaces(conn, data)
         migrate_assets(conn, data)
+        migrate_points(conn, data)
     elif choice == '4':
         print("\n→ Migrating Assets...")
         migrate_assets(conn, data)
+        migrate_points(conn, data)
     elif choice == '5':
         print("\n→ Migrating Points...")
         migrate_points(conn, data)

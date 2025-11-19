@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 def fetch_clients(session: Session) -> Iterable[dict]:
     cypher = """
-        MATCH (root:DefaultTenant {clientId: 'buildingdemo'})
+        MATCH (root:DefaultTenant {clientId: 'nectarit'})
         RETURN
             root.clientId AS client_id,
             root.clientName AS client_name,
@@ -33,7 +33,7 @@ def fetch_clients(session: Session) -> Iterable[dict]:
 
         UNION
 
-        MATCH (:DefaultTenant {clientId: 'buildingdemo'})-[:tenant]->(child)
+        MATCH (:DefaultTenant {clientId: 'nectarit'})-[:tenant]->(child)
         RETURN
             child.clientId AS client_id,
             child.clientName AS client_name,

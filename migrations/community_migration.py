@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 def fetch_communities(session: Session) -> Iterable[dict]:
     logger.info("Fetching communities from Neo4j")
     cypher = """
-    MATCH (n:Community {domain: 'bdclone'})
+    MATCH (n:Community {domain: 'ecd'})
     RETURN
         n.clientId AS client_id,
         n.clientName AS client_name,

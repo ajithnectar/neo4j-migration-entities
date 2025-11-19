@@ -99,14 +99,14 @@ def get_config(env: EnvName) -> AppConfig:
             "accesscontrol": PostgresConfig(
                 host=_env_or_default("PG_HOST", "nec-ofc-dbc1"),
                 port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4jmigrate"),
+                dbname=_env_or_default("PG_DB", "neo4j_migration"),
                 username=_env_or_default("PG_USERNAME", "appuser"),
                 password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
             ),
             "nectar_new": PostgresConfig(
                 host=_env_or_default("NECTAR_PG_HOST", "nec-ofc-dbc1"),
                 port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
-                dbname=_env_or_default("NECTAR_PG_DB", "neo4jawesometicks"),
+                dbname=_env_or_default("NECTAR_PG_DB", "neo4j_migration"),
                 username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
                 password=_env_or_default("NECTAR_PG_PASSWORD", "NecOfc@123"),
             ),
