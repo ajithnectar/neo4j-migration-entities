@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 import logging
-from typing import Iterable, Sequence
+from typing import Dict, Iterable, List, Sequence, Tuple
 
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
@@ -14,9 +12,10 @@ from re import split
 logger = logging.getLogger(__name__)
 
 
-def fetch_clients(session: Session) -> Iterable[dict]:
+def fetch_clients(session: Session):
+    # type: (Session) -> Iterable[Dict]
     cypher = """
-        MATCH (root:DefaultTenant {clientId: 'nectarit'})
+        MATCH (root:DefaultTenant {clientId: 'emaar'})
         RETURN
             root.clientId AS client_id,
             root.clientName AS client_name,
@@ -33,7 +32,7 @@ def fetch_clients(session: Session) -> Iterable[dict]:
 
         UNION
 
-        MATCH (:DefaultTenant {clientId: 'nectarit'})-[:tenant]->(child)
+        MATCH (:DefaultTenant {clientId: 'datalkz'})-[:tenant*]->(child)
         RETURN
             child.clientId AS client_id,
             child.clientName AS client_name,
@@ -54,14 +53,15 @@ def fetch_clients(session: Session) -> Iterable[dict]:
     return run_query(session, cypher)
 
 
-def map_clients_to_rows(clients: Iterable[dict]) -> Sequence[tuple]:
-    rows: list[tuple] = []
+def map_clients_to_rows(clients):
+    # type: (Iterable[Dict]) -> Sequence[Tuple]
+    rows = []  # type: List[Tuple]
     for record in clients:
         client_id = record.get("client_id")
         domain = record.get("domain")
         typeOfClient = record.get("type_name").replace(" ", "")
         if domain and domain.lower() == "alpine":
-            domain = "nectarit"
+            domain = "emaar"
         ticket_prefix = (client_id or "").upper() if client_id else None
         created_on = record.get("created_on")
         if not created_on:  # handles None, "", empty strings
@@ -85,7 +85,8 @@ def map_clients_to_rows(clients: Iterable[dict]) -> Sequence[tuple]:
     return rows
 
 
-def migrate_clients(session: Session, conn: _PGConnection) -> None:
+def migrate_clients(session: Session, conn: _PGConnection):
+    # type: (Session, _PGConnection) -> None
     logger.info("Starting client migration")
     clients = fetch_clients(session)
     rows = map_clients_to_rows(clients)

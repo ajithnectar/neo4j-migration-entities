@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import logging
 from contextlib import contextmanager
-from typing import Iterable, Sequence, Any
+from typing import Any, Dict, Iterable, List, Sequence
 
 import psycopg2
 from psycopg2.extensions import connection as _PGConnection
@@ -61,7 +59,7 @@ def batch_insert(
         execute_batch(cur, insert_sql, rows, page_size=page_size)
 
 
-def fetch_asset_types(conn: _PGConnection) -> list[dict]:
+def fetch_asset_types(conn: _PGConnection) -> List[Dict[str, Any]]:
     """
     Fetch all asset types from the public.asset_type table.
     Equivalent to: SELECT * FROM public.asset_type

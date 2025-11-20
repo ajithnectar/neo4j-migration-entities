@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 import argparse
 import logging
-from typing import Callable, Iterable
+from typing import Callable, List, Tuple
 
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
@@ -27,25 +25,29 @@ logger = logging.getLogger(__name__)
 MigrationFn = Callable[[Session, _PGConnection], None]
 
 # Adapter to plug the CSV-based step-by-step flow into the standard signature
-def run_step_by_step_migration(_: Session, conn: _PGConnection) -> None:
+def run_step_by_step_migration(_: Session, conn: _PGConnection):
+    # type: (Session, _PGConnection) -> None
     """Run the interactive CSV migration that only needs PostgreSQL."""
     run_migration(conn)
 
 
 # Adapter for type migration (CSV-based)
-def run_type_migration(_: Session, conn: _PGConnection) -> None:
+def run_type_migration(_: Session, conn: _PGConnection):
+    # type: (Session, _PGConnection) -> None
     """Run the type migration from CSV file."""
     migrate_types(_, conn)
 
 
 # Adapter for asset type migration (CSV-based)
-def run_asset_type_migration(_: Session, conn: _PGConnection) -> None:
+def run_asset_type_migration(_: Session, conn: _PGConnection):
+    # type: (Session, _PGConnection) -> None
     """Run the asset type migration from CSV file."""
     migrate_asset_types(_, conn)
 
 
 # Adapter for fetching asset types from database
-def run_fetch_asset_types(_: Session, conn: _PGConnection) -> None:
+def run_fetch_asset_types(_: Session, conn: _PGConnection):
+    # type: (Session, _PGConnection) -> None
     """Fetch asset types from PostgreSQL database."""
     fetch_asset_types_from_db(_, conn)
 
@@ -58,8 +60,8 @@ def create_neo4j_export_fn(cfg) -> MigrationFn:
         export_neo4j_to_csv(
             session, 
             _, 
-            batch_size=cfg.neo4j_export_batch_size, 
-            domain=cfg.community_domain
+            batch_size=cfg.neo4j_export_batch_size,
+            subcommunity_csv="subcommunityids.csv"
         )
     return run_neo4j_export
 
@@ -85,7 +87,8 @@ MIGRATION_FACTORIES = [
     ("Step-by-step migration", lambda cfg: run_step_by_step_migration),
 ]
 
-def build_migrations(cfg) -> list[tuple[str, MigrationFn]]:
+def build_migrations(cfg):
+    # type: (...) -> List[Tuple[str, MigrationFn]]
     """Build migration list from factories with config."""
     return [
         (name, factory(cfg))
@@ -122,7 +125,8 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def show_migration_menu(cfg) -> list[tuple[str, MigrationFn]]:
+def show_migration_menu(cfg):
+    # type: (...) -> List[Tuple[str, MigrationFn]]
     """Display menu and return selected migrations."""
     migrations = build_migrations(cfg)
     print("\n" + "="*50)
@@ -149,7 +153,8 @@ def show_migration_menu(cfg) -> list[tuple[str, MigrationFn]]:
         print("Invalid choice. Please try again.")
 
 
-def get_selected_migrations(arg_choice: str | None, cfg) -> list[tuple[str, MigrationFn]]:
+def get_selected_migrations(arg_choice, cfg):
+    # type: (str, ...) -> List[Tuple[str, MigrationFn]]
     """Resolve which migrations to run based on argument or prompt."""
     migrations = build_migrations(cfg)
     
@@ -167,7 +172,8 @@ def get_selected_migrations(arg_choice: str | None, cfg) -> list[tuple[str, Migr
     return migrations
 
 
-def main() -> None:
+def main():
+    # type: () -> None
     """Main migration entry point."""
     args = parse_args()
     env: EnvName = args.env

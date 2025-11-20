@@ -1,10 +1,10 @@
-from __future__ import annotations
-
 import csv
 import logging
 import re
 import uuid
 from pathlib import Path
+from typing import Dict, List, Tuple, Union
+
 from psycopg2.extensions import connection as _PGConnection
 from db.postgres_utils import batch_insert
 from app_config.utils import convert_epoch_to_timestamp
@@ -12,7 +12,8 @@ from app_config.utils import convert_epoch_to_timestamp
 logger = logging.getLogger(__name__)
 
 
-def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[dict]:
+def read_csv_data(csv_file_path: Union[str, Path] = "buildingdemodata.csv"):
+    # type: (Union[str, Path]) -> List[Dict]
     """Read data from a single CSV file."""
     csv_path = Path(csv_file_path)
     if not csv_path.exists():
@@ -44,7 +45,8 @@ def read_csv_data(csv_file_path: str | Path = "buildingdemodata.csv") -> list[di
         return rows
 
 
-def read_multiple_csv_files(csv_file_pattern: str | Path = "data_*.csv", base_dir: str | Path = "data") -> list[dict]:
+def read_multiple_csv_files(csv_file_pattern: Union[str, Path] = "data_*.csv", base_dir: Union[str, Path] = "data"):
+    # type: (Union[str, Path], Union[str, Path]) -> List[Dict]
     """Read data from multiple CSV files matching a pattern.
     
     This function reads ALL matching CSV files first, then returns the combined data.
@@ -120,7 +122,8 @@ def read_multiple_csv_files(csv_file_pattern: str | Path = "data_*.csv", base_di
     return all_rows
 
 
-def get_subcommunity_rows(data: list[dict]) -> list[tuple]:
+def get_subcommunity_rows(data):
+    # type: (List[Dict]) -> List[Tuple]
     """Extract unique subcommunities."""
     seen = set()
     rows = []
@@ -140,7 +143,8 @@ def get_subcommunity_rows(data: list[dict]) -> list[tuple]:
     return rows
 
 
-def get_building_rows(data: list[dict]) -> list[tuple]:
+def get_building_rows(data):
+    # type: (List[Dict]) -> List[Tuple]
     """Extract unique buildings."""
     seen = set()
     rows = []
@@ -165,7 +169,8 @@ def get_building_rows(data: list[dict]) -> list[tuple]:
     return rows
 
 
-def get_space_rows(data: list[dict]) -> list[tuple]:
+def get_space_rows(data):
+    # type: (List[Dict]) -> List[Tuple]
     """Extract unique spaces."""
     seen = set()
     rows = []
@@ -212,7 +217,8 @@ def get_space_rows(data: list[dict]) -> list[tuple]:
     return rows
 
 
-def load_asset_type_map(asset_type_csv: str | Path = "assetType.csv") -> dict[str, str]:
+def load_asset_type_map(asset_type_csv: Union[str, Path] = "assetType.csv"):
+    # type: (Union[str, Path]) -> Dict[str, str]
     """Load asset type name → id mapping from CSV.
     
     Uses the 'name' column as the key since that's what's used in the data records.
@@ -224,7 +230,7 @@ def load_asset_type_map(asset_type_csv: str | Path = "assetType.csv") -> dict[st
 
     with csv_path.open(encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        mapping: dict[str, str] = {}
+        mapping = {}  # type: Dict[str, str]
         for row in reader:
             name = (row.get("name") or "").strip()
             type_id = row.get("id")
@@ -233,7 +239,8 @@ def load_asset_type_map(asset_type_csv: str | Path = "assetType.csv") -> dict[st
     return mapping
 
 
-def _safe_float(value: str | None) -> float | None:
+def _safe_float(value):
+    # type: (Union[str, None]) -> Union[float, None]
     if value in (None, "", "null"):
         return None
     try:
@@ -242,7 +249,8 @@ def _safe_float(value: str | None) -> float | None:
         return None
 
 
-def get_asset_rows(data: list[dict], asset_type_map: dict[str, str]) -> list[tuple]:
+def get_asset_rows(data, asset_type_map):
+    # type: (List[Dict], Dict[str, str]) -> List[Tuple]
     """Extract unique assets."""
     seen = set()
     rows = []
@@ -287,7 +295,8 @@ def get_asset_rows(data: list[dict], asset_type_map: dict[str, str]) -> list[tup
     return rows
 
 
-def get_asset_space_rows(data: list[dict]) -> list[tuple]:
+def get_asset_space_rows(data):
+    # type: (List[Dict]) -> List[Tuple]
     """Extract unique asset-space relationships."""
     seen = set()
     rows = []
@@ -314,7 +323,8 @@ def get_asset_space_rows(data: list[dict]) -> list[tuple]:
     return rows
 
 
-def get_data_point_rows(data: list[dict]) -> list[tuple[str, tuple]]:
+def get_data_point_rows(data):
+    # type: (List[Dict]) -> List[Tuple[str, Tuple]]
     """Extract unique data points based on point_name (name field).
     
     Returns:
@@ -354,7 +364,8 @@ def get_data_point_rows(data: list[dict]) -> list[tuple[str, tuple]]:
     return rows
 
 
-def get_asset_point_rows(data: list[dict], csv_to_point_id_map: dict[str, str]) -> list[tuple]:
+def get_asset_point_rows(data, csv_to_point_id_map):
+    # type: (List[Dict], Dict[str, str]) -> List[Tuple]
     """Extract unique asset-point relationships.
     
     Args:
@@ -403,7 +414,8 @@ def get_asset_point_rows(data: list[dict], csv_to_point_id_map: dict[str, str]) 
     return rows
 
 
-def get_asset_type_point_rows(data: list[dict], asset_type_map: dict[str, str], csv_to_point_id_map: dict[str, str]) -> list[tuple]:
+def get_asset_type_point_rows(data, asset_type_map, csv_to_point_id_map):
+    # type: (List[Dict], Dict[str, str], Dict[str, str]) -> List[Tuple]
     """Extract unique asset-type-point relationships.
     
     Args:
@@ -454,7 +466,8 @@ def get_asset_type_point_rows(data: list[dict], asset_type_map: dict[str, str], 
     return rows
 
 
-def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
+def migrate_subcommunities(conn: _PGConnection, data):
+    # type: (_PGConnection, List[Dict]) -> None
     """Migrate subcommunities to PostgreSQL."""
     rows = get_subcommunity_rows(data)
     if not rows:
@@ -540,7 +553,8 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
     print(f"✓ Migrated {len(valid_rows)} subcommunities")
 
 
-def migrate_buildings(conn: _PGConnection, data: list[dict]) -> None:
+def migrate_buildings(conn: _PGConnection, data):
+    # type: (_PGConnection, List[Dict]) -> None
     """Migrate buildings to PostgreSQL."""
     rows = get_building_rows(data)
     if not rows:
@@ -570,7 +584,8 @@ def migrate_buildings(conn: _PGConnection, data: list[dict]) -> None:
     print(f"✓ Migrated {len(rows)} buildings")
 
 
-def migrate_spaces(conn: _PGConnection, data: list[dict]) -> None:
+def migrate_spaces(conn: _PGConnection, data):
+    # type: (_PGConnection, List[Dict]) -> None
     """Migrate spaces to PostgreSQL."""
     rows = get_space_rows(data)
     print(rows) 
@@ -595,7 +610,8 @@ def migrate_spaces(conn: _PGConnection, data: list[dict]) -> None:
     print(f"✓ Migrated {len(rows)} spaces")
 
 
-def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | Path = "assetType.csv") -> None:
+def migrate_assets(conn: _PGConnection, data, asset_type_csv: Union[str, Path] = "assetType.csv"):
+    # type: (_PGConnection, List[Dict], Union[str, Path]) -> None
     """Migrate assets to PostgreSQL."""
     asset_type_map = load_asset_type_map(asset_type_csv)
     rows = get_asset_rows(data, asset_type_map)
@@ -686,7 +702,8 @@ def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
         print("No asset-space relationships to migrate")
 
 
-def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | Path = "assetType.csv") -> None:
+def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] = "assetType.csv"):
+    # type: (_PGConnection, List[Dict], Union[str, Path]) -> None
     """Migrate points, asset-points, and asset-type-points to PostgreSQL.
     
     Order of operations:
@@ -761,9 +778,9 @@ def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
     print(f"✓ Migrated {len(inserted_data_points)} data points")
     
     # Create mapping from CSV data_point_id to auto-generated point_id (UUID)
-    csv_to_point_id_map: dict[str, str] = {
+    csv_to_point_id_map = {
         csv_id: point_id for csv_id, _, point_id in inserted_data_points
-    }
+    }  # type: Dict[str, str]
     
     if not csv_to_point_id_map:
         logger.error("No data_points were found after insertion. Cannot proceed with asset_point and asset_type_point.")

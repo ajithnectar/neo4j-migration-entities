@@ -4,15 +4,14 @@ except ImportError:
     # For Python 3.6, use backport
     from dataclasses import dataclass
 
+from typing import Literal, Optional
 import os
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Valid environment names
-VALID_ENV_NAMES = ("local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod", "emaar")
-EnvName = str  # Type alias for environment name (Python 3.6 compatible)
+EnvName = Literal["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod", "emaar"]
 
 
 @dataclass
@@ -20,7 +19,7 @@ class Neo4jConfig:
     uri: str
     username: str
     password: str
-    mode: str = None
+    mode: Optional[str] = None
 
 
 @dataclass
@@ -42,7 +41,7 @@ class AppConfig:
     community_domain: str = "ecd"
 
 
-def _env_or_default(key, default=None):
+def _env_or_default(key: str, default: Optional[str] = None) -> str:
     value = os.getenv(key)
     if value is None:
         if default is None:
@@ -51,7 +50,7 @@ def _env_or_default(key, default=None):
     return value
 
 
-def get_config(env):
+def get_config(env: EnvName) -> AppConfig:
     """
     Build configuration for a given environment.
 
@@ -61,11 +60,6 @@ def get_config(env):
     For the nectar_new database override NECTAR_PG_HOST, NECTAR_PG_PORT,
     NECTAR_PG_DB, NECTAR_PG_USERNAME, NECTAR_PG_PASSWORD.
     """
-    # Validate environment name
-    if env not in VALID_ENV_NAMES:
-        raise ValueError("Invalid environment name: {}. Valid options: {}".format(
-            env, ", ".join(VALID_ENV_NAMES)
-        ))
 
     if env == "local":
         neo4j = Neo4jConfig(
@@ -99,7 +93,7 @@ def get_config(env):
             username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
             password=_env_or_default("NECTAR_PG_PASSWORD", "NecOfc@123"),
         )
-        neo4j_export_batch_size = 3000
+        neo4j_export_batch_size = 6000
         client_domain = "ecd"
         community_domain = "ecd"
 

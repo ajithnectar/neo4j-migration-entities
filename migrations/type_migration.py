@@ -1,9 +1,7 @@
-from __future__ import annotations
-
 import csv
 import logging
 from pathlib import Path
-from typing import Sequence
+from typing import Any, Dict, List, Sequence, Tuple, Union
 
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
@@ -14,7 +12,7 @@ from db.neo4j_utils import run_query
 logger = logging.getLogger(__name__)
 
 
-def export_types_from_neo4j(session: Session, csv_file_path: str | Path = "typeToMigrate.csv") -> None:
+def export_types_from_neo4j(session: Session, csv_file_path: Union[str, Path] = "typeToMigrate.csv"):
     """Fetch type data from Neo4j and save to CSV file.
     
     Args:
@@ -63,7 +61,8 @@ def export_types_from_neo4j(session: Session, csv_file_path: str | Path = "typeT
         raise
 
 
-def read_type_csv(csv_file_path: str | Path = "typeToMigrate.csv") -> list[dict]:
+def read_type_csv(csv_file_path: Union[str, Path] = "typeToMigrate.csv"):
+    # type: (Union[str, Path]) -> List[Dict]
     """Read data from typeToMigrate.csv file."""
     csv_path = Path(csv_file_path)
     if not csv_path.exists():
@@ -89,7 +88,8 @@ def read_type_csv(csv_file_path: str | Path = "typeToMigrate.csv") -> list[dict]
         return rows
 
 
-def map_types_to_rows(type_data: list[dict]) -> Sequence[tuple]:
+def map_types_to_rows(type_data):
+    # type: (List[Dict]) -> Sequence[Tuple]
     """Map CSV data to database rows for types table.
     
     Maps:
@@ -99,7 +99,7 @@ def map_types_to_rows(type_data: list[dict]) -> Sequence[tuple]:
     - status -> "ACTIVE" (default)
     """
     logger.info("Mapping types to database rows")
-    rows: list[tuple] = []
+    rows = []  # type: List[Tuple]
     skipped_count = 0
     
     for record in type_data:
@@ -154,7 +154,7 @@ def map_types_to_rows(type_data: list[dict]) -> Sequence[tuple]:
     return rows
 
 
-def migrate_types(session: Session, conn: _PGConnection, csv_file_path: str | Path = "typeToMigrate.csv") -> None:
+def migrate_types(session: Session, conn: _PGConnection, csv_file_path: Union[str, Path] = "typeToMigrate.csv"):
     """Migrate types from CSV to PostgreSQL.
     
     If CSV file doesn't exist, it will be created by fetching data from Neo4j first.

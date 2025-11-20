@@ -1,9 +1,7 @@
-from __future__ import annotations
-
 import csv
 import logging
 from pathlib import Path
-from typing import Sequence
+from typing import Dict, List, Sequence, Tuple, Union
 
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
@@ -14,7 +12,7 @@ from db.neo4j_utils import run_query
 logger = logging.getLogger(__name__)
 
 
-def export_asset_types_from_neo4j(session: Session, csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> None:
+def export_asset_types_from_neo4j(session: Session, csv_file_path: Union[str, Path] = "AssetTypeToMigrate.csv"):
     """Fetch asset type data from Neo4j and save to CSV file.
     
     Args:
@@ -62,7 +60,8 @@ def export_asset_types_from_neo4j(session: Session, csv_file_path: str | Path = 
         raise
 
 
-def read_asset_type_csv(csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> list[dict]:
+def read_asset_type_csv(csv_file_path: Union[str, Path] = "AssetTypeToMigrate.csv"):
+    # type: (Union[str, Path]) -> List[Dict]
     """Read data from AssetTypeToMigrate.csv file."""
     csv_path = Path(csv_file_path)
     if not csv_path.exists():
@@ -88,7 +87,8 @@ def read_asset_type_csv(csv_file_path: str | Path = "AssetTypeToMigrate.csv") ->
         return rows
 
 
-def map_asset_types_to_rows(asset_type_data: list[dict], start_id: int = 1) -> Sequence[tuple]:
+def map_asset_types_to_rows(asset_type_data, start_id=1):
+    # type: (List[Dict], int) -> Sequence[Tuple]
     """Map CSV data to database rows for asset_type table.
     
     Maps:
@@ -104,7 +104,7 @@ def map_asset_types_to_rows(asset_type_data: list[dict], start_id: int = 1) -> S
         start_id: Starting ID for BIGINT generation (default: 1)
     """
     logger.info("Mapping asset types to database rows")
-    rows: list[tuple] = []
+    rows = []  # type: List[Tuple]
     skipped_count = 0
     current_id = start_id
     
@@ -166,7 +166,7 @@ def map_asset_types_to_rows(asset_type_data: list[dict], start_id: int = 1) -> S
     return rows
 
 
-def migrate_asset_types(session: Session, conn: _PGConnection, csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> None:
+def migrate_asset_types(session: Session, conn: _PGConnection, csv_file_path: Union[str, Path] = "AssetTypeToMigrate.csv"):
     """Migrate asset types from CSV to PostgreSQL.
     
     If CSV file doesn't exist, it will be created by fetching data from Neo4j first.
@@ -234,7 +234,7 @@ def migrate_asset_types(session: Session, conn: _PGConnection, csv_file_path: st
         raise
 
 
-def fetch_asset_types_from_db(_: Session, conn: _PGConnection, csv_file_path: str | Path = "assetType.csv") -> None:
+def fetch_asset_types_from_db(_: Session, conn: _PGConnection, csv_file_path: Union[str, Path] = "assetType.csv"):
     """Fetch all asset types from public.asset_type table and save to CSV.
     
     Equivalent to: SELECT * FROM public.asset_type

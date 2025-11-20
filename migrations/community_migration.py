@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 import logging
-from typing import Iterable, Sequence
+from typing import Dict, Iterable, List, Sequence, Tuple
 
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
@@ -12,10 +10,11 @@ from db.postgres_utils import batch_insert
 logger = logging.getLogger(__name__)
 
 
-def fetch_communities(session: Session, domain: str = "ecd") -> Iterable[dict]:
+def fetch_communities(session: Session, domain: str = "ecd"):
+    # type: (Session, str) -> Iterable[Dict]
     logger.info("Fetching communities from Neo4j with domain: %s", domain)
     cypher = f"""
-    MATCH (n:Community {{domain: '{domain}'}})
+    MATCH (n:Community)
     RETURN
         n.clientId AS client_id,
         n.clientName AS client_name,
@@ -40,9 +39,10 @@ def fetch_communities(session: Session, domain: str = "ecd") -> Iterable[dict]:
         raise
 
 
-def map_communities_to_rows(communities: Iterable[dict]) -> Sequence[tuple]:
+def map_communities_to_rows(communities):
+    # type: (Iterable[Dict]) -> Sequence[Tuple]
     logger.info("Mapping communities to database rows")
-    rows: list[tuple] = []
+    rows = []  # type: List[Tuple]
     skipped_count = 0
     
     for record in communities:
@@ -93,7 +93,8 @@ def map_communities_to_rows(communities: Iterable[dict]) -> Sequence[tuple]:
     return rows
 
 
-def migrate_communities(session: Session, conn: _PGConnection, domain: str = "ecd") -> None:
+def migrate_communities(session: Session, conn: _PGConnection, domain: str = "ecd"):
+    # type: (Session, _PGConnection, str) -> None
     logger.info("Starting community migration with domain: %s", domain)
     try:
         communities = fetch_communities(session, domain)
