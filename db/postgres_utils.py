@@ -61,3 +61,27 @@ def batch_insert(
         execute_batch(cur, insert_sql, rows, page_size=page_size)
 
 
+def fetch_asset_types(conn: _PGConnection) -> list[dict]:
+    """
+    Fetch all asset types from the public.asset_type table.
+    Equivalent to: SELECT * FROM public.asset_type
+    
+    Returns:
+        List of dictionaries, each representing a row from the asset_type table
+    """
+    logger.info("Fetching asset types from public.asset_type")
+    with conn.cursor() as cur:
+        cur.execute("SELECT * FROM public.asset_type")
+        columns = [desc[0] for desc in cur.description]
+        rows = cur.fetchall()
+        
+        # Convert rows to list of dictionaries
+        result = []
+        for row in rows:
+            row_dict = dict(zip(columns, row))
+            result.append(row_dict)
+        
+        logger.info("Fetched %s asset types from database", len(result))
+        return result
+
+

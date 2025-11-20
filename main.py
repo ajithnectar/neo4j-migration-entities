@@ -15,7 +15,7 @@ from migrations.community_migration import migrate_communities
 from migrations.client_migration import migrate_clients
 from migrations.complete_migration import run_migration
 from migrations.type_migration import migrate_types
-from migrations.asset_type_migration import migrate_asset_types
+from migrations.asset_type_migration import migrate_asset_types, fetch_asset_types_from_db
 from migrations.neo4j_export import export_neo4j_to_csv
 
 logging.basicConfig(
@@ -43,6 +43,12 @@ def run_type_migration(_: Session, conn: _PGConnection) -> None:
 def run_asset_type_migration(_: Session, conn: _PGConnection) -> None:
     """Run the asset type migration from CSV file."""
     migrate_asset_types(_, conn)
+
+
+# Adapter for fetching asset types from database
+def run_fetch_asset_types(_: Session, conn: _PGConnection) -> None:
+    """Fetch asset types from PostgreSQL database."""
+    fetch_asset_types_from_db(_, conn)
 
 
 # Factory functions that create migration functions with config values
@@ -76,6 +82,7 @@ MIGRATION_FACTORIES = [
     ("Client migration", lambda cfg: migrate_clients, "nectar_new"),
     ("Type migration", lambda cfg: run_type_migration, "nectar_new"),
     ("Asset type migration", lambda cfg: run_asset_type_migration, "nectar_new"),
+    ("Fetch asset types", lambda cfg: run_fetch_asset_types, "nectar_new"),
     ("Step-by-step migration", lambda cfg: run_step_by_step_migration, "nectar_new"),
 ]
 
@@ -94,7 +101,8 @@ MIGRATION_KEY_MAP_INDICES = {
     "client": 3,
     "type": 4,
     "asset-type": 5,
-    "step": 6,
+    "fetch-asset-types": 6,
+    "step": 7,
 }
 
 
@@ -110,7 +118,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--migration",
-        choices=["export", "neo4j-export", "domain", "community", "client", "type", "asset-type", "step", "all"],
+        choices=["export", "neo4j-export", "domain", "community", "client", "type", "asset-type", "fetch-asset-types", "step", "all"],
         help="Optional: run specific migration without interactive prompt",
     )
     return parser.parse_args()

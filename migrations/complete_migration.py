@@ -213,7 +213,10 @@ def get_space_rows(data: list[dict]) -> list[tuple]:
 
 
 def load_asset_type_map(asset_type_csv: str | Path = "assetType.csv") -> dict[str, str]:
-    """Load asset type name → id mapping from CSV."""
+    """Load asset type name → id mapping from CSV.
+    
+    Uses the 'name' column as the key since that's what's used in the data records.
+    """
     csv_path = Path(asset_type_csv)
     if not csv_path.exists():
         logger.warning("Asset type CSV not found at %s", csv_path)
@@ -223,7 +226,7 @@ def load_asset_type_map(asset_type_csv: str | Path = "assetType.csv") -> dict[st
         reader = csv.DictReader(f)
         mapping: dict[str, str] = {}
         for row in reader:
-            name = (row.get("template_name") or "").strip()
+            name = (row.get("name") or "").strip()
             type_id = row.get("id")
             if name and type_id:
                 mapping[name] = type_id
@@ -694,20 +697,12 @@ def migrate_points(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
                 # Insert new row with generated UUID
                 # row_data structure: (access_type, data_type, display_name, name, remote_data_type, status, symbol, unit)
                 # Cast UUID strings to UUID type for PostgreSQL
-                # Use ON CONFLICT to handle uniqueness constraint on name
+                # No ON CONFLICT needed since we already check for existence above
                 cur.execute("""
                     INSERT INTO public.data_point (
                         id, access_type, data_type, display_name, name,
                         point_id, remote_data_type, status, symbol, unit
                     ) VALUES (%s::uuid, %s, %s, %s, %s, %s::uuid, %s, %s, %s, %s)
-                    ON CONFLICT (name) DO UPDATE SET
-                        access_type = EXCLUDED.access_type,
-                        data_type = EXCLUDED.data_type,
-                        display_name = EXCLUDED.display_name,
-                        remote_data_type = EXCLUDED.remote_data_type,
-                        status = EXCLUDED.status,
-                        symbol = EXCLUDED.symbol,
-                        unit = EXCLUDED.unit
                     RETURNING id, point_id
                 """, (data_point_id, row_data[0], row_data[1], row_data[2], row_data[3], 
                       point_id, row_data[4], row_data[5], row_data[6], row_data[7]))

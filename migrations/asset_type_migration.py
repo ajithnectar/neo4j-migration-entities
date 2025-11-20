@@ -8,7 +8,7 @@ from typing import Sequence
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
 
-from db.postgres_utils import batch_insert
+from db.postgres_utils import batch_insert, fetch_asset_types
 
 logger = logging.getLogger(__name__)
 
@@ -172,5 +172,64 @@ def migrate_asset_types(_: Session, conn: _PGConnection, csv_file_path: str | Pa
     except Exception as e:
         logger.error("Asset type migration failed: %s", str(e), exc_info=True)
         print(f"✗ Asset type migration failed: {e}")
+        raise
+
+
+def fetch_asset_types_from_db(_: Session, conn: _PGConnection, csv_file_path: str | Path = "assetType.csv") -> None:
+    """Fetch all asset types from public.asset_type table and save to CSV.
+    
+    Equivalent to: SELECT * FROM public.asset_type
+    
+    Args:
+        _: Neo4j session (not used, but required for signature compatibility)
+        conn: PostgreSQL connection
+        csv_file_path: Path to save the CSV file (default: assetType.csv)
+    """
+    logger.info("Fetching asset types from public.asset_type")
+    try:
+        asset_types = fetch_asset_types(conn)
+        
+        if not asset_types:
+            logger.info("No asset types found in database")
+            print("No asset types found in database")
+            return
+        
+        logger.info("Successfully fetched %s asset types", len(asset_types))
+        print(f"\n✓ Fetched {len(asset_types)} asset types from public.asset_type")
+        
+        # Save to CSV file
+        csv_path = Path(csv_file_path)
+        logger.info("Saving asset types to CSV file: %s", csv_path)
+        
+        # Get column names from the first record
+        fieldnames = list(asset_types[0].keys())
+        
+        # Write to CSV
+        with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+            writer.writeheader()
+            
+            for asset_type in asset_types:
+                # Convert None values to empty strings for CSV
+                row = {k: (v if v is not None else '') for k, v in asset_type.items()}
+                writer.writerow(row)
+        
+        logger.info("Successfully saved %s asset types to %s", len(asset_types), csv_path)
+        print(f"✓ Saved {len(asset_types)} asset types to {csv_path}")
+        
+        # Display first few records as sample
+        if asset_types:
+            print("\nSample records (first 5):")
+            print("-" * 80)
+            for i, asset_type in enumerate(asset_types[:5], 1):
+                print(f"{i}. {asset_type}")
+            if len(asset_types) > 5:
+                print(f"... and {len(asset_types) - 5} more records")
+            print("-" * 80)
+        
+        return asset_types
+    except Exception as e:
+        logger.error("Failed to fetch asset types: %s", str(e), exc_info=True)
+        print(f"✗ Failed to fetch asset types: {e}")
         raise
 

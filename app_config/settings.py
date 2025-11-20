@@ -118,8 +118,8 @@ def get_config(env: EnvName) -> AppConfig:
             ),
         }
         neo4j_export_batch_size = 6000
-        client_domain = "ecd"
-        community_domain = "ecd"
+        client_domain = "nectarit"
+        community_domain = "nectarit"
 
     elif env == "nec-aws-stg":
         neo4j = Neo4jConfig(
