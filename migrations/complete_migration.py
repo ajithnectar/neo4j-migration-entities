@@ -461,38 +461,57 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
         print("No subcommunities to migrate")
         return
     
+    logger.info(f"Found {len(rows)} subcommunities to process")
+    print(f"Processing {len(rows)} subcommunities...")
+    
     # Filter out subcommunities where community_id doesn't exist in clients table
-    valid_rows = []
+    # First, fetch all valid client_ids in a single query (much faster than individual queries)
+    valid_client_id_map = {}  # Maps lowercase input to actual client_id from DB
     skipped_community_count = 0
+    
+    logger.info("Validating subcommunity community_ids against clients table...")
     with conn.cursor() as cur:
-        for row in rows:
-            community_id = row[4]  # community_id is at index 4 in the tuple
-            
-            # Skip if community_id is null or empty
-            if not community_id:
-                skipped_community_count += 1
-                logger.warning("Skipping subcommunity %s due to missing community_id", row[0])
-                continue
-            
-            # Check if community_id exists in clients table (case-insensitive check)
+        # Get unique community_ids from the rows (skip null/empty)
+        unique_community_ids = list(set(
+            row[4] for row in rows if row[4]  # community_id is at index 4
+        ))
+        
+        if unique_community_ids:
+            # Fetch all valid client_ids in a single query (case-insensitive)
+            # Use ANY with array for case-insensitive comparison
             cur.execute("""
-                SELECT client_id FROM public.clients
-                WHERE LOWER(client_id) = LOWER(%s)
-                LIMIT 1
-            """, (community_id,))
-            result = cur.fetchone()
+                SELECT DISTINCT client_id FROM public.clients
+                WHERE LOWER(client_id) = ANY(
+                    SELECT LOWER(unnest(%s::text[]))
+                )
+            """, (unique_community_ids,))
             
-            if not result:
-                skipped_community_count += 1
-                logger.warning("Skipping subcommunity %s: community_id '%s' does not exist in clients table", row[0], community_id)
-                continue
-            
-            # Use the actual client_id from the database (in case of case mismatch)
-            actual_client_id = result[0]
-            # Update the row with the correct client_id
-            row_list = list(row)
-            row_list[4] = actual_client_id
-            valid_rows.append(tuple(row_list))
+            # Create a map: lowercase -> actual client_id
+            for (client_id,) in cur.fetchall():
+                valid_client_id_map[client_id.lower()] = client_id
+    
+    # Now filter rows in memory using the valid client_ids map
+    valid_rows = []
+    for row in rows:
+        community_id = row[4]  # community_id is at index 4 in the tuple
+        
+        # Skip if community_id is null or empty
+        if not community_id:
+            skipped_community_count += 1
+            logger.warning("Skipping subcommunity %s due to missing community_id", row[0])
+            continue
+        
+        # Check if community_id exists in the valid client_ids map (case-insensitive)
+        actual_client_id = valid_client_id_map.get(community_id.lower())
+        if not actual_client_id:
+            skipped_community_count += 1
+            logger.warning("Skipping subcommunity %s: community_id '%s' does not exist in clients table", row[0], community_id)
+            continue
+        
+        # Update the row with the correct client_id (preserving case from DB)
+        row_list = list(row)
+        row_list[4] = actual_client_id
+        valid_rows.append(tuple(row_list))
     
     if not valid_rows:
         print("No valid subcommunities to migrate (all subcommunities have invalid or missing community_id)")
@@ -503,6 +522,7 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
     if skipped_community_count > 0:
         logger.info(f"Skipped {skipped_community_count} subcommunities due to invalid/missing community_id")
     
+    logger.info(f"Inserting {len(valid_rows)} valid subcommunities into PostgreSQL...")
     sql = """
         INSERT INTO public.sub_community (
             identifier, geo_location, name, status, community_id, domain, type
@@ -516,6 +536,7 @@ def migrate_subcommunities(conn: _PGConnection, data: list[dict]) -> None:
             type = EXCLUDED.type
     """
     batch_insert(conn, sql, valid_rows)
+    logger.info(f"Successfully inserted {len(valid_rows)} subcommunities")
     print(f"✓ Migrated {len(valid_rows)} subcommunities")
 
 
@@ -625,19 +646,30 @@ def migrate_assets(conn: _PGConnection, data: list[dict], asset_type_csv: str | 
     asset_space_rows = get_asset_space_rows(data)
     if asset_space_rows:
         # Filter out spaces that don't exist in the database
-        valid_asset_space_rows = []
+        # First, fetch all valid space identifiers in a single query (much faster than individual queries)
+        valid_space_ids = set()
         with conn.cursor() as cur:
-            for asset_id, space_id in asset_space_rows:
-                # Check if space exists
-                cur.execute("""
+            # Get unique space IDs from the asset-space rows
+            unique_space_ids = list(set(space_id for _, space_id in asset_space_rows))
+            if unique_space_ids:
+                # Use a single query with IN clause to check all spaces at once
+                placeholders = ','.join(['%s'] * len(unique_space_ids))
+                cur.execute(f"""
                     SELECT identifier FROM public.space
-                    WHERE identifier = %s
-                    LIMIT 1
-                """, (space_id,))
-                if cur.fetchone():
-                    valid_asset_space_rows.append((asset_id, space_id))
-                else:
-                    logger.warning("Skipping asset-space relationship: space '%s' does not exist", space_id)
+                    WHERE identifier IN ({placeholders})
+                """, unique_space_ids)
+                valid_space_ids = {row[0] for row in cur.fetchall()}
+        
+        # Filter asset-space rows in memory using the valid space IDs set
+        valid_asset_space_rows = [
+            (asset_id, space_id) for asset_id, space_id in asset_space_rows
+            if space_id in valid_space_ids
+        ]
+        
+        # Log skipped relationships
+        skipped_count = len(asset_space_rows) - len(valid_asset_space_rows)
+        if skipped_count > 0:
+            logger.warning("Skipping %s asset-space relationships: spaces do not exist", skipped_count)
         
         if valid_asset_space_rows:
             asset_space_sql = """
@@ -872,25 +904,15 @@ def run_migration(conn: _PGConnection, csv_file_path: str | Path = "data_*.csv",
     if choice == '1':
         print("\n→ Migrating Subcommunities...")
         migrate_subcommunities(conn, data)
-        migrate_buildings(conn, data)
-        migrate_spaces(conn, data)
-        migrate_assets(conn, data)
-        migrate_points(conn, data)
     elif choice == '2':
         print("\n→ Migrating Buildings...")
         migrate_buildings(conn, data)
-        migrate_spaces(conn, data)
-        migrate_assets(conn, data)
-        migrate_points(conn, data)
     elif choice == '3':
         print("\n→ Migrating Spaces...")
         migrate_spaces(conn, data)
-        migrate_assets(conn, data)
-        migrate_points(conn, data)
     elif choice == '4':
         print("\n→ Migrating Assets...")
         migrate_assets(conn, data)
-        migrate_points(conn, data)
     elif choice == '5':
         print("\n→ Migrating Points...")
         migrate_points(conn, data)

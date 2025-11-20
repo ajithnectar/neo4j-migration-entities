@@ -1,257 +1,257 @@
-﻿parent_name,child_name,child_template_name,child_display_name
-"""Equipment""","""Electrical""","""ELECTRICAL SYSTEMS""","""Electrical"""
-"""Equipment""","""POD""","""POD""","""POD"""
-"""Equipment""","""ControlSystems""","""Control Systems""","""displayName"""
-"""Equipment""","""WindMonitorSystem""","""Wind Monitor System""","""identifier"""
-"""Equipment""","""Mechanical""","""MECHANICAL SYSTEMS""","""name"""
-"""Equipment""","""LifeAndSafety""","""LIFE & SAFETY SYSTEMS""","""Life And Safety"""
-"""Equipment""","""Plumbing""","""PLUMBING SYSTEMS""","""Plumbing"""
-"""Equipment""","""HVAC""","""HVAC SYSTEMS""","""Miscellaneous"""
-"""Electrical""","""PhotovoltaicLightPowerMeter""","""Photovoltaic Light Power Meter""","""Photovoltaic Light Power Meter"""
-"""Electrical""","""VariableFrequencyDrive""","""Variable Frequency Drive""","""Variable Frequency Drive"""
-"""Electrical""","""PowerFactorCorrectionUnit""","""Power Factor Correction Unit""","""Power Factor Correction Unit"""
-"""Electrical""","""VirtualMachine""","""Virtual Machine""","""Virtual Machine"""
-"""Electrical""","""Metering""","""Metering""","""name"""
-"""Electrical""","""EmergencyPower""","""Emergency Power""","""name"""
-"""Electrical""","""CleanAgentSystem""","""Clean Agent System""","""Clean Agent System"""
-"""Electrical""","""ElectricalPanels""","""Electrical Panels""","""name"""
-"""Electrical""","""PhotovoltaicSystem""","""Photovoltaic System""","""name"""
-"""Electrical""","""DistributionBoards""","""Distribution Boards""","""name"""
-"""Electrical""","""Lighting""","""Lighting""","""name"""
-"""Electrical""","""PhotovoltaicLightPower""","""Photovoltaic Light Power""","""Photovoltaic Light Power"""
-"""Metering""","""SMDBPVMeter""","""SMDB PV Meter""","""SMDB PV Meter"""
-"""Metering""","""EmergencySMDBMeter""","""Emergency SMDBMeter""","""Emergency SMDBMeter"""
-"""Metering""","""EmergencySMDB""","""Emergency SMDB""","""Emergency SMDB"""
-"""Metering""","""EmergencyMCCMeter""","""Emergency MCC Meter""","""Emergency MCC Meter"""
-"""Metering""","""WaterSubMeter""","""Water Sub Meter""","""Water Sub Meter"""
-"""Metering""","""BTUSubMeter""","""BTU Sub Meter""","""BTU Sub Meter"""
-"""Metering""","""GeneratorMeter""","""Generator Meter""","""Generator Meter"""
-"""Metering""","""BTUMeter""","""BTU Meter""","""BTU Meter"""
-"""Metering""","""LVPSubMeter""","""LV Panel Sub Meter""","""LV Panel Sub Meter"""
-"""Metering""","""LVPMeter""","""LV Panel Meter""","""name"""
-"""Metering""","""WaterMeter""","""Water Meter""","""name"""
-"""Metering""","""RenewableMeter""","""Renewable Meter""","""Renewable Meter"""
-"""Metering""","""LVPanel""","""LV Panel""","""LV Panel"""
-"""Metering""","""DBMeter""","""DB Meter""","""DB Meter"""
-"""Metering""","""MCCPMeter""","""MCCP Meter""","""MCCP Meter"""
-"""Metering""","""SMDBMeter""","""SMDB Meter""","""SMDB Meter"""
-"""RenewableMeter""","""SolarEnergySubMeter""","""Solar Energy Sub Meter""","""Solar Energy Sub Meter"""
-"""RenewableMeter""","""SolarEnergyMeter""","""Solar Energy Meter""","""Solar Energy Meter"""
-"""EmergencyPower""","""UPS""","""UPS""","""UPS"""
-"""EmergencyPower""","""Generator""","""Generator""","""Generator"""
-"""EmergencyPower""","""CBS""","""Central Battery System""","""Central Battery System"""
-"""ElectricalPanels""","""MCCPanel""","""MCC Panel""","""name"""
-"""ElectricalPanels""","""AccessControlSystemCommon""","""Access Control System Common""","""Access Control System Common"""
-"""ElectricalPanels""","""ATSPanel""","""ATS Panel""","""name"""
-"""ElectricalPanels""","""EMCCPanel""","""EMCC Panel""","""EMCC Panel"""
-"""ElectricalPanels""","""HMIPanel""","""HMI Panel""","""HMI Panel"""
-"""ElectricalPanels""","""LeakDetectionPanel""","""Leak Detection Panel""","""Leak Detection Panel"""
-"""ElectricalPanels""","""CapacitorBank""","""Capacitor Bank""","""Capacitor Bank"""
-"""ElectricalPanels""","""ACSPanel""","""ACS Panel""","""ACS Panel"""
-"""ElectricalPanels""","""ACBPanel""","""ACB Panel""","""ACB Panel"""
-"""PhotovoltaicSystem""","""SolarPanel""","""Solar Panel""","""Solar Panel"""
-"""SolarPanel""","""ETree""","""E Tree""","""E Tree"""
-"""DistributionBoards""","""FeederPanel""","""Feeder Panel""","""Feeder Panel"""
-"""DistributionBoards""","""ESMDB""","""Emergency SMDB""","""Emergency SMDB"""
-"""DistributionBoards""","""SMDB""","""SMDB""","""name"""
-"""DistributionBoards""","""MDB""","""MDB""","""name"""
-"""Lighting""","""EmergencyLightingPanel""","""Emergency Lighting Panel""","""Emergency Lighting Panel"""
-"""Lighting""","""AircraftWarningLight""","""Aircraft Warning Light""","""Aircraft Warning Light"""
-"""Lighting""","""LightingControls""","""Lighting Control System""","""Lighting Control System"""
-"""POD""","""AVPOD""","""AV POD""","""AV POD"""
-"""AVPOD""","""AVPODCommon""","""AV POD Common""","""AV POD Common"""
-"""ControlSystems""","""Server""","""Server""","""Server"""
-"""ControlSystems""","""DDCController""","""DDC Controller""","""displayName"""
-"""Mechanical""","""Escalator""","""Escalator""","""name"""
-"""Mechanical""","""FuelTank""","""Fuel Tank""","""Fuel Tank"""
-"""Mechanical""","""DieselTank""","""Diesel Tank""","""Diesel Tank"""
-"""Mechanical""","""VerticalHorizontalTransport""","""Vertical/Horizontal Transport""","""name"""
-"""Mechanical""","""GreaseSeparator""","""Grease Separator""","""Grease Separator"""
-"""Mechanical""","""SteamGenerator""","""Steam Generator""","""Steam Generator"""
-"""Mechanical""","""GateBarrier""","""Gate Barrier""","""Gate Barrier"""
-"""Mechanical""","""EntranceDoor""","""Entrance Door""","""Entrance Door"""
-"""Mechanical""","""OilTank""","""Oil Tank""","""Oil Tank"""
-"""VerticalHorizontalTransport""","""LiftPanel""","""Lift Panel""","""Lift Panel"""
-"""VerticalHorizontalTransport""","""Lift""","""Lift""","""name"""
-"""Lift""","""LiftPressureSensor""","""Lift Pressure Sensor""","""Lift Pressure Sensor"""
-"""LifeAndSafety""","""FireWaterTankCommon""","""Fire Water Tank Common""","""Fire Water Tank Common"""
-"""LifeAndSafety""","""WetControlPanel""","""Wet Control Panel""","""Wet Control Panel"""
-"""LifeAndSafety""","""FirePumpSetCommon""","""Fire Pump Set Common""","""Fire Pump Set Common"""
-"""LifeAndSafety""","""PublicAddressSystem""","""Public Address System""","""Public Address System"""
-"""LifeAndSafety""","""FireSuppressionSystem""","""Fire Suppression System""","""Fire Suppression System"""
-"""LifeAndSafety""","""LPGGasNetwork""","""LPG Gas Network""","""LPGGasNetwork"""
-"""LifeAndSafety""","""FireFighting""","""Fire Fighting""","""name"""
-"""LifeAndSafety""","""FireAlarm""","""Fire Alarm""","""name"""
-"""LifeAndSafety""","""PreActionSystem""","""Pre Action System""","""Pre Action System"""
-"""LifeAndSafety""","""FireElectricalPump""","""Fire Electrical Pump""","""name"""
-"""LifeAndSafety""","""FireDieselPump""","""Fire Diesel Pump""","""name"""
-"""LifeAndSafety""","""FireJockeyPump""","""Fire Jockey Pump""","""name"""
-"""LifeAndSafety""","""FireWaterTank""","""Fire Water Tank""","""name"""
-"""LifeAndSafety""","""FoamSystem""","""Foam System""","""name"""
-"""LifeAndSafety""","""GasMonitoringSystem""","""Gas Monitoring System""","""name"""
-"""LifeAndSafety""","""CentralMonitoringPanel""","""Central Monitoring Panel""","""name"""
-"""LPGGasNetwork""","""GasMeter""","""Gas Meter""","""Gas Meter"""
-"""LPGGasNetwork""","""GasPanel""","""Gas Panel""","""Gas Panel"""
-"""FireFighting""","""FM200""","""FM 200""","""FM 200"""
-"""FireFighting""","""SmokeExtractFanCommon""","""Smoke Extract Fan Common""","""Smoke Extract Fan Common"""
-"""FireFighting""","""SEF""","""Smoke Extract Fan""","""SmokeExtractFan"""
-"""FireFighting""","""SPF""","""Staircase Pressurization Fan""","""Staircase Pressurization Fan"""
-"""FireFighting""","""MSFD""","""Motorized Smoke Fire Damper""","""Motorized Smoke Fire Damper"""
-"""FireAlarm""","""FireAlarmSystem""","""Fire Alarm System""","""Fire Alarm System"""
-"""FireAlarm""","""ZoneData""","""Zone Data""","""Zone Data"""
-"""FireAlarm""","""FireDuctDoor""","""Fire Duct Door""","""Fire Duct Door"""
-"""FireAlarm""","""FireShutterPanel""","""Fire Shutter Panel""","""Fire Shutter Panel"""
-"""GasMonitoringSystem""","""LPG""","""LPG""","""name"""
-"""GasMonitoringSystem""","""FlueGasSensor""","""Flue Gas Sensor""","""Flue Gas Sensor"""
-"""Plumbing""","""CondensateWaterTank""","""Condensate Water Tank""","""Condensate Water Tank"""
-"""Plumbing""","""WaterTreatmentPlant""","""Water Treatment Plant""","""Water Treatment Plant"""
-"""Plumbing""","""ChemicalTreatment""","""Chemical Treatment""","""Chemical Treatment"""
-"""Plumbing""","""WaterCirculationPump""","""Water Circulation Pump""","""Water Circulation Pump"""
-"""Plumbing""","""WaterFiltrationSystem""","""Water Filtration System""","""Water Filtration System"""
-"""Plumbing""","""SHCPHeater""","""SHCP Heater""","""SHCP Heater"""
-"""Plumbing""","""FuelOilSystem""","""Fuel Oil System""","""Fuel Oil System"""
-"""Plumbing""","""Heater""","""Heater""","""Heater"""
-"""Plumbing""","""PenstockValve""","""Penstock Valve""","""Penstock Valve"""
-"""Plumbing""","""FilterationPump""","""Filteration Pump""","""Filteration Pump"""
-"""Plumbing""","""IrrigationPumpCommon""","""Irrigation Pump Common""","""name"""
-"""Plumbing""","""IrrigationPump""","""Irrigation Pump""","""name"""
-"""Plumbing""","""GreaseInterceptorControlPanel""","""Grease Interceptor Control Panel""","""name"""
-"""Plumbing""","""OilInterceptorControlPanel""","""Oil Interceptor Control Panel""","""name"""
-"""Plumbing""","""GreaseWaterPumpCommon""","""Grease Water Pump Common""","""name"""
-"""Plumbing""","""GreaseWaterPump""","""Grease Water Pump""","""name"""
-"""Plumbing""","""BlackWaterProcessSystem""","""Black Water Process System""","""name"""
-"""Plumbing""","""CondensateWaterProcessSystem""","""Condensate Water Process System""","""name"""
-"""Plumbing""","""GreyWaterProcessSystem""","""Grey Water Process System""","""name"""
-"""Plumbing""","""NonPortWaterTankCommon""","""Non Port Water Tank Common""","""Non Port Water Tank Common"""
-"""Plumbing""","""NonPortWaterTank""","""Non Port Water Tank""","""Non Port Water Tank"""
-"""Plumbing""","""TreatedWaterTank""","""Treated Water Tank""","""Treated Water Tank"""
-"""Plumbing""","""DeionizationFilterationUnit""","""Deionization Filteration Unit""","""Deionization Filteration Unit"""
-"""Plumbing""","""CondensateWaterTankCommon""","""Condensate Water Tank Common""","""Condensate Water Tank Common"""
-"""Plumbing""","""WaterTanks""","""Water Tanks""","""name"""
-"""Plumbing""","""Pumps""","""Pumps""","""name"""
-"""Plumbing""","""PotableWaterTank""","""Potable Water Tank""","""Potable Water Tank"""
-"""Plumbing""","""PotableWaterTankCommon""","""Potable Water Tank Common""","""Potable Water Tank Common"""
-"""Plumbing""","""CirculationPump""","""Circulation Pump""","""Circulation Pump"""
-"""Plumbing""","""WaterTank""","""Water Tank""","""name"""
-"""Plumbing""","""WaterTankCommon""","""Water Tank Common""","""Water Tank Common"""
-"""Plumbing""","""SolarDisinfectionSystem""","""Solar Disinfection System""","""Solar Disinfection System"""
-"""Plumbing""","""SolarDisinfectionSystemTank""","""Solar Disinfection System Tank""","""Solar Disinfection System Tank"""
-"""Plumbing""","""StormWaterPump""","""Storm Water Pump""","""Storm Water Pump"""
-"""Plumbing""","""StormWaterPumpCommon""","""Storm Water Pump Common""","""Storm Water Pump Common"""
-"""Plumbing""","""CirculationPumpCommon""","""Circulation Pump Common""","""Circulation Pump Common"""
-"""Plumbing""","""GreyWaterTank""","""Grey Water Tank""","""Grey Water Tank"""
-"""Plumbing""","""GreyWaterTankCommon""","""Grey Water Tank Common""","""Grey Water Tank Common"""
-"""WaterFiltrationSystem""","""SandFilters""","""Sand Filters""","""Sand Filters"""
-"""WaterFiltrationSystem""","""IonizationUnit""","""Ionization Unit""","""Ionization Unit"""
-"""WaterFiltrationSystem""","""CarbonFilters""","""Carbon Filters""","""Carbon Filters"""
-"""WaterTanks""","""CalorifierTank""","""Calorifier Tank""","""Calorifier Tank"""
-"""WaterTanks""","""PRV""","""PIR Activated Motorized Valve""","""Pressure Reducing Valve"""
-"""WaterTanks""","""IrrigationTank""","""Irrigation Tank""","""name"""
-"""WaterTanks""","""StormWaterTank""","""Storm Water Tank""","""name"""
-"""WaterTanks""","""BrackishWaterProcessSystem""","""Brackish Water Process System""","""name"""
-"""WaterTanks""","""BrackishWaterTank""","""Brackish Water Tank""","""Brackish Water Tank"""
-"""Pumps""","""WaterBoosterPump""","""Water Booster Pump""","""Water Booster Pump"""
-"""Pumps""","""CondensatePump""","""Condensate Pump""","""Condensate Pump"""
-"""Pumps""","""WasteWaterPump""","""Waste Water Pump""","""Waste Water Pump"""
-"""Pumps""","""CarParkWaterPump""","""Car Park Water Pump""","""Car Park Water Pump"""
-"""Pumps""","""CarParkWaterPump""","""Car Park Water Pump""","""Car Park Water Pump"""
-"""Pumps""","""FoulWaterPump""","""Foul Water Pump""","""Foul Water Pump"""
-"""Pumps""","""RecyclingPump""","""Recycling Pump""","""Recycling Pump"""
-"""Pumps""","""LiftingPumpCommon""","""Lifting Pump Common""","""Lifting Pump Common"""
-"""Pumps""","""SweeperPump""","""Sweeper Pump""","""Sweeper Pump"""
-"""Pumps""","""GrinderPumpCommon""","""Grinder Pump Common""","""Grinder Pump Common"""
-"""Pumps""","""BoosterPumpCommon""","""Booster Pump Common""","""Booster Pump Common"""
-"""Pumps""","""WaterBoosterPumpCommon""","""Water Booster Pump Common""","""Water Booster Pump Common"""
-"""Pumps""","""ChlorineSystem""","""Chlorine System""","""Chlorine System"""
-"""Pumps""","""VacuumDegasser""","""Vacuum Degasser""","""Vacuum Degasser"""
-"""Pumps""","""SideStreamFilterationUnit""","""Side Stream Filteration Unit""","""Side Stream Filteration Unit"""
-"""Pumps""","""SolarWaterPump""","""Solar Water Pump""","""Solar Water Pump"""
-"""Pumps""","""RecirculationPump""","""Recirculation Pump""","""Recirculation Pump"""
-"""Pumps""","""GrinderPump""","""Grinder Pump""","""Grinder Pump"""
-"""Pumps""","""ChemicalDosingUnit""","""Chemical Dosing Unit""","""Chemical Dosing Unit"""
-"""Pumps""","""LiftingPump""","""Lifting Pump""","""Lifting Pump"""
-"""Pumps""","""TransferPump""","""Transfer Pump""","""name"""
-"""Pumps""","""TransferPumpCommon""","""Transfer Pump Common""","""name"""
-"""Pumps""","""MakeUpPump""","""Makeup Pump""","""name"""
-"""Pumps""","""MakeupPumpCommon""","""Makeup Pump Common""","""name"""
-"""Pumps""","""BoosterPump""","""Booster Pump""","""name"""
-"""Pumps""","""SumpPump""","""Sump Pump""","""name"""
-"""Pumps""","""SumpPumpCommon""","""Sump Pump Common""","""name"""
-"""Pumps""","""StormPump""","""Storm Pump""","""name"""
-"""Pumps""","""StormPumpCommon""","""Storm Pump Common""","""name"""
-"""Pumps""","""SweeperSystemPump""","""Sweeper System Pump""","""Sweeper System Pump"""
-"""SumpPump""","""SludgeSumpPump""","""Sludge Sump Pump""","""Sludge Sump Pump"""
-"""SumpPump""","""CarParkDischargePump""","""Car Park Discharge Pump""","""Car Park Discharge Pump"""
-"""WaterTank""","""ExpansionTank""","""Expansion Tank""","""Expansion Tank"""
-"""WaterTank""","""GRPWaterTankCommon""","""GRP Water Tank Common""","""GRP Water Tank Common"""
-"""WaterTank""","""GRPWaterTank""","""GRP Water Tank""","""GRP Water Tank"""
-"""HVAC""","""DXUnit""","""DX Unit""","""DX Unit"""
-"""HVAC""","""ACSplitUnit""","""AC Split Unit""","""AC Split Unit"""
-"""HVAC""","""PrimaryPumpCommon""","""Primary Pump Common""","""Primary Pump Common"""
-"""HVAC""","""HeatPumpCommon""","""Heat Pump Common""","""Heat Pump Common"""
-"""HVAC""","""HeatPump""","""Heat Pump""","""Heat Pump"""
-"""HVAC""","""CondenserMakeupPanel""","""Condenser Makeup Panel""","""Condenser Makeup Panel"""
-"""HVAC""","""CondensatePumpCommon""","""Condensate Pump Common""","""Condensate Pump Common"""
-"""HVAC""","""SecondaryPumpCommon""","""Secondary Pump Common""","""Secondary Pump Common"""
-"""HVAC""","""PackageUnit""","""Package Unit""","""Package Unit"""
-"""HVAC""","""CoolingTowerCommon""","""Cooling Tower Common""","""Cooling Tower Common"""
-"""HVAC""","""CoolingTower""","""Cooling Tower""","""Cooling Tower"""
-"""HVAC""","""ExpansionVessels""","""Expansion Vessels""","""Expansion Vessels"""
-"""HVAC""","""ChemicalFeeder""","""Chemical Feeder""","""Chemical Feeder"""
-"""HVAC""","""EmergencyCooler""","""Emergency Cooler""","""Emergency Cooler"""
-"""HVAC""","""Thermostat""","""Thermostat""","""Thermostat"""
-"""HVAC""","""Dampers""","""Dampers""","""name"""
-"""HVAC""","""ChillerCommon""","""Chiller Common""","""Chiller Common"""
-"""HVAC""","""TemperatureSensor""","""Temperature Sensor""","""Temperature Sensor"""
-"""HVAC""","""AirSide""","""Air Side""","""name"""
-"""HVAC""","""WaterSide""","""Water Side""","""name"""
-"""HVAC""","""Fans""","""Fans""","""name"""
-"""HVAC""","""AOVD""","""AOVD""","""AOVD"""
-"""HVAC""","""CRAC""","""Computer Room Air Conditioning""","""Computer Room Air Conditioning"""
-"""HVAC""","""VRF""","""VRF""","""VRF"""
-"""HVAC""","""ColdRoom""","""Cold Room""","""name"""
-"""HVAC""","""VRFSystem""","""VRF System""","""name"""
-"""HVAC""","""AirQualitySystem""","""Air Quality System""","""name"""
-"""HVAC""","""CondensorPump""","""Condenser Pump""","""Condensor Pump"""
-"""ChemicalFeeder""","""DosingPump""","""Dosing Pump""","""Dosing Pump"""
-"""Thermostat""","""RoomData""","""Room Data""","""Room Data"""
-"""TemperatureSensor""","""Global""","""Global""","""Global"""
-"""TemperatureSensor""","""SpaceTemperature""","""Space Temperature""","""Space Temperature"""
-"""AirSide""","""VRVSystem""","""VRV System""","""VRV System"""
-"""AirSide""","""MAHU""","""MAHU""","""MAHU"""
-"""AirSide""","""MotorizedVolumeControlDamper""","""Motorized Volume Control Damper""","""Motorized Volume Control Damper"""
-"""AirSide""","""AHU""","""Air Handling Unit""","""Air Handling Unit"""
-"""AirSide""","""FAHU""","""Fresh Air Handling Unit""","""Fresh Air Handling Unit"""
-"""AirSide""","""FanCoilUnit""","""Fan Coil Unit""","""Fan Coil Unit"""
-"""AirSide""","""VAV""","""VAV""","""VAV"""
-"""AirSide""","""CAV""","""CAV""","""name"""
-"""AirSide""","""AirCurtain""","""Air Curtain""","""name"""
-"""AirSide""","""CCU""","""Close Control Unit""","""Close Control Unit"""
-"""AirSide""","""RecirculatingAirHandlingUnit""","""Recirculating Air Handling Unit""","""Recirculating Air Handling Unit"""
-"""AirSide""","""MakeupAirFan""","""Makeup Air Fan""","""Makeup Air Fan"""
-"""FanCoilUnit""","""HybridFCU""","""Hybrid Fan Coil Unit""","""Hybrid Fan Coil Unit"""
-"""WaterSide""","""Chiller""","""Chiller""","""name"""
-"""WaterSide""","""CHWCommonHeader""","""Chilled Water Common Header""","""Chilled Water Common Header"""
-"""WaterSide""","""PrimaryPump""","""Primary Pump""","""Primary Pump"""
-"""WaterSide""","""SecondaryPump""","""Secondary Pump""","""Secondary Pump"""
-"""WaterSide""","""HeatExchanger""","""Heat Exchanger""","""name"""
-"""WaterSide""","""DosingUnit""","""Dosing Unit""","""Dosing Unit"""
-"""WaterSide""","""PressurizationUnit""","""Pressurization Unit""","""Pressurization Unit"""
-"""WaterSide""","""ChilledWaterStation""","""Chilled Water Station""","""Chilled Water Station"""
-"""WaterSide""","""HeatExchangerCommon""","""Heat Exchanger Common""","""Heat Exchanger Common"""
-"""Fans""","""TransformerRoomFan""","""Transformer Room Fan""","""Transformer Room Fan"""
-"""Fans""","""EcologyUnit""","""Ecology Unit""","""Ecology Unit"""
-"""Fans""","""ExhaustFan""","""Exhaust Fan""","""Exhaust Fan"""
-"""Fans""","""MakeupFan""","""Makeup Fan""","""Makeup Fan"""
-"""Fans""","""SmokeExhaustFan""","""Smoke Exhaust Fan""","""Smoke Exhaust Fan"""
-"""Fans""","""FreshAirFan""","""Fresh Air Fan""","""Fresh Air Fan"""
-"""Fans""","""FreshAirFanCommon""","""Fresh Air Fan Common""","""Fresh Air Fan Common"""
-"""Fans""","""TransformerRoomExtractFan""","""Transformer Room Extract Fan""","""Transformer Room Extract Fan"""
-"""Fans""","""LiftPressurizationFan""","""Lift Pressurization Fan""","""Lift Pressurization Fan"""
-"""Fans""","""ExtractFan""","""Extract Fan""","""Extract Fan"""
-"""AirQualitySystem""","""CO2Sensor""","""CO2 Sensor""","""CO2 Sensor"""
-"""AirQualitySystem""","""COSensor""","""CO Sensor""","""CO Sensor"""
-"""AirQualitySystem""","""CarbonMonoxideSensor""","""Carbon Monoxide Sensor""","""Carbon Monoxide Sensor"""
-"""AirQualitySystem""","""COMonitoringPanel""","""CO Monitoring Panel""","""CO Monitoring Panel"""
-"""AirQualitySystem""","""AirQualitySensor""","""Air Quality Sensor""","""Air Quality"""
-"""AirQualitySystem""","""AmbientTemperatureSensor""","""Ambient Temperature Sensor""","""Ambient Temperature Sensor"""
+parent_name,child_name,child_template_name
+Equipment,Electrical,ELECTRICAL SYSTEMS
+Equipment,POD,POD
+Equipment,ControlSystems,Control Systems
+Equipment,WindMonitorSystem,Wind Monitor System
+Equipment,Mechanical,MECHANICAL SYSTEMS
+Equipment,LifeAndSafety,LIFE & SAFETY SYSTEMS
+Equipment,Plumbing,PLUMBING SYSTEMS
+Equipment,HVAC,HVAC SYSTEMS
+Electrical,PhotovoltaicLightPowerMeter,Photovoltaic Light Power Meter
+Electrical,VariableFrequencyDrive,Variable Frequency Drive
+Electrical,PowerFactorCorrectionUnit,Power Factor Correction Unit
+Electrical,VirtualMachine,Virtual Machine
+Electrical,Metering,Metering
+Electrical,EmergencyPower,Emergency Power
+Electrical,CleanAgentSystem,Clean Agent System
+Electrical,ElectricalPanels,Electrical Panels
+Electrical,PhotovoltaicSystem,Photovoltaic System
+Electrical,DistributionBoards,Distribution Boards
+Electrical,Lighting,Lighting
+Electrical,PhotovoltaicLightPower,Photovoltaic Light Power
+Metering,SMDBPVMeter,SMDB PV Meter
+Metering,EmergencySMDBMeter,Emergency SMDBMeter
+Metering,EmergencySMDB,Emergency SMDB
+Metering,EmergencyMCCMeter,Emergency MCC Meter
+Metering,WaterSubMeter,Water Sub Meter
+Metering,BTUSubMeter,BTU Sub Meter
+Metering,GeneratorMeter,Generator Meter
+Metering,BTUMeter,BTU Meter
+Metering,LVPSubMeter,LV Panel Sub Meter
+Metering,LVPMeter,LV Panel Meter
+Metering,WaterMeter,Water Meter
+Metering,RenewableMeter,Renewable Meter
+Metering,LVPanel,LV Panel
+Metering,DBMeter,DB Meter
+Metering,MCCPMeter,MCCP Meter
+Metering,SMDBMeter,SMDB Meter
+RenewableMeter,SolarEnergySubMeter,Solar Energy Sub Meter
+RenewableMeter,SolarEnergyMeter,Solar Energy Meter
+EmergencyPower,UPS,UPS
+EmergencyPower,Generator,Generator
+EmergencyPower,CBS,Central Battery System
+ElectricalPanels,MCCPanel,MCC Panel
+ElectricalPanels,AccessControlSystemCommon,Access Control System Common
+ElectricalPanels,ATSPanel,ATS Panel
+ElectricalPanels,EMCCPanel,EMCC Panel
+ElectricalPanels,HMIPanel,HMI Panel
+ElectricalPanels,LeakDetectionPanel,Leak Detection Panel
+ElectricalPanels,CapacitorBank,Capacitor Bank
+ElectricalPanels,ACSPanel,ACS Panel
+ElectricalPanels,ACBPanel,ACB Panel
+PhotovoltaicSystem,SolarPanel,Solar Panel
+SolarPanel,ETree,E Tree
+DistributionBoards,FeederPanel,Feeder Panel
+DistributionBoards,ESMDB,Emergency SMDB
+DistributionBoards,SMDB,SMDB
+DistributionBoards,MDB,MDB
+Lighting,EmergencyLightingPanel,Emergency Lighting Panel
+Lighting,AircraftWarningLight,Aircraft Warning Light
+Lighting,LightingControls,Lighting Control System
+POD,AVPOD,AV POD
+AVPOD,AVPODCommon,AV POD Common
+ControlSystems,Server,Server
+ControlSystems,DDCController,DDC Controller
+Mechanical,Escalator,Escalator
+Mechanical,FuelTank,Fuel Tank
+Mechanical,DieselTank,Diesel Tank
+Mechanical,VerticalHorizontalTransport,Vertical/Horizontal Transport
+Mechanical,GreaseSeparator,Grease Separator
+Mechanical,SteamGenerator,Steam Generator
+Mechanical,GateBarrier,Gate Barrier
+Mechanical,EntranceDoor,Entrance Door
+Mechanical,OilTank,Oil Tank
+VerticalHorizontalTransport,LiftPanel,Lift Panel
+VerticalHorizontalTransport,Lift,Lift
+Lift,LiftPressureSensor,Lift Pressure Sensor
+LifeAndSafety,FireWaterTankCommon,Fire Water Tank Common
+LifeAndSafety,WetControlPanel,Wet Control Panel
+LifeAndSafety,FirePumpSetCommon,Fire Pump Set Common
+LifeAndSafety,PublicAddressSystem,Public Address System
+LifeAndSafety,FireSuppressionSystem,Fire Suppression System
+LifeAndSafety,LPGGasNetwork,LPG Gas Network
+LifeAndSafety,FireFighting,Fire Fighting
+LifeAndSafety,FireAlarm,Fire Alarm
+LifeAndSafety,PreActionSystem,Pre Action System
+LifeAndSafety,FireElectricalPump,Fire Electrical Pump
+LifeAndSafety,FireDieselPump,Fire Diesel Pump
+LifeAndSafety,FireJockeyPump,Fire Jockey Pump
+LifeAndSafety,FireWaterTank,Fire Water Tank
+LifeAndSafety,FoamSystem,Foam System
+LifeAndSafety,GasMonitoringSystem,Gas Monitoring System
+LifeAndSafety,CentralMonitoringPanel,Central Monitoring Panel
+LPGGasNetwork,GasMeter,Gas Meter
+LPGGasNetwork,GasPanel,Gas Panel
+FireFighting,FM200,FM 200
+FireFighting,SmokeExtractFanCommon,Smoke Extract Fan Common
+FireFighting,SEF,Smoke Extract Fan
+FireFighting,SPF,Staircase Pressurization Fan
+FireFighting,MSFD,Motorized Smoke Fire Damper
+FireAlarm,FireAlarmSystem,Fire Alarm System
+FireAlarm,ZoneData,Zone Data
+FireAlarm,FireDuctDoor,Fire Duct Door
+FireAlarm,FireShutterPanel,Fire Shutter Panel
+GasMonitoringSystem,LPG,LPG
+GasMonitoringSystem,FlueGasSensor,Flue Gas Sensor
+Plumbing,CondensateWaterTank,Condensate Water Tank
+Plumbing,WaterTreatmentPlant,Water Treatment Plant
+Plumbing,ChemicalTreatment,Chemical Treatment
+Plumbing,WaterCirculationPump,Water Circulation Pump
+Plumbing,WaterFiltrationSystem,Water Filtration System
+Plumbing,SHCPHeater,SHCP Heater
+Plumbing,FuelOilSystem,Fuel Oil System
+Plumbing,Heater,Heater
+Plumbing,PenstockValve,Penstock Valve
+Plumbing,FilterationPump,Filteration Pump
+Plumbing,IrrigationPumpCommon,Irrigation Pump Common
+Plumbing,IrrigationPump,Irrigation Pump
+Plumbing,GreaseInterceptorControlPanel,Grease Interceptor Control Panel
+Plumbing,OilInterceptorControlPanel,Oil Interceptor Control Panel
+Plumbing,GreaseWaterPumpCommon,Grease Water Pump Common
+Plumbing,GreaseWaterPump,Grease Water Pump
+Plumbing,BlackWaterProcessSystem,Black Water Process System
+Plumbing,CondensateWaterProcessSystem,Condensate Water Process System
+Plumbing,GreyWaterProcessSystem,Grey Water Process System
+Plumbing,NonPortWaterTankCommon,Non Port Water Tank Common
+Plumbing,NonPortWaterTank,Non Port Water Tank
+Plumbing,TreatedWaterTank,Treated Water Tank
+Plumbing,DeionizationFilterationUnit,Deionization Filteration Unit
+Plumbing,CondensateWaterTankCommon,Condensate Water Tank Common
+Plumbing,WaterTanks,Water Tanks
+Plumbing,Pumps,Pumps
+Plumbing,PotableWaterTank,Potable Water Tank
+Plumbing,PotableWaterTankCommon,Potable Water Tank Common
+Plumbing,CirculationPump,Circulation Pump
+Plumbing,WaterTank,Water Tank
+Plumbing,WaterTankCommon,Water Tank Common
+Plumbing,SolarDisinfectionSystem,Solar Disinfection System
+Plumbing,SolarDisinfectionSystemTank,Solar Disinfection System Tank
+Plumbing,StormWaterPump,Storm Water Pump
+Plumbing,StormWaterPumpCommon,Storm Water Pump Common
+Plumbing,CirculationPumpCommon,Circulation Pump Common
+Plumbing,GreyWaterTank,Grey Water Tank
+Plumbing,GreyWaterTankCommon,Grey Water Tank Common
+WaterFiltrationSystem,SandFilters,Sand Filters
+WaterFiltrationSystem,IonizationUnit,Ionization Unit
+WaterFiltrationSystem,CarbonFilters,Carbon Filters
+WaterTanks,CalorifierTank,Calorifier Tank
+WaterTanks,PRV,PIR Activated Motorized Valve
+WaterTanks,IrrigationTank,Irrigation Tank
+WaterTanks,StormWaterTank,Storm Water Tank
+WaterTanks,BrackishWaterProcessSystem,Brackish Water Process System
+WaterTanks,BrackishWaterTank,Brackish Water Tank
+Pumps,WaterBoosterPump,Water Booster Pump
+Pumps,CondensatePump,Condensate Pump
+Pumps,WasteWaterPump,Waste Water Pump
+Pumps,CarParkWaterPump,Car Park Water Pump
+Pumps,CarParkWaterPump,Car Park Water Pump
+Pumps,FoulWaterPump,Foul Water Pump
+Pumps,RecyclingPump,Recycling Pump
+Pumps,LiftingPumpCommon,Lifting Pump Common
+Pumps,SweeperPump,Sweeper Pump
+Pumps,GrinderPumpCommon,Grinder Pump Common
+Pumps,BoosterPumpCommon,Booster Pump Common
+Pumps,WaterBoosterPumpCommon,Water Booster Pump Common
+Pumps,ChlorineSystem,Chlorine System
+Pumps,VacuumDegasser,Vacuum Degasser
+Pumps,SideStreamFilterationUnit,Side Stream Filteration Unit
+Pumps,SolarWaterPump,Solar Water Pump
+Pumps,RecirculationPump,Recirculation Pump
+Pumps,GrinderPump,Grinder Pump
+Pumps,ChemicalDosingUnit,Chemical Dosing Unit
+Pumps,LiftingPump,Lifting Pump
+Pumps,TransferPump,Transfer Pump
+Pumps,TransferPumpCommon,Transfer Pump Common
+Pumps,MakeUpPump,Makeup Pump
+Pumps,MakeupPumpCommon,Makeup Pump Common
+Pumps,BoosterPump,Booster Pump
+Pumps,SumpPump,Sump Pump
+Pumps,SumpPumpCommon,Sump Pump Common
+Pumps,StormPump,Storm Pump
+Pumps,StormPumpCommon,Storm Pump Common
+Pumps,SweeperSystemPump,Sweeper System Pump
+SumpPump,SludgeSumpPump,Sludge Sump Pump
+SumpPump,CarParkDischargePump,Car Park Discharge Pump
+WaterTank,ExpansionTank,Expansion Tank
+WaterTank,GRPWaterTankCommon,GRP Water Tank Common
+WaterTank,GRPWaterTank,GRP Water Tank
+HVAC,DXUnit,DX Unit
+HVAC,ACSplitUnit,AC Split Unit
+HVAC,PrimaryPumpCommon,Primary Pump Common
+HVAC,HeatPumpCommon,Heat Pump Common
+HVAC,HeatPump,Heat Pump
+HVAC,CondenserMakeupPanel,Condenser Makeup Panel
+HVAC,CondensatePumpCommon,Condensate Pump Common
+HVAC,SecondaryPumpCommon,Secondary Pump Common
+HVAC,PackageUnit,Package Unit
+HVAC,CoolingTowerCommon,Cooling Tower Common
+HVAC,CoolingTower,Cooling Tower
+HVAC,ExpansionVessels,Expansion Vessels
+HVAC,ChemicalFeeder,Chemical Feeder
+HVAC,EmergencyCooler,Emergency Cooler
+HVAC,Thermostat,Thermostat
+HVAC,Dampers,Dampers
+HVAC,ChillerCommon,Chiller Common
+HVAC,TemperatureSensor,Temperature Sensor
+HVAC,AirSide,Air Side
+HVAC,WaterSide,Water Side
+HVAC,Fans,Fans
+HVAC,AOVD,AOVD
+HVAC,CRAC,Computer Room Air Conditioning
+HVAC,VRF,VRF
+HVAC,ColdRoom,Cold Room
+HVAC,VRFSystem,VRF System
+HVAC,AirQualitySystem,Air Quality System
+HVAC,CondensorPump,Condenser Pump
+ChemicalFeeder,DosingPump,Dosing Pump
+Thermostat,RoomData,Room Data
+TemperatureSensor,Global,Global
+TemperatureSensor,SpaceTemperature,Space Temperature
+AirSide,VRVSystem,VRV System
+AirSide,MAHU,MAHU
+AirSide,MotorizedVolumeControlDamper,Motorized Volume Control Damper
+AirSide,AHU,Air Handling Unit
+AirSide,FAHU,Fresh Air Handling Unit
+AirSide,FanCoilUnit,Fan Coil Unit
+AirSide,VAV,VAV
+AirSide,CAV,CAV
+AirSide,AirCurtain,Air Curtain
+AirSide,CCU,Close Control Unit
+AirSide,RecirculatingAirHandlingUnit,Recirculating Air Handling Unit
+AirSide,MakeupAirFan,Makeup Air Fan
+FanCoilUnit,HybridFCU,Hybrid Fan Coil Unit
+WaterSide,Chiller,Chiller
+WaterSide,CHWCommonHeader,Chilled Water Common Header
+WaterSide,PrimaryPump,Primary Pump
+WaterSide,SecondaryPump,Secondary Pump
+WaterSide,HeatExchanger,Heat Exchanger
+WaterSide,DosingUnit,Dosing Unit
+WaterSide,PressurizationUnit,Pressurization Unit
+WaterSide,ChilledWaterStation,Chilled Water Station
+WaterSide,HeatExchangerCommon,Heat Exchanger Common
+Fans,TransformerRoomFan,Transformer Room Fan
+Fans,EcologyUnit,Ecology Unit
+Fans,ExhaustFan,Exhaust Fan
+Fans,MakeupFan,Makeup Fan
+Fans,SmokeExhaustFan,Smoke Exhaust Fan
+Fans,FreshAirFan,Fresh Air Fan
+Fans,FreshAirFanCommon,Fresh Air Fan Common
+Fans,TransformerRoomExtractFan,Transformer Room Extract Fan
+Fans,LiftPressurizationFan,Lift Pressurization Fan
+Fans,ExtractFan,Extract Fan
+AirQualitySystem,CO2Sensor,CO2 Sensor
+AirQualitySystem,COSensor,CO Sensor
+AirQualitySystem,CarbonMonoxideSensor,Carbon Monoxide Sensor
+AirQualitySystem,COMonitoringPanel,CO Monitoring Panel
+AirQualitySystem,AirQualitySensor,Air Quality Sensor
+AirQualitySystem,AmbientTemperatureSensor,Ambient Temperature Sensor

@@ -1,12 +1,12 @@
 from dataclasses import dataclass
-from typing import Dict, Literal, Optional
+from typing import Literal, Optional
 import os
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-EnvName = Literal["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod"]
+EnvName = Literal["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod", "emaar"]
 
 
 @dataclass
@@ -26,25 +26,14 @@ class PostgresConfig:
     password: str
 
 
-PostgresTarget = Literal["accesscontrol", "nectar_new"]
-
-
 @dataclass
 class AppConfig:
     env: EnvName
     neo4j: Neo4jConfig
-    postgres: Dict[PostgresTarget, PostgresConfig]
+    postgres: PostgresConfig
     neo4j_export_batch_size: int = 1000
     client_domain: str = "ecd"
     community_domain: str = "ecd"
-
-    def get_postgres(self, target: PostgresTarget) -> PostgresConfig:
-        try:
-            return self.postgres[target]
-        except KeyError as exc:
-            raise RuntimeError(
-                f"No PostgreSQL configuration found for target '{target}'"
-            ) from exc
 
 
 def _env_or_default(key: str, default: Optional[str] = None) -> str:
@@ -74,22 +63,13 @@ def get_config(env: EnvName) -> AppConfig:
             password=_env_or_default("NEO4J_PASSWORD", "test123"),
             mode=_env_or_default("NEO4J_MODE", "SINGLE"),
         )
-        pg = {
-            "accesscontrol": PostgresConfig(
-                host=_env_or_default("PG_HOST", "localhost"),
-                port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4j_migration"),
-                username=_env_or_default("PG_USERNAME", "appuser"),
-                password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
-            ),
-            "nectar_new": PostgresConfig(
-                 host=_env_or_default("PG_HOST", "localhost"),
-                port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4j_migration"),
-                username=_env_or_default("PG_USERNAME", "appuser"),
-                password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
-            ),
-        }
+        pg = PostgresConfig(
+            host=_env_or_default("PG_HOST", "localhost"),
+            port=int(_env_or_default("PG_PORT", "5432")),
+            dbname=_env_or_default("PG_DB", "neo4j_migration"),
+            username=_env_or_default("PG_USERNAME", "appuser"),
+            password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
+        )
         neo4j_export_batch_size = 1000
         client_domain = "ecd"
         community_domain = "ecd"
@@ -101,25 +81,34 @@ def get_config(env: EnvName) -> AppConfig:
             password=_env_or_default("NEO4J_PASSWORD", "NecOfc@123"),
             mode=_env_or_default("NEO4J_MODE", "CLUSTER"),
         )
-        pg = {
-            "accesscontrol": PostgresConfig(
-                host=_env_or_default("PG_HOST", "nec-ofc-dbc1"),
-                port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4j_migration"),
-                username=_env_or_default("PG_USERNAME", "appuser"),
-                password=_env_or_default("PG_PASSWORD", "NecOfc@123"),
-            ),
-            "nectar_new": PostgresConfig(
-                host=_env_or_default("NECTAR_PG_HOST", "nec-ofc-dbc1"),
-                port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
-                dbname=_env_or_default("NECTAR_PG_DB", "neo4j_migration"),
-                username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
-                password=_env_or_default("NECTAR_PG_PASSWORD", "NecOfc@123"),
-            ),
-        }
+        pg = PostgresConfig(
+            host=_env_or_default("NECTAR_PG_HOST", "nec-ofc-dbc1"),
+            port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
+            dbname=_env_or_default("NECTAR_PG_DB", "accumulation"),
+            username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
+            password=_env_or_default("NECTAR_PG_PASSWORD", "NecOfc@123"),
+        )
         neo4j_export_batch_size = 6000
-        client_domain = "nectarit"
-        community_domain = "nectarit"
+        client_domain = "ecd"
+        community_domain = "ecd"
+
+    elif env == "emaar":
+            neo4j = Neo4jConfig(
+                uri=_env_or_default("NEO4J_URI", "bolt://emrbldbmsgdb2:7687"),
+                username=_env_or_default("NEO4J_USERNAME", "datalkz"),
+                password=_env_or_default("NEO4J_PASSWORD", "Datalkz123*"),
+                mode=_env_or_default("NEO4J_MODE", "CLUSTER"),
+            )
+            pg = PostgresConfig(
+                host=_env_or_default("PG_HOST", "10.95.6.49"),
+                port=int(_env_or_default("PG_PORT", "5432")),
+                dbname=_env_or_default("PG_DB", "nectar"),
+                username=_env_or_default("PG_USERNAME", "appuser"),
+                password=_env_or_default("PG_PASSWORD", "Bmsapp@2435"),
+            )
+            neo4j_export_batch_size = 6000
+            client_domain = "emaar"
+            community_domain = "emaar"
 
     elif env == "nec-aws-stg":
         neo4j = Neo4jConfig(
@@ -128,22 +117,13 @@ def get_config(env: EnvName) -> AppConfig:
             password=_env_or_default("NEO4J_PASSWORD", "password"),
             mode=_env_or_default("NEO4J_MODE", "CLUSTER"),
         )
-        pg = {
-            "accesscontrol": PostgresConfig(
-                host=_env_or_default("PG_HOST", "nec-aws-stg-pg"),
-                port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4jmigrate"),
-                username=_env_or_default("PG_USERNAME", "appuser"),
-                password=_env_or_default("PG_PASSWORD", "password"),
-            ),
-            "nectar_new": PostgresConfig(
-                host=_env_or_default("NECTAR_PG_HOST", "nec-aws-stg-pg"),
-                port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
-                dbname=_env_or_default("NECTAR_PG_DB", "neo4jawesometicks"),
-                username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
-                password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
-            ),
-        }
+        pg = PostgresConfig(
+            host=_env_or_default("NECTAR_PG_HOST", "nec-aws-stg-pg"),
+            port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
+            dbname=_env_or_default("NECTAR_PG_DB", "neo4jawesometicks"),
+            username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
+            password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
+        )
         neo4j_export_batch_size = 1000
         client_domain = "ecd"
         community_domain = "ecd"
@@ -155,22 +135,13 @@ def get_config(env: EnvName) -> AppConfig:
             password=_env_or_default("NEO4J_PASSWORD", "password"),
             mode=_env_or_default("NEO4J_MODE", "CLUSTER"),
         )
-        pg = {
-            "accesscontrol": PostgresConfig(
-                host=_env_or_default("PG_HOST", "nec-aws-prod-pg"),
-                port=int(_env_or_default("PG_PORT", "5432")),
-                dbname=_env_or_default("PG_DB", "neo4jmigrate"),
-                username=_env_or_default("PG_USERNAME", "appuser"),
-                password=_env_or_default("PG_PASSWORD", "password"),
-            ),
-            "nectar_new": PostgresConfig(
-                host=_env_or_default("NECTAR_PG_HOST", "nec-aws-prod-pg"),
-                port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
-                dbname=_env_or_default("NECTAR_PG_DB", "neo4jawesometicks"),
-                username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
-                password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
-            ),
-        }
+        pg = PostgresConfig(
+            host=_env_or_default("NECTAR_PG_HOST", "nec-aws-prod-pg"),
+            port=int(_env_or_default("NECTAR_PG_PORT", "5432")),
+            dbname=_env_or_default("NECTAR_PG_DB", "neo4jawesometicks"),
+            username=_env_or_default("NECTAR_PG_USERNAME", "appuser"),
+            password=_env_or_default("NECTAR_PG_PASSWORD", "password"),
+        )
         neo4j_export_batch_size = 1000
         client_domain = "ecd"
         community_domain = "ecd"

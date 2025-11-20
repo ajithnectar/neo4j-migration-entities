@@ -9,8 +9,57 @@ from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
 
 from db.postgres_utils import batch_insert, fetch_asset_types
+from db.neo4j_utils import run_query
 
 logger = logging.getLogger(__name__)
+
+
+def export_asset_types_from_neo4j(session: Session, csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> None:
+    """Fetch asset type data from Neo4j and save to CSV file.
+    
+    Args:
+        session: Neo4j session
+        csv_file_path: Path to save the CSV file
+    """
+    logger.info("Fetching asset type data from Neo4j")
+    
+    cypher = """
+        MATCH (n:Template {name:'Asset'})-[:extends*]->(parent:Template)-[:extends]->(child:Template)
+        RETURN parent.name AS parent_name, 
+               child.name AS child_name, 
+               child.templateName AS child_template_name
+    """
+    
+    try:
+        records = run_query(session, cypher)
+        
+        if not records:
+            logger.warning("No asset type data found in Neo4j")
+            print("No asset type data found in Neo4j")
+            return
+        
+        csv_path = Path(csv_file_path)
+        logger.info("Saving %s asset type records to %s", len(records), csv_path)
+        
+        # Define fieldnames based on the query
+        fieldnames = ["parent_name", "child_name", "child_template_name"]
+        
+        with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_MINIMAL)
+            writer.writeheader()
+            
+            for record in records:
+                # Convert None values to empty strings for CSV
+                row = {k: (v if v is not None else '') for k, v in record.items()}
+                writer.writerow(row)
+        
+        logger.info("Successfully saved %s asset type records to %s", len(records), csv_path)
+        print(f"✓ Exported {len(records)} asset type records to {csv_path}")
+        
+    except Exception as e:
+        logger.error("Failed to export asset types from Neo4j: %s", str(e), exc_info=True)
+        print(f"✗ Failed to export asset types from Neo4j: {e}")
+        raise
 
 
 def read_asset_type_csv(csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> list[dict]:
@@ -117,15 +166,25 @@ def map_asset_types_to_rows(asset_type_data: list[dict], start_id: int = 1) -> S
     return rows
 
 
-def migrate_asset_types(_: Session, conn: _PGConnection, csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> None:
+def migrate_asset_types(session: Session, conn: _PGConnection, csv_file_path: str | Path = "AssetTypeToMigrate.csv") -> None:
     """Migrate asset types from CSV to PostgreSQL.
     
+    If CSV file doesn't exist, it will be created by fetching data from Neo4j first.
+    
     Args:
-        _: Neo4j session (not used, but required for signature compatibility)
+        session: Neo4j session
         conn: PostgreSQL connection
         csv_file_path: Path to AssetTypeToMigrate.csv file
     """
     logger.info("Starting asset type migration")
+    
+    # Check if CSV file exists, if not, fetch from Neo4j first
+    csv_path = Path(csv_file_path)
+    if not csv_path.exists():
+        logger.info("CSV file not found at %s, fetching from Neo4j...", csv_path)
+        print(f"CSV file not found. Fetching asset type data from Neo4j...")
+        export_asset_types_from_neo4j(session, csv_file_path)
+    
     try:
         asset_type_data = read_asset_type_csv(csv_file_path)
         
@@ -206,7 +265,7 @@ def fetch_asset_types_from_db(_: Session, conn: _PGConnection, csv_file_path: st
         
         # Write to CSV
         with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_MINIMAL)
             writer.writeheader()
             
             for asset_type in asset_types:

@@ -7,10 +7,9 @@ from typing import Callable, Iterable
 from neo4j import Session
 from psycopg2.extensions import connection as _PGConnection
 
-from app_config.settings import EnvName, PostgresTarget, get_config
+from app_config.settings import EnvName, get_config
 from db.neo4j_utils import create_neo4j_driver, neo4j_session
 from db.postgres_utils import pg_connection
-from migrations.domain_migration import migrate_domains
 from migrations.community_migration import migrate_communities
 from migrations.client_migration import migrate_clients
 from migrations.complete_migration import run_migration
@@ -73,36 +72,35 @@ def create_community_migration_fn(cfg) -> MigrationFn:
     return run_community_migration
 
 
-# Migration configuration factory: (name, factory_function, postgres_target)
+# Migration configuration factory: (name, factory_function)
 # Factory functions receive config and return the actual migration function
+# Order matches the step-by-step migration process in README.md
 MIGRATION_FACTORIES = [
-    ("Neo4j to CSV export", create_neo4j_export_fn, "nectar_new"),
-    ("Domain migration", lambda cfg: migrate_domains, "accesscontrol"),
-    ("Community migration", create_community_migration_fn, "nectar_new"),
-    ("Client migration", lambda cfg: migrate_clients, "nectar_new"),
-    ("Type migration", lambda cfg: run_type_migration, "nectar_new"),
-    ("Asset type migration", lambda cfg: run_asset_type_migration, "nectar_new"),
-    ("Fetch asset types", lambda cfg: run_fetch_asset_types, "nectar_new"),
-    ("Step-by-step migration", lambda cfg: run_step_by_step_migration, "nectar_new"),
+    ("Type migration", lambda cfg: run_type_migration),
+    ("Asset type migration", lambda cfg: run_asset_type_migration),
+    ("Fetch asset types", lambda cfg: run_fetch_asset_types),
+    ("Neo4j to CSV export", create_neo4j_export_fn),
+    ("Client migration", lambda cfg: migrate_clients),
+    ("Community migration", create_community_migration_fn),
+    ("Step-by-step migration", lambda cfg: run_step_by_step_migration),
 ]
 
-def build_migrations(cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+def build_migrations(cfg) -> list[tuple[str, MigrationFn]]:
     """Build migration list from factories with config."""
     return [
-        (name, factory(cfg), pg_target)
-        for name, factory, pg_target in MIGRATION_FACTORIES
+        (name, factory(cfg))
+        for name, factory in MIGRATION_FACTORIES
     ]
 
 MIGRATION_KEY_MAP_INDICES = {
-    "export": 0,
-    "neo4j-export": 0,
-    "domain": 1,
-    "community": 2,
-    "client": 3,
-    "type": 4,
-    "asset-type": 5,
-    "fetch-asset-types": 6,
-    "step": 7,
+    "type": 0,
+    "asset-type": 1,
+    "fetch-asset-types": 2,
+    "export": 3,
+    "neo4j-export": 3,
+    "client": 4,
+    "community": 5,
+    "step": 6,
 }
 
 
@@ -113,24 +111,24 @@ def parse_args() -> argparse.Namespace:
         "--env",
         type=str,
         default="local",
-        choices=["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod"],
+        choices=["local", "nec-ofc-stg", "nec-aws-stg", "nec-aws-prod", "emaar"],
         help="Environment to run migration against",
     )
     parser.add_argument(
         "--migration",
-        choices=["export", "neo4j-export", "domain", "community", "client", "type", "asset-type", "fetch-asset-types", "step", "all"],
+        choices=["export", "neo4j-export", "community", "client", "type", "asset-type", "fetch-asset-types", "step", "all"],
         help="Optional: run specific migration without interactive prompt",
     )
     return parser.parse_args()
 
 
-def show_migration_menu(cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+def show_migration_menu(cfg) -> list[tuple[str, MigrationFn]]:
     """Display menu and return selected migrations."""
     migrations = build_migrations(cfg)
     print("\n" + "="*50)
     print("MIGRATION MENU")
     print("="*50)
-    for idx, (name, _, _) in enumerate(migrations, start=1):
+    for idx, (name, _) in enumerate(migrations, start=1):
         print(f"{idx}. {name}")
     print(f"{len(migrations) + 1}. Run all migrations")
     print("="*50)
@@ -151,7 +149,7 @@ def show_migration_menu(cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
         print("Invalid choice. Please try again.")
 
 
-def get_selected_migrations(arg_choice: str | None, cfg) -> list[tuple[str, MigrationFn, PostgresTarget]]:
+def get_selected_migrations(arg_choice: str | None, cfg) -> list[tuple[str, MigrationFn]]:
     """Resolve which migrations to run based on argument or prompt."""
     migrations = build_migrations(cfg)
     
@@ -177,7 +175,7 @@ def main() -> None:
 
     # Get selected migrations (with config to build migration functions)
     selected_migrations = get_selected_migrations(args.migration, cfg)
-    selected_names = ", ".join(name for name, _, _ in selected_migrations)
+    selected_names = ", ".join(name for name, _ in selected_migrations)
     
     logger.info("Environment: %s", env)
     logger.info("Selected migrations: %s", selected_names)
@@ -188,15 +186,14 @@ def main() -> None:
     
     try:
         with neo4j_session(driver) as nsession:
-            for name, migration_fn, pg_target in selected_migrations:
-                logger.info("Running '%s' against PostgreSQL target '%s'", name, pg_target)
+            for name, migration_fn in selected_migrations:
+                logger.info("Running '%s'", name)
                 print(f"\n{'='*50}")
                 print(f"Running: {name}")
-                print(f"Target: {pg_target}")
                 print(f"{'='*50}\n")
                 
                 try:
-                    with pg_connection(cfg.get_postgres(pg_target)) as conn:
+                    with pg_connection(cfg.postgres) as conn:
                         migration_fn(nsession, conn)
                     logger.info("✓ %s completed successfully", name)
                     print(f"\n✓ {name} completed successfully\n")

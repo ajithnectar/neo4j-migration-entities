@@ -30,45 +30,155 @@ python main.py --env local
 
 ### Migration Process
 
-Follow these steps in order to migrate data:
+Follow these steps **in order** to migrate data:
 
-1. **Create typeToMigrate.csv (types table) and import to program**
-   - Ensure `typeToMigrate.csv` file exists in the project root
-   - The CSV should contain columns: `parent_name`, `child_name`, `child_display_name`, `child_template_name`
+#### Step 1: Types Migration
+Migrates type definitions from Neo4j to PostgreSQL.
 
-2. **Run type migration - type will be inserted to psql**
-   ```bash
-   python main.py --env local --migration type
-   ```
-   Or select "Type migration" from the interactive menu
+**Note:** If `typeToMigrate.csv` doesn't exist, it will be automatically created by fetching data from Neo4j.
 
-3. **Go to clients migration and change the query domain and save and run the client migration**
-   - Edit `migrations/client_migration.py` and update the domain in the Cypher query
-   - Run client migration:
-   ```bash
-   python main.py --env local --migration client
-   ```
+```bash
+python main.py --env <environment> --migration type
+```
 
-4. **Go to community migration and change the query domain and save and run the community migration**
-   - Edit `migrations/community_migration.py` and update the domain in the Cypher query
-   - Run community migration:
-   ```bash
-   python main.py --env local --migration community
-   ```
+Or select **"5. Type migration"** from the interactive menu.
 
-5. **Run again and select Start from Subcommunity it will insert subcommunity, building, space, asset, points**
-   ```bash
-   python main.py --env local --migration step
-   ```
-   - Select option "1. Start from Subcommunity" from the menu
-   - This will migrate: subcommunity → building → space → asset → points
+This will:
+- Fetch type data from Neo4j (if CSV doesn't exist) and create `typeToMigrate.csv`
+- Insert types into PostgreSQL `public.types` table
+
+---
+
+#### Step 2: Asset Type Migration
+Migrates asset type definitions from Neo4j to PostgreSQL.
+
+**Note:** If `AssetTypeToMigrate.csv` doesn't exist, it will be automatically created by fetching data from Neo4j.
+
+```bash
+python main.py --env <environment> --migration asset-type
+```
+
+Or select **"6. Asset type migration"** from the interactive menu.
+
+This will:
+- Fetch asset type data from Neo4j (if CSV doesn't exist) and create `AssetTypeToMigrate.csv`
+- Insert asset types into PostgreSQL `public.asset_type` table
+
+---
+
+#### Step 3: Fetch Asset Types (Optional)
+Fetches all asset types from PostgreSQL and saves them to `assetType.csv`.
+
+```bash
+python main.py --env <environment> --migration fetch-asset-types
+```
+
+Or select **"7. Fetch asset types"** from the interactive menu.
+
+This creates `assetType.csv` with all asset types from the database for reference.
+
+---
+
+#### Step 4: Neo4j to CSV Export
+Exports data from Neo4j to CSV files for the complete migration.
+
+```bash
+python main.py --env <environment> --migration neo4j-export
+```
+
+Or select **"1. Neo4j to CSV export"** from the interactive menu.
+
+This will:
+- Query Neo4j for all assets, buildings, spaces, subcommunities, and points
+- Export data to multiple CSV files in the `data/` directory (e.g., `data_1.csv`, `data_2.csv`, etc.)
+- Files are created in batches (default: 1000 records per file)
+
+**Note:** The domain filter is configured in `app_config/settings.py` (default: "ecd"). You can override it via environment variable `COMMUNITY_DOMAIN`.
+
+---
+
+#### Step 5: Client Migration
+Migrates clients from Neo4j to PostgreSQL.
+
+```bash
+python main.py --env <environment> --migration client
+```
+
+Or select **"4. Client migration"** from the interactive menu.
+
+**Note:** Update the domain in the Cypher query in `migrations/client_migration.py` if needed, or configure it via `app_config/settings.py`.
+
+---
+
+#### Step 6: Community Migration
+Migrates communities from Neo4j to PostgreSQL.
+
+```bash
+python main.py --env <environment> --migration community
+```
+
+Or select **"3. Community migration"** from the interactive menu.
+
+**Note:** Update the domain in the Cypher query in `migrations/community_migration.py` if needed, or configure it via `app_config/settings.py`.
+
+---
+
+#### Step 7: Complete Migration (Step-by-Step)
+Migrates subcommunities, buildings, spaces, assets, and points from CSV files to PostgreSQL.
+
+```bash
+python main.py --env <environment> --migration step
+```
+
+Or select **"8. Step-by-step migration"** from the interactive menu.
+
+This will show an interactive menu:
+```
+==================================================
+1. Start from Subcommunity
+2. Start from Building
+3. Start from Space
+4. Start from Asset
+5. Start from Point
+6. Exit
+==================================================
+```
+
+**Recommended:** Select **"1. Start from Subcommunity"** to migrate everything in the correct order:
+- Subcommunities
+- Buildings
+- Spaces
+- Assets
+- Asset-Space relationships
+- Points
+- Asset-Point relationships
+- Asset-Type-Point relationships
+
+---
 
 ### Available Migrations
 
-- **Domain migration**: Migrates domains from Neo4j to PostgreSQL
-- **Community migration**: Migrates communities from Neo4j to PostgreSQL
-- **Client migration**: Migrates clients from Neo4j to PostgreSQL
-- **Type migration**: Migrates types from `typeToMigrate.csv` to PostgreSQL
-- **Step-by-step migration**: Interactive CSV-based migration for subcommunities, buildings, spaces, assets, and points
+| Migration | Description | Command |
+|-----------|-------------|---------|
+| **Neo4j to CSV export** | Exports data from Neo4j to CSV files | `--migration neo4j-export` |
+| **Community migration** | Migrates communities from Neo4j to PostgreSQL | `--migration community` |
+| **Client migration** | Migrates clients from Neo4j to PostgreSQL | `--migration client` |
+| **Type migration** | Migrates types from Neo4j/CSV to PostgreSQL | `--migration type` |
+| **Asset type migration** | Migrates asset types from Neo4j/CSV to PostgreSQL | `--migration asset-type` |
+| **Fetch asset types** | Fetches asset types from PostgreSQL to CSV | `--migration fetch-asset-types` |
+| **Step-by-step migration** | Interactive CSV-based migration | `--migration step` |
+
+### Environment Options
+
+- `local` - Local development environment
+- `nec-ofc-stg` - NEC Office staging environment
+- `nec-aws-stg` - NEC AWS staging environment
+- `nec-aws-prod` - NEC AWS production environment
+- `emaar` - Emaar environment
+
+Example:
+```bash
+python main.py --env emaar --migration type
+```
 
 
