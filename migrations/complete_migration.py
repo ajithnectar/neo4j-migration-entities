@@ -324,22 +324,25 @@ def get_asset_space_rows(data):
 
 
 def get_data_point_rows(data):
-    # type: (List[Dict]) -> List[Tuple[str, Tuple]]
+    # type: (List[Dict]) -> List[Tuple]
     """Extract unique data points based on point_name (name field).
     
+    Collects ALL points from all records and finds unique point names.
+    
     Returns:
-        list: List of (csv_data_point_id, row_data) tuples to maintain order
+        list: List of row_data tuples (without id, will be auto-generated)
     """
     seen = set()  # Track seen point_name values
     rows = []
     
     for record in data:
-        csv_data_point_id = record.get("data_point_id")
         point_name = record.get("point_name")
         
         # Skip if point_name is missing
-        if not point_name:
+        if not point_name or not point_name.strip():
             continue
+        
+        point_name = point_name.strip()
         
         # Skip if we've already seen this point_name (deduplicate by point_name)
         if point_name in seen:
@@ -359,35 +362,44 @@ def get_data_point_rows(data):
             record.get("point_unit"),
         )
         
-        rows.append((csv_data_point_id, row_data))
+        rows.append(row_data)
     
     return rows
 
 
-def get_asset_point_rows(data, csv_to_point_id_map):
+def get_asset_point_rows(data, point_name_to_data_point_id_map):
     # type: (List[Dict], Dict[str, str]) -> List[Tuple]
-    """Extract unique asset-point relationships.
+    """Extract asset-point relationships.
+    
+    For each asset, find all its points (by point_name) and create one row per asset-point combination.
+    One asset can have 5-10 points, so there will be multiple entries in asset_point table.
+    Multiple assets can have the same point_name (duplication allowed).
     
     Args:
         data: CSV data
-        csv_to_point_id_map: Mapping from CSV data_point_id to auto-generated point_id
+        point_name_to_data_point_id_map: Mapping from point_name to data_point.id
     """
-    seen = set()
+    seen = set()  # Deduplicate within this batch to avoid inserting same row multiple times from CSV
     rows = []
     for record in data:
         asset_id = record.get("asset_id")
-        csv_data_point_id = record.get("data_point_id")
+        point_name = record.get("point_name")
         
-        if not asset_id or not csv_data_point_id:
+        if not asset_id or not point_name:
             continue
         
-        # Get the auto-generated point_id from the mapping
-        point_id = csv_to_point_id_map.get(csv_data_point_id)
-        if not point_id:
+        point_name = point_name.strip()
+        if not point_name:
+            continue
+        
+        # Get the data_point.id from the mapping using point_name
+        data_point_id = point_name_to_data_point_id_map.get(point_name)
+        if not data_point_id:
+            logger.warning("Point name '%s' not found in data_point map for asset %s", point_name, asset_id)
             continue  # Skip if data_point wasn't created
         
-        # Create unique key for asset-point pair
-        pair_key = (asset_id, point_id)
+        # Deduplicate within this batch to avoid inserting same row multiple times from CSV
+        pair_key = (asset_id, data_point_id)
         if pair_key in seen:
             continue
         
@@ -402,6 +414,7 @@ def get_asset_point_rows(data, csv_to_point_id_map):
                 precedence = None
         
         # Row without id (will be auto-generated)
+        # data_point_id is the id from data_point table
         rows.append((
             record.get("point_expression"),
             precedence,
@@ -409,37 +422,46 @@ def get_asset_point_rows(data, csv_to_point_id_map):
             record.get("point_symbol"),
             record.get("point_unit"),
             asset_id,
-            point_id,
+            data_point_id,  # Use data_point.id from the map
         ))
     return rows
 
 
-def get_asset_type_point_rows(data, asset_type_map, csv_to_point_id_map):
+def get_asset_type_point_rows(data, asset_type_map, point_name_to_data_point_id_map):
     # type: (List[Dict], Dict[str, str], Dict[str, str]) -> List[Tuple]
-    """Extract unique asset-type-point relationships.
+    """Extract asset-type-point relationships.
+    
+    For each asset_type, find all its points (by point_name) and create one row per asset_type-point combination.
+    One asset_type can have multiple points, so there will be multiple entries in asset_type_point table.
+    Multiple asset types can have the same point_name (duplication allowed).
     
     Args:
         data: CSV data
         asset_type_map: Mapping from asset_type name to asset_type_id
-        csv_to_point_id_map: Mapping from CSV data_point_id to auto-generated point_id
+        point_name_to_data_point_id_map: Mapping from point_name to data_point.id
     """
-    seen = set()
+    seen = set()  # Deduplicate within this batch to avoid inserting same row multiple times from CSV
     rows = []
     for record in data:
         asset_type_name = (record.get("asset_type") or "").strip()
         asset_type_id = asset_type_map.get(asset_type_name)
-        csv_data_point_id = record.get("data_point_id")
+        point_name = record.get("point_name")
         
-        if not asset_type_id or not csv_data_point_id:
+        if not asset_type_id or not point_name:
             continue
         
-        # Get the auto-generated point_id from the mapping
-        point_id = csv_to_point_id_map.get(csv_data_point_id)
-        if not point_id:
+        point_name = point_name.strip()
+        if not point_name:
+            continue
+        
+        # Get the data_point.id from the mapping using point_name
+        data_point_id = point_name_to_data_point_id_map.get(point_name)
+        if not data_point_id:
+            logger.warning("Point name '%s' not found in data_point map for asset_type %s", point_name, asset_type_name)
             continue  # Skip if data_point wasn't created
         
-        # Create unique key for asset-type-point pair
-        pair_key = (asset_type_id, point_id)
+        # Deduplicate within this batch to avoid inserting same row multiple times from CSV
+        pair_key = (asset_type_id, data_point_id)
         if pair_key in seen:
             continue
         
@@ -454,6 +476,7 @@ def get_asset_type_point_rows(data, asset_type_map, csv_to_point_id_map):
                 precedence = None
         
         # Row without id (will be auto-generated)
+        # data_point_id is the id from data_point table
         rows.append((
             record.get("point_expression"),
             precedence,
@@ -461,7 +484,7 @@ def get_asset_type_point_rows(data, asset_type_map, csv_to_point_id_map):
             record.get("point_symbol"),
             record.get("point_unit"),
             asset_type_id,
-            point_id,  # Use auto-generated point_id
+            data_point_id,  # Use data_point.id from the map
         ))
     return rows
 
@@ -712,17 +735,20 @@ def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] =
     3. Use the point_id to create asset_point relationships (auto-generate id)
     4. Use the point_id to create asset_type_point relationships (auto-generate id)
     """
-    # Step 1: Get data point rows (with csv_id for mapping)
+    # Step 1: Get all unique data point rows based on point_name
     data_point_rows = get_data_point_rows(data)
     if not data_point_rows:
         print("No data points to migrate")
         return
     
+    print(f"Found {len(data_point_rows)} unique point names to insert into data_point table")
+    
     # Insert data_points with auto-generated UUID
-    # Insert one by one with generated UUIDs
-    inserted_data_points = []  # Store (csv_id, db_id, point_id) tuples
+    # Create mapping: point_name -> data_point.id
+    point_name_to_data_point_id_map = {}  # type: Dict[str, str]
+    inserted_count = 0
     with conn.cursor() as cur:
-        for csv_data_point_id, row_data in data_point_rows:
+        for row_data in data_point_rows:
             # Generate UUID for id and point_id (point_id will be same as id)
             data_point_id = str(uuid.uuid4())
             point_id = data_point_id  # point_id should be the same as id
@@ -740,13 +766,12 @@ def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] =
                 # Row already exists, use existing IDs
                 db_id, existing_point_id = existing_result
                 point_id = existing_point_id if existing_point_id else db_id
-                inserted_data_points.append((csv_data_point_id, db_id, point_id))
+                point_name_to_data_point_id_map[point_name] = db_id
                 logger.debug("Data point with name '%s' already exists, using existing id: %s", point_name, db_id)
             else:
                 # Insert new row with generated UUID
                 # row_data structure: (access_type, data_type, display_name, name, remote_data_type, status, symbol, unit)
                 # Cast UUID strings to UUID type for PostgreSQL
-                # No ON CONFLICT needed since we already check for existence above
                 cur.execute("""
                     INSERT INTO public.data_point (
                         id, access_type, data_type, display_name, name,
@@ -760,7 +785,8 @@ def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] =
                 if result:
                     db_id, returned_point_id = result
                     point_id = returned_point_id if returned_point_id else db_id
-                    inserted_data_points.append((csv_data_point_id, db_id, point_id))
+                    point_name_to_data_point_id_map[point_name] = db_id
+                    inserted_count += 1
                 else:
                     # If RETURNING didn't work, query again
                     cur.execute("""
@@ -772,45 +798,37 @@ def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] =
                     if result:
                         db_id, returned_point_id = result
                         point_id = returned_point_id if returned_point_id else db_id
-                        inserted_data_points.append((csv_data_point_id, db_id, point_id))
+                        point_name_to_data_point_id_map[point_name] = db_id
+                        inserted_count += 1
     
     conn.commit()
-    print(f"✓ Migrated {len(inserted_data_points)} data points")
+    print(f"✓ Migrated {len(point_name_to_data_point_id_map)} data points ({inserted_count} new, {len(point_name_to_data_point_id_map) - inserted_count} existing)")
     
-    # Create mapping from CSV data_point_id to auto-generated point_id (UUID)
-    csv_to_point_id_map = {
-        csv_id: point_id for csv_id, _, point_id in inserted_data_points
-    }  # type: Dict[str, str]
-    
-    if not csv_to_point_id_map:
+    if not point_name_to_data_point_id_map:
         logger.error("No data_points were found after insertion. Cannot proceed with asset_point and asset_type_point.")
         return
     
-    print(f"✓ Created mapping for {len(csv_to_point_id_map)} data points")
+    print(f"✓ Created mapping for {len(point_name_to_data_point_id_map)} point names to data_point.id")
     
     # Step 4: Migrate asset-point relationships (using auto-generated UUID for id)
-    asset_point_rows = get_asset_point_rows(data, csv_to_point_id_map)
+    # For each asset, find all its points (by point_name) and create one row per asset-point combination
+    # One asset can have 5-10 points, so there will be multiple entries in asset_point table
+    asset_point_rows = get_asset_point_rows(data, point_name_to_data_point_id_map)
     if asset_point_rows:
         inserted_count = 0
         with conn.cursor() as cur:
             for row_data in asset_point_rows:
                 # Generate UUID for id
                 asset_point_id = str(uuid.uuid4())
-                # Check if relationship already exists
+                # Just insert - allow multiple assets to have the same data_point_id
+                # Deduplication is handled in get_asset_point_rows for this batch
                 cur.execute("""
-                    SELECT id FROM public.asset_point
-                    WHERE asset_id = %s AND data_point_id = %s
-                    LIMIT 1
-                """, (row_data[5], row_data[6]))  # asset_id is index 5, data_point_id is index 6
-                existing = cur.fetchone()
-                
-                if not existing:
-                    # Insert new row with generated UUID
-                    cur.execute("""
-                        INSERT INTO public.asset_point (
-                            id, expression, precedence, status, symbol, unit, asset_id, data_point_id
-                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    """, (asset_point_id, *row_data))
+                    INSERT INTO public.asset_point (
+                        id, expression, precedence, status, symbol, unit, asset_id, data_point_id
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (asset_point_id, *row_data))
+                if cur.rowcount > 0:
                     inserted_count += 1
         conn.commit()
         print(f"✓ Migrated {inserted_count} asset-point relationships")
@@ -818,29 +836,25 @@ def migrate_points(conn: _PGConnection, data, asset_type_csv: Union[str, Path] =
         print("No asset-point relationships to migrate")
     
     # Step 5: Migrate asset-type-point relationships (using auto-generated UUID for id)
+    # For each asset_type, find all its points (by point_name) and create one row per asset_type-point combination
+    # One asset_type can have multiple points, so there will be multiple entries in asset_type_point table
     asset_type_map = load_asset_type_map(asset_type_csv)
-    asset_type_point_rows = get_asset_type_point_rows(data, asset_type_map, csv_to_point_id_map)
+    asset_type_point_rows = get_asset_type_point_rows(data, asset_type_map, point_name_to_data_point_id_map)
     if asset_type_point_rows:
         inserted_count = 0
         with conn.cursor() as cur:
             for row_data in asset_type_point_rows:
                 # Generate UUID for id
                 asset_type_point_id = str(uuid.uuid4())
-                # Check if relationship already exists
+                # Just insert - allow multiple asset types to have the same data_point_id
+                # Deduplication is handled in get_asset_type_point_rows for this batch
                 cur.execute("""
-                    SELECT id FROM public.asset_type_point
-                    WHERE asset_type_id = %s AND data_point_id = %s
-                    LIMIT 1
-                """, (row_data[5], row_data[6]))  # asset_type_id is index 5, data_point_id is index 6
-                existing = cur.fetchone()
-                
-                if not existing:
-                    # Insert new row with generated UUID
-                    cur.execute("""
-                        INSERT INTO public.asset_type_point (
-                            id, expression, precedence, status, symbol, unit, asset_type_id, data_point_id
-                        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    """, (asset_type_point_id, *row_data))
+                    INSERT INTO public.asset_type_point (
+                        id, expression, precedence, status, symbol, unit, asset_type_id, data_point_id
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (asset_type_point_id, *row_data))
+                if cur.rowcount > 0:
                     inserted_count += 1
         conn.commit()
         print(f"✓ Migrated {inserted_count} asset-type-point relationships")
@@ -868,7 +882,8 @@ def show_menu() -> str:
         print("Invalid choice. Please enter a number between 1 and 6.")
 
 
-def run_migration(conn: _PGConnection, csv_file_path: str | Path = "data_*.csv", data_dir: str | Path = "data") -> None:
+def run_migration(conn: _PGConnection, csv_file_path: Union[str, Path] = "data_*.csv", data_dir: Union[str, Path] = "data"):
+    # type: (_PGConnection, Union[str, Path], Union[str, Path]) -> None
     """Main migration function with menu-driven selection.
     
     This function:
