@@ -85,6 +85,85 @@ def map_clients_to_rows(clients):
     return rows
 
 
+def sort_rows_for_foreign_key(rows):
+    # type: (List[Tuple]) -> List[Tuple]
+    """
+    Sort rows to ensure parent rows (referenced by colony foreign key) are inserted first.
+    The colony column references client_id in the same table, so we need to insert
+    rows where client_id matches a colony value before inserting the child rows.
+    
+    Uses topological sort to handle multiple levels of dependencies.
+    Also validates that colony values reference existing client_ids in the batch.
+    If a colony references a non-existent client_id, it will be set to None to avoid FK violations.
+    """
+    if not rows:
+        return rows
+    
+    # Create a mapping from client_id to row (will be updated with fixed rows)
+    client_id_to_row = {row[0]: row for row in rows if row[0]}
+    client_ids = set(client_id_to_row.keys())
+    
+    # Fix invalid colony references and build dependency graph
+    dependencies = {}  # Maps client_id to set of client_ids that depend on it
+    
+    for row in rows:
+        client_id = row[0]
+        colony = row[8]  # colony is at index 8
+        
+        # If colony references a client_id that doesn't exist in this batch, set it to None
+        if colony and colony not in client_ids:
+            logger.warning(
+                "Colony '%s' references client_id that doesn't exist in batch. Setting to None for client_id='%s'",
+                colony, client_id
+            )
+            # Create a new tuple with colony set to None
+            row = tuple(row[i] if i != 8 else None for i in range(len(row)))
+            colony = None
+            # Update the row in our mapping with the fixed version
+            if client_id:
+                client_id_to_row[client_id] = row
+        
+        # Build dependency graph: if this row's colony references another client_id, 
+        # that other client_id is a dependency
+        if colony and colony in client_ids and colony != client_id:
+            if colony not in dependencies:
+                dependencies[colony] = set()
+            dependencies[colony].add(client_id)
+    
+    # Topological sort: Kahn's algorithm
+    # Calculate in-degrees (how many dependencies each node has)
+    in_degree = {client_id: 0 for client_id in client_ids}
+    for parent_id, children in dependencies.items():
+        for child_id in children:
+            in_degree[child_id] = in_degree.get(child_id, 0) + 1
+    
+    # Start with nodes that have no dependencies (colony is None or not in batch)
+    queue = [client_id for client_id in client_ids if in_degree.get(client_id, 0) == 0]
+    sorted_rows = []
+    
+    while queue:
+        # Get a node with no dependencies
+        current_id = queue.pop(0)
+        if current_id in client_id_to_row:
+            sorted_rows.append(client_id_to_row[current_id])
+        
+        # Remove this node and update in-degrees of its dependents
+        if current_id in dependencies:
+            for dependent_id in dependencies[current_id]:
+                in_degree[dependent_id] -= 1
+                if in_degree[dependent_id] == 0:
+                    queue.append(dependent_id)
+    
+    # Add any remaining rows that weren't part of the dependency graph
+    # (shouldn't happen, but just in case)
+    added_ids = {row[0] for row in sorted_rows if row[0]}
+    for row in rows:
+        if row[0] and row[0] not in added_ids:
+            sorted_rows.append(row)
+    
+    return sorted_rows
+
+
 def migrate_clients(session: Session, conn: _PGConnection):
     # type: (Session, _PGConnection) -> None
     logger.info("Starting client migration")
@@ -94,8 +173,15 @@ def migrate_clients(session: Session, conn: _PGConnection):
     if not rows:
         logger.info("No clients found to migrate")
         return
-    print("DEBUG row count =", len(rows[0]))
-    print("DEBUG row details =", rows[0])
+    
+    # Sort rows to ensure parent rows are inserted before child rows
+    # This is necessary because colony has a foreign key constraint to client_id
+    rows = sort_rows_for_foreign_key(rows)
+    
+    print("DEBUG row count =", len(rows))
+    if rows:
+        print("DEBUG row details =", rows[0])
+    
     insert_sql = """
         INSERT INTO public.clients (
             client_id,
