@@ -1,0 +1,512 @@
+id,name,parent_name,status,template_name,analytics_profile_id,client_id
+1,Detector,Equipment,ACTIVE,Detector,,emaar
+2,Penstock,Equipment,ACTIVE,Penstock,,emaar
+3,MaceratorPump,Equipment,ACTIVE,Macerator Pump,,emaar
+4,PSU,Equipment,ACTIVE,PSU,,emaar
+5,OCUValuerFanCommon,Equipment,ACTIVE,OCU Valuer Fan Common,,emaar
+6,OCUValuerFan,Equipment,ACTIVE,OCU Valuer Fan,,emaar
+7,RMSOCUTSETank,Equipment,ACTIVE,RMS OCUTSE Tank,,emaar
+8,RMSSumpPumpCommon,Equipment,ACTIVE,RMS Sump Pump Common,,emaar
+9,OCURCPCommon,Equipment,ACTIVE,OCURCP Common,,emaar
+10,OCURCP,Equipment,ACTIVE,OCURCP,,emaar
+11,OCUQM,Equipment,ACTIVE,OCUQM,,emaar
+12,OCUPump,Equipment,ACTIVE,OCU Pump,,emaar
+13,OCUIntermediate,Equipment,ACTIVE,OCU Intermediate,,emaar
+14,RMSDosingPumpCommon,Equipment,ACTIVE,RMSDosingPumpCommon,,emaar
+15,OCUBTF,Equipment,ACTIVE,OCUBTF,,emaar
+16,OCUACF,Equipment,ACTIVE,OCUACF,,emaar
+17,OCUAFN,Equipment,ACTIVE,OCUAFN,,emaar
+18,OCUAFCommon,Equipment,ACTIVE,OCUAF Common,,emaar
+19,OCUAF,Equipment,ACTIVE,OCUAF,,emaar
+20,OCUMvaluens,Equipment,ACTIVE,OCU Mvaluens,,emaar
+21,RMSFireAlarmSystem,Equipment,ACTIVE,RMS Fire Alarm System,,emaar
+22,EVC,Equipment,ACTIVE,Electronic Volume Corrector,,emaar
+23,GasDetectors,Equipment,ACTIVE,Gas Detectors,,emaar
+24,GasPanelSwitch,Equipment,ACTIVE,Gas Panel Switch,,emaar
+25,IsolatorModule,Equipment,ACTIVE,Isolator Module,,emaar
+26,GeneralExtractFan,Equipment,ACTIVE,General Extract Fan,,emaar
+27,GarbageExtractFan,Equipment,ACTIVE,Garbage Extract Fan,,emaar
+28,CorridorMakeupFan,Equipment,ACTIVE,Corridor Extract Fan,,emaar
+29,CorridorExtractFan,Equipment,ACTIVE,Corridor Extract Fan,,emaar
+30,LifeAndSafety,Equipment,ACTIVE,LIFE & SAFETY SYSTEMS,,emaar
+31,HVAC,Equipment,ACTIVE,HVAC SYSTEMS,,emaar
+32,ELVSYSTEMS,Equipment,ACTIVE,ELV SYSTEMS,,emaar
+33,Electrical,Equipment,ACTIVE,ELECTRICAL SYSTEMS,,emaar
+34,Plumbing,Equipment,ACTIVE,PLUMBING SYSTEMS,,emaar
+35,Mechanical,Equipment,ACTIVE,MECHANICAL SYSTEMS,,emaar
+36,DoorContact,Mechanical,ACTIVE,Door Contact,,emaar
+37,HydrogenSensorPanel,Mechanical,ACTIVE,Hydrogen Sensor Panel,,emaar
+38,HydrogenProductionPlant,Mechanical,ACTIVE,Hydrogen Production Plant,,emaar
+39,HydrogenProductionStorageEquipment,Mechanical,ACTIVE,Hydrogen Production Storage Equipment,,emaar
+40,ColdRoomUnit,Mechanical,ACTIVE,Cold Room Unit,,emaar
+41,CitricAcidDosingTank,Mechanical,ACTIVE,Citric Acid Dosing Tank,,emaar
+42,CitricAcidDosingPump,Mechanical,ACTIVE,Citric Acid Dosing Pump,,emaar
+43,CitricAcidDosingMixer,Mechanical,ACTIVE,Citric Acid Dosing Mixer,,emaar
+44,BeltFilterPress,Mechanical,ACTIVE,Belt Filter Press,,emaar
+45,BalancingTankPump,Mechanical,ACTIVE,Balancing Tank Pump,,emaar
+46,BalancingTankAirBlower,Mechanical,ACTIVE,Balancing Tank Air Blower,,emaar
+47,BalancingTank,Mechanical,ACTIVE,Balancing Tank,,emaar
+48,BFPPolymerDosingPump,Mechanical,ACTIVE,BFP Polymer Dosing Pump,,emaar
+49,AirCompressor,Mechanical,ACTIVE,Air Compressor,,emaar
+50,AerationTankMixer,Mechanical,ACTIVE,Aeration Tank Mixer,,emaar
+51,AerationAirBlower,Mechanical,ACTIVE,Aeration Air Blower,,emaar
+52,MotorVibrationSensor,Mechanical,ACTIVE,Motor Vibration Sensor,,emaar
+53,StaircaseVentilationFan,Mechanical,ACTIVE,Staircase Ventilation Fan,,emaar
+54,RMSAirBlower,Mechanical,ACTIVE,RMS Air Blower,,emaar
+55,RMSExtractFan,Mechanical,ACTIVE,RMS Extract Fan,,emaar
+56,RMSSupplyFan,Mechanical,ACTIVE,RMS Supply Fan,,emaar
+57,CPTF,Mechanical,ACTIVE,Car Park Transfer Fan,,emaar
+58,BMU,Mechanical,ACTIVE,BMU,,emaar
+59,Escalator,Mechanical,ACTIVE,Escalator,,emaar
+60,WasteManagement,Mechanical,ACTIVE,Waste Management,,emaar
+61,VerticalHorizontalTransport,Mechanical,ACTIVE,Vertical/Horizontal Transport,,emaar
+62,Lift,VerticalHorizontalTransport,ACTIVE,Lift,,emaar
+63,LiftCommon,VerticalHorizontalTransport,ACTIVE,Lift Common,,emaar
+64,GCEFCommon,WasteManagement,ACTIVE,GCEF Common,,emaar
+65,GarbageSanitationSystem,WasteManagement,ACTIVE,Garbage Sanitation System,,emaar
+66,DissolvedOxygenAnalyzer,WasteManagement,ACTIVE,Dissolved OxygenAnalyzer,,emaar
+67,TSETank,WasteManagement,ACTIVE,TSE Tank,,emaar
+68,TSEPump,WasteManagement,ACTIVE,TSE Pump,,emaar
+69,SludgeHoldingTank,WasteManagement,ACTIVE,Sludge Holding Tank,,emaar
+70,SludgeDewateringFeedPump,WasteManagement,ACTIVE,Sludge Dewatering Feed Pump,,emaar
+71,ServiceWaterPump,WasteManagement,ACTIVE,Service Water Pump,,emaar
+72,ScrubberFan,WasteManagement,ACTIVE,Scrubber Fan,,emaar
+73,RASSASPump,WasteManagement,ACTIVE,RAS SAS Pump,,emaar
+74,PressureIndicatorTransmitter,WasteManagement,ACTIVE,Pressure Indicator Transmitter,,emaar
+75,PolymerInjectionUnitPowderFeeder,WasteManagement,ACTIVE,Polymer Injection Unit Powder Feeder,,emaar
+76,PolymerInjectionUnitMixer,WasteManagement,ACTIVE,Polymer Injection Unit Mixer,,emaar
+77,PolymerInjectionUnitLocalControlPanel,WasteManagement,ACTIVE,Polymer Injection Unit Local Control Panel,,emaar
+78,PolymerInjectionUnitDosingPump,WasteManagement,ACTIVE,Polymer Injection Unit Dosing Pump,,emaar
+79,PolymerInjectionUnit,WasteManagement,ACTIVE,Polymer Injection Unit,,emaar
+80,PermeatePump,WasteManagement,ACTIVE,Permeate Pump,,emaar
+81,PHAnalyzer,WasteManagement,ACTIVE,PH Analyzer,,emaar
+82,OdourFan,WasteManagement,ACTIVE,Odour Fan,,emaar
+83,MBRTankAirBlower,WasteManagement,ACTIVE,MBR Tank Air Blower,,emaar
+84,MBRTank,WasteManagement,ACTIVE,MBR Tank,,emaar
+85,MBRBackwashTank,WasteManagement,ACTIVE,MBR Backwash Tank,,emaar
+86,GCEF,WasteManagement,ACTIVE,Garbage Chute Extract Fan,,emaar
+87,GCC,WasteManagement,ACTIVE,Garbage Chute Compactor,,emaar
+88,GarbageChutePanel,WasteManagement,ACTIVE,Garbage Chute Panel,,emaar
+89,DrumScreen,WasteManagement,ACTIVE,Drum Screen,,emaar
+90,ElectromagneticFlowTransmitter,WasteManagement,ACTIVE,Electromagnetic Flow Transmitter,,emaar
+91,H2SAnalyzer,WasteManagement,ACTIVE,H2S Analyzer,,emaar
+92,HypoChloriteDosingPump,WasteManagement,ACTIVE,Hypo Chlorite Dosing Pump,,emaar
+93,HypoChloriteDosingPumpMC,WasteManagement,ACTIVE,Hypo Chlorite Dosing Pump MC,,emaar
+94,HypoChloriteDosingTank,WasteManagement,ACTIVE,Hypo Chlorite Dosing Tank,,emaar
+95,HypoChloriteDosingTankMC,WasteManagement,ACTIVE,Hypo Chlorite Dosing Tank MC,,emaar
+96,LevelIndicatorTransmitter,WasteManagement,ACTIVE,Level Indicator Transmitter,,emaar
+97,LiftingStationPump,WasteManagement,ACTIVE,Lifting Station Pump,,emaar
+98,LiftingStationTank,WasteManagement,ACTIVE,Lifting Station Tank,,emaar
+99,MBRBackwashPump,WasteManagement,ACTIVE,MBR Backwash Pump,,emaar
+100,SwimmingPoolUnderWaterLight,Plumbing,ACTIVE,Swimming Pool Under Water Light,,emaar
+101,RMSCulvert,Plumbing,ACTIVE,RMS Culvert,,emaar
+102,StormWaterTank,Plumbing,ACTIVE,Storm Water Tank,,emaar
+103,SPHeater,Plumbing,ACTIVE,SP Heater,,emaar
+104,SPUVFilter,Plumbing,ACTIVE,SP UV Filter,,emaar
+105,WaterSoftner,Plumbing,ACTIVE,Water Softner,,emaar
+106,UVSterlizer,Plumbing,ACTIVE,UV Sterlizer,,emaar
+107,SoftWaterTank,Plumbing,ACTIVE,Soft Water Tank,,emaar
+108,MultimediaFilter,Plumbing,ACTIVE,Multimedia Filter,,emaar
+109,CondensorTank,Plumbing,ACTIVE,Condensor Tank,,emaar
+110,CarbonFilters,Plumbing,ACTIVE,Carbon Filters,,emaar
+111,Boiler,Plumbing,ACTIVE,Boiler,,emaar
+112,SwimmingPoolChlorineController,Plumbing,ACTIVE,Swimming Pool Chlorine Controller,,emaar
+113,SwimmingPoolHeatCool,Plumbing,ACTIVE,Swimming Pool Heat Cool,,emaar
+114,SwimmingPoolElectricStarter,Plumbing,ACTIVE,Swimming Pool Electric Starter,,emaar
+115,StormTank,Plumbing,ACTIVE,Storm Tank,,emaar
+116,RMSWaterQualityMeter,Plumbing,ACTIVE,RMS Water Quality Meter,,emaar
+117,SPSplashPlayUnit,Plumbing,ACTIVE,SP Splash Play Unit,,emaar
+118,SPHeatCoolUnit,Plumbing,ACTIVE,SP Heat Cool Unit,,emaar
+119,SPBackWashUnit,Plumbing,ACTIVE,SP Back Wash Unit,,emaar
+120,RMSStormScreenPenstockCommon,Plumbing,ACTIVE,RMS Storm Screen Penstock Common,,emaar
+121,RMSStormScreenPenstock,Plumbing,ACTIVE,RMS Storm Screen Penstock,,emaar
+122,SwimmingPoolUVFilter,Plumbing,ACTIVE,Swimming Pool UV Filter,,emaar
+123,SwimmingPoolTank,Plumbing,ACTIVE,Swimming Pool Tank,,emaar
+124,SwimmingPoolHeater,Plumbing,ACTIVE,Swimming Pool Heater,,emaar
+125,GreaseTrapSystem,Plumbing,ACTIVE,Grease Trap System,,emaar
+126,RMSFlowTransmitter,Plumbing,ACTIVE,RMS Flow Transmitter,,emaar
+127,RMSPressureTransmitter,Plumbing,ACTIVE,RMS Pressure Transmitter,,emaar
+128,RMSSewageScreenPenstockCommon,Plumbing,ACTIVE,RMS Sewage Screen Penstock Common,,emaar
+129,RMSLevelTransmitter,Plumbing,ACTIVE,RMS Level Transmitter,,emaar
+130,RMSOdourPump,Plumbing,ACTIVE,RMS Odour Pump,,emaar
+131,RMSSewageScreeningCompactor,Plumbing,ACTIVE,RMS Sewage Screening Compactor,,emaar
+132,RMSSewageScreenConveyor,Plumbing,ACTIVE,RMS Sewage Screen Conveyor,,emaar
+133,CompactInletHeadworksControlPanel,Plumbing,ACTIVE,Compact Inlet Headworks Control Panel,,emaar
+134,CompactInletHeadworks,Plumbing,ACTIVE,Compact Inlet Headworks,,emaar
+135,SPHeatPump,Plumbing,ACTIVE,Swimming Pool Heat Pump,,emaar
+136,ShowerPump,Plumbing,ACTIVE,Shower Pump,,emaar
+137,FilterationPumpCommon,Plumbing,ACTIVE,Filteration Pump Common,,emaar
+138,WaterFilterationSystem,Plumbing,ACTIVE,Water Filteration System,,emaar
+139,FountainPump,Plumbing,ACTIVE,Fountain Pump,,emaar
+140,HotWaterCirculationPump,Plumbing,ACTIVE,Hot Water Circulation Pump,,emaar
+141,SolarWaterHeatSystem,Plumbing,ACTIVE,Solar Water Heat System,,emaar
+142,GRPWaterTank,Plumbing,ACTIVE,GRP Water Tank,,emaar
+143,SurgeVessel,Plumbing,ACTIVE,Surge Vessel,,emaar
+144,FountainSystem,Plumbing,ACTIVE,Fountain System,,emaar
+145,RMSSewageScreenPenstock,Plumbing,ACTIVE,RMS Sewage Screen Penstock,,emaar
+146,RMSBoosterPump,Plumbing,ACTIVE,RMS Booster Pump,,emaar
+147,WaterHeater,Plumbing,ACTIVE,Water Heater,,emaar
+148,HWSecondaryPump,Plumbing,ACTIVE,Hot Water Secondary Pump,,emaar
+149,HWPrimaryPump,Plumbing,ACTIVE,Hot Water Primary Pump,,emaar
+150,DWHEX,Plumbing,ACTIVE,Domestic Water Heat Exchanger,,emaar
+151,DosingPump,Plumbing,ACTIVE,Dosing Pump,,emaar
+152,RawWaterPump,Plumbing,ACTIVE,Raw Water Pump,,emaar
+153,BackwashPump,Plumbing,ACTIVE,Backwash Pump,,emaar
+154,DomesticWaterCoolingPlant,Plumbing,ACTIVE,Domestic Water Cooling Plant,,emaar
+155,RMSIrrigationJockeyPump,Plumbing,ACTIVE,RMS Irrigation Jockey Pump,,emaar
+156,DrainagePumpCommon,Plumbing,ACTIVE,Drainage Pump Common,,emaar
+157,DrainagePump,Plumbing,ACTIVE,Drainage Pump,,emaar
+158,RMSSewageScrapper,Plumbing,ACTIVE,RMS Sewage Scrapper,,emaar
+159,RMSSewageSubmersibleMixer,Plumbing,ACTIVE,RMS Sewage Submersible Mixer,,emaar
+244,PRV,WaterTanks,ACTIVE,Pressure Reducing Valve,,emaar
+160,RMSSewageSurfaceAerator,Plumbing,ACTIVE,RMS Sewage Surface Aerator,,emaar
+161,RMSSewageAutoBarScreen,Plumbing,ACTIVE,RMS Sewage Auto BarScreen,,emaar
+162,RMSValves,Plumbing,ACTIVE,RMSValves,,emaar
+163,RMSMOV,Plumbing,ACTIVE,RMS MOV,,emaar
+164,RMSIrrigationPenstockValves,Plumbing,ACTIVE,RMS Irrigation Penstock Valves,,emaar
+165,RMSTransferPump,Plumbing,ACTIVE,RMS Transfer Pump,,emaar
+166,RMSPressurePump,Plumbing,ACTIVE,RMS Pressure Pump,,emaar
+167,RMSDosingMixer,Plumbing,ACTIVE,RMSDosingMixer,,emaar
+168,RMSDosingPump,Plumbing,ACTIVE,RMSDosingPump,,emaar
+169,RMSOdourFan,Plumbing,ACTIVE,RMS Odour Fan,,emaar
+170,RMSSumpPump,Plumbing,ACTIVE,RMS Sump Pump,,emaar
+171,RMSIrrigationTankOutletValve,Plumbing,ACTIVE,RMS Irrigation Tank Outlet Valve,,emaar
+172,RMSIrrigationTankInletValve,Plumbing,ACTIVE,RMS Irrigation Tank Inlet Valve,,emaar
+173,RMSStormTank,Plumbing,ACTIVE,RMS Storm Tank,,emaar
+174,RMSStormWaterPumpCommon,Plumbing,ACTIVE,RMS Storm Water Pump Common,,emaar
+175,RMSStormWaterPump,Plumbing,ACTIVE,RMS Storm Water Pump,,emaar
+176,RMSSewageTank,Plumbing,ACTIVE,RMS Sewage Tank,,emaar
+177,RMSIrrigationTank,Plumbing,ACTIVE,RMS Irrigation Tank,,emaar
+178,RMSIrrigationPumpCommon,Plumbing,ACTIVE,RMS Irrigation Pump Common,,emaar
+179,RMSIrrigationPump,Plumbing,ACTIVE,RMS Irrigation Pump,,emaar
+180,RMSSewagePumpCommon,Plumbing,ACTIVE,RMS Sewage Pump Common,,emaar
+181,RMSSewagePump,Plumbing,ACTIVE,RMS Sewage Pump,,emaar
+182,RMSPool,Plumbing,ACTIVE,RMS Pool,,emaar
+183,RMSLake,Plumbing,ACTIVE,RMS Lake,,emaar
+184,AGS,Plumbing,ACTIVE,Automatic Greasing Seperator,,emaar
+185,WaterTanks,Plumbing,ACTIVE,Water Tanks,,emaar
+186,Pumps,Plumbing,ACTIVE,Pumps,,emaar
+187,WaterCirculationPumpCommon,Plumbing,ACTIVE,Water Circulation Pump Common,,emaar
+188,FuelPump,Plumbing,ACTIVE,Fuel Pump,,emaar
+189,BulkFuelTank,Plumbing,ACTIVE,Bulk Fuel Tank,,emaar
+190,DayFuelTank,Plumbing,ACTIVE,Day Fuel Tank,,emaar
+191,IrrigationPumpCommon,Plumbing,ACTIVE,Irrigation Pump Common,,emaar
+192,SPHeatingPump,Pumps,ACTIVE,SP Heating Pump,,emaar
+193,SPCoolingPump,Pumps,ACTIVE,SP Cooling Pump,,emaar
+194,CopperSilverIonisationPump,Pumps,ACTIVE,Copper Silver Ionisation Pump,,emaar
+195,ColdWaterTransferPumpCommon,Pumps,ACTIVE,Cold Water Transfer Pump Common,,emaar
+196,SwimmingPoolCirculationPump,Pumps,ACTIVE,Swimming Pool Circulation Pump,,emaar
+197,ColdWaterTransferPump,Pumps,ACTIVE,Cold Water Transfer Pump,,emaar
+198,COSpSelection,Pumps,ACTIVE,CO Sp Selection,,emaar
+199,PhysicalDisinfection,Pumps,ACTIVE,Physical Disinfection,,emaar
+200,WaterFeature,Pumps,ACTIVE,Water Feature,,emaar
+201,SwimmingPoolBackwashPump,Pumps,ACTIVE,Swimming Pool Back Wash Pump,,emaar
+202,SwimmingPoolWaterFilterPump,Pumps,ACTIVE,Swimming Pool Water Filter Pump,,emaar
+203,ReflectivePoolPump,Pumps,ACTIVE,Reflective Pool Pump,,emaar
+204,VacuumUnit,Pumps,ACTIVE,Vacuum Unit,,emaar
+205,HeatPump,Pumps,ACTIVE,Heat Pump,,emaar
+206,ChlorinationSystem,Pumps,ACTIVE,Chlorination System,,emaar
+207,ChemicalDosingUnit,Pumps,ACTIVE,Chemical Dosing Unit,,emaar
+208,CondensatePumpCommon,Pumps,ACTIVE,Condensate Pump Common,,emaar
+209,CondensatePump,Pumps,ACTIVE,Condensate Pump,,emaar
+210,FireWaterCirculationPump,Pumps,ACTIVE,Fire Water Circulation Pump,,emaar
+211,SPWaterCirculationPump,Pumps,ACTIVE,SP Water Circulation Pump,,emaar
+212,SPUVSterilizationPump,Pumps,ACTIVE,SP UV Sterilization Pump,,emaar
+213,SPChlorinePumpPump,Pumps,ACTIVE,SP ChlorinePump Pump,,emaar
+214,SPAcidInjectionPump,Pumps,ACTIVE,SP Acid Injection Pump,,emaar
+215,SPWaterFallPump,Pumps,ACTIVE,SP Water Fall Pump,,emaar
+216,SPHeatCoolPump,Pumps,ACTIVE,SP Heat Cool Pump,,emaar
+217,SPDosingPump,Pumps,ACTIVE,Swimming Pool Dosing Pump,,emaar
+218,SPCirculationPump,Pumps,ACTIVE,Swimming Pool Circulation Pump,,emaar
+219,LiftPitPumpCommon,Pumps,ACTIVE,Lift Pit Pump Common,,emaar
+220,LiftPitPump,Pumps,ACTIVE,Lift Pit Pump,,emaar
+221,SideSteamPumpPanel,Pumps,ACTIVE,Side Steam Pump Panel,,emaar
+222,CoolingTowerMakeupPump,Pumps,ACTIVE,Cooling Tower Makeup Pump,,emaar
+223,BoosterPump,Pumps,ACTIVE,Booster Pump,,emaar
+224,TransferPumpCommon,Pumps,ACTIVE,Transfer Pump Common,,emaar
+225,BoosterPumpCommon,Pumps,ACTIVE,Booster Pump Common,,emaar
+226,FilterationPump,Pumps,ACTIVE,Filteration Pump,,emaar
+227,SubSoilPumpCommon,Pumps,ACTIVE,Sub Soil Pump Common,,emaar
+228,TransferPump,Pumps,ACTIVE,Transfer Pump,,emaar
+229,SPFilterPump,Pumps,ACTIVE,Swimming Pool Filter Pump,,emaar
+230,SewagePumpCommon,Pumps,ACTIVE,Sewage Pump Common,,emaar
+231,WaterFeaturePump,Pumps,ACTIVE,Water Feature Pump,,emaar
+232,SubSoilPump,Pumps,ACTIVE,Sub Soil Pump,,emaar
+233,WaterCirculationPump,Pumps,ACTIVE,Water Circulation Pump,,emaar
+234,NozzlePump,Pumps,ACTIVE,Nozzle Pump,,emaar
+235,HydroMassagePump,Pumps,ACTIVE,Hydro Massage Pump,,emaar
+236,StormPumpCommon,Pumps,ACTIVE,Storm Water Pump Common,,emaar
+237,SPPlant,Pumps,ACTIVE,Swimming Pool Plant,,emaar
+238,SumpPumpCommon,Pumps,ACTIVE,Sump Pump Common,,emaar
+239,SewagePump,Pumps,ACTIVE,Sewage Pump,,emaar
+240,IrrigationPump,Pumps,ACTIVE,Irrigation Pump,,emaar
+241,SumpPump,Pumps,ACTIVE,Sump Pump,,emaar
+242,WeirPump,Pumps,ACTIVE,Weir Pump,,emaar
+243,StormPump,Pumps,ACTIVE,Storm Water Pump,,emaar
+245,IrrigationTank,WaterTanks,ACTIVE,Irrigation Tank,,emaar
+246,DomesticWaterTank,WaterTanks,ACTIVE,Domestic Water Tank,,emaar
+247,Calorifier,WaterTanks,ACTIVE,Calorifier,,emaar
+248,RMSMacerator,RMSSewagePump,ACTIVE,RMS Macerator,,emaar
+249,ELCB,Electrical,ACTIVE,Earth Leakage Circuit Breaker,,emaar
+250,VFD,Electrical,ACTIVE,Variable Frequency Drive,,emaar
+251,ControlPanel,Electrical,ACTIVE,Control Panel,,emaar
+252,CleanAgentSystem,Electrical,ACTIVE,Clean Agent System,,emaar
+253,VirtualMachine,Electrical,ACTIVE,Virtual Machine,,emaar
+254,RMSGenerator,Electrical,ACTIVE,RMS Generator,,emaar
+255,MCCB,Electrical,ACTIVE,MCCB,,emaar
+256,DB,Electrical,ACTIVE,Distribution Board,,emaar
+257,Generator Supply Fan,Electrical,ACTIVE,GeneratorSupplyFan,,emaar
+258,AutomaticTransferSwitch,Electrical,ACTIVE,Automatic Transfer Switch,,emaar
+259,LoadShed,Electrical,ACTIVE,Load Shed,,emaar
+260,FeederPillarLighting,Electrical,ACTIVE,Feeder Pillar Lighting,,emaar
+261,DistributionBoards,Electrical,ACTIVE,Distribution Boards,,emaar
+262,ElectricalPanels,Electrical,ACTIVE,Electrical Panels,,emaar
+263,EmergencyPower,Electrical,ACTIVE,Emergency Power,,emaar
+264,Lighting,Electrical,ACTIVE,Lighting,,emaar
+265,Metering,Electrical,ACTIVE,Metering,,emaar
+266,MainSwitchBoard,Electrical,ACTIVE,Main Switch Board,,emaar
+267,ACP,Electrical,ACTIVE,Automatic Capacitor Panel,,emaar
+268,RMSLVPSubmeter,Electrical,ACTIVE,RMS LVP Submeter,,emaar
+269,WaterLeakSystem,Electrical,ACTIVE,Water Leakage System,,emaar
+270,BTUSubMeter,Metering,ACTIVE,BTU Sub Meter,,emaar
+271,GasMeter,Metering,ACTIVE,Gas Meter,,emaar
+272,LPGMeter,Metering,ACTIVE,LPG Meter,,emaar
+273,LVPMeter,Metering,ACTIVE,LV Panel Meter,,emaar
+274,LVPSubMeter,Metering,ACTIVE,LV Panel Sub Meter,,emaar
+275,WaterMeter,Metering,ACTIVE,Water Meter,,emaar
+276,BTUMeter,Metering,ACTIVE,BTU Meter,,emaar
+277,TSEMeter,Metering,ACTIVE,TSE Meter,,emaar
+278,TenantBTUMeter,Metering,ACTIVE,Tenant BTU Meter,,emaar
+279,RetailBTUMeter,Metering,ACTIVE,Retail BTU Meter,,emaar
+280,DCPBTUMeter,Metering,ACTIVE,DCP BTU Meter,,emaar
+281,LoadwiseLVPSubMeters,LVPSubMeter,ACTIVE,Loadwise LVP Sub Meters,,emaar
+282,FAHULVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,FAHU LV Panel Sub Meter,,emaar
+283,LiftLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Lift LV Panel Sub Meter,,emaar
+284,CommonAreaLightingLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Common Area Lighting LVP Sub Meter,,emaar
+285,SPPlantLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,SPPlant LV Panel Sub Meter,,emaar
+286,CBSLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,CBS LV Panel Sub Meter,,emaar
+287,WaterFeaturePumpLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Water Feature Pump LV Panel Sub Meter,,emaar
+288,JetFanLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Jet Fan LV Panel Sub Meter,,emaar
+289,GCEFLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,GCEF LV Panel Sub Meter,,emaar
+290,SteamUnitLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Steam Unit LV Panel Sub Meter,,emaar
+291,TertiaryPumpLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Tertiary Pump LV Panel Sub Meter,,emaar
+292,BoosterPumpLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Booster Pump LV Panel Sub Meter,,emaar
+293,BMULVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,BMU LV Panel Sub Meter,,emaar
+294,SecondaryPumpLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Secondary Pump LV Panel Sub Meter,,emaar
+295,WaterLiftPumpLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Water Lift Pump LV Panel Sub Meter,,emaar
+296,CPEFLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,CPEF LV Panel Sub Meter,,emaar
+297,IrrigationLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Irrigation LV Panel Sub Meter,,emaar
+298,ParkingAreaLightingLVPSubMeter,LoadwiseLVPSubMeters,ACTIVE,Parking Area Lighting LV Panel Sub Meter,,emaar
+299,AircraftWarningLight,Lighting,ACTIVE,Aircraft Warning Light,,emaar
+300,LightingControls,Lighting,ACTIVE,Lighting Control System,,emaar
+301,WaterFeatureLight,Lighting,ACTIVE,Water Feature Light,,emaar
+302,LightCircuit,Lighting,ACTIVE,Light Circuit,,emaar
+303,Generator,EmergencyPower,ACTIVE,Generator,,emaar
+304,UPS,EmergencyPower,ACTIVE,UPS,,emaar
+305,EmergencyLighting,EmergencyPower,ACTIVE,Emergency Lighting,,emaar
+306,CBS,EmergencyPower,ACTIVE,Central Battery System,,emaar
+307,AutomaticCapacitorPanel,ElectricalPanels,ACTIVE,Automatic Capacitor Panel,,emaar
+308,MCCPanel,ElectricalPanels,ACTIVE,MCC Panel,,emaar
+309,ACBPanel,ElectricalPanels,ACTIVE,ACB Panel,,emaar
+310,ATSPanel,ElectricalPanels,ACTIVE,ATS Panel,,emaar
+311,LVPanel,ElectricalPanels,ACTIVE,LV Panel,,emaar
+312,EMCCPanel,ElectricalPanels,ACTIVE,EMCC Panel,,emaar
+313,FAVEPanel,ElectricalPanels,ACTIVE,FAVE Panel,,emaar
+314,CapacitorBank,ElectricalPanels,ACTIVE,Capacitor Bank,,emaar
+315,ESMDB,DistributionBoards,ACTIVE,Emergency SMDB,,emaar
+316,EMDB,DistributionBoards,ACTIVE,Emergency MDB,,emaar
+317,SMDB,DistributionBoards,ACTIVE,SMDB,,emaar
+318,MDB,DB,ACTIVE,MDB,,emaar
+319,ELV,ELVSYSTEMS,ACTIVE,ELV,,emaar
+320,DTAS,ELVSYSTEMS,ACTIVE,Disabled Toilet Alarm System,,emaar
+321,RMSUPS,ELVSYSTEMS,ACTIVE,RMS UPS,,emaar
+322,PeopleCounter,ELVSYSTEMS,ACTIVE,People Counter,,emaar
+323,MusicSystem,ELVSYSTEMS,ACTIVE,Music System,,emaar
+324,RMSController,ELVSYSTEMS,ACTIVE,RMS Controller,,emaar
+325,PLCPanel,ELVSYSTEMS,ACTIVE,PLC Panel,,emaar
+326,ACS,ELV,ACTIVE,Access Control System,,emaar
+327,CCTV,ELV,ACTIVE,CCTV,,emaar
+328,PAS,ELV,ACTIVE,Public Address System,,emaar
+329,GateBarrier,ELV,ACTIVE,Gate Barrier,,emaar
+330,SignBoard,ELV,ACTIVE,Sign Board,,emaar
+331,DDCController,ELV,ACTIVE,DDC Controller,,emaar
+332,ColdRoomCooler,HVAC,ACTIVE,Cold Room Cooler,,emaar
+333,AirSeperator,HVAC,ACTIVE,Air Seperator,,emaar
+334,EcologyUnit,HVAC,ACTIVE,Ecology Unit,,emaar
+335,CorridorPressurizationFan,HVAC,ACTIVE,Corridor Pressurization Fan Common,,emaar
+336,CRAC,HVAC,ACTIVE,Computer Room Air Conditioning,,emaar
+337,ERV,HVAC,ACTIVE,Energy Recovery Ventilator,,emaar
+338,GeneratorSupplyFan,HVAC,ACTIVE,Generator Supply Fan,,emaar
+339,CarParkVentillationFanCommon,HVAC,ACTIVE,Car Park Ventillation Fan Common,,emaar
+340,JetFanCommon,HVAC,ACTIVE,Jet Fan Common,,emaar
+341,HeatExchangerCommon,HVAC,ACTIVE,Heat Exchanger Common,,emaar
+342,FCUCommon,HVAC,ACTIVE,FCU Common,,emaar
+343,ElectrostaticPrecipitator,HVAC,ACTIVE,ElectrostaticPrecipitator,,emaar
+344,FlowMeter,HVAC,ACTIVE,Flow Meter,,emaar
+345,CoolingTowerFireAlarmSystem,HVAC,ACTIVE,Cooling Tower Fire Alarm System,,emaar
+346,CondensorPumpCommon,HVAC,ACTIVE,Condensor Pump Common,,emaar
+347,ChillerCommon,HVAC,ACTIVE,Chiller Common,,emaar
+348,TraneChiller,HVAC,ACTIVE,Trane Chiller,,emaar
+349,YorkChiller,HVAC,ACTIVE,York Chiller,,emaar
+350,CoolingTowerCommon,HVAC,ACTIVE,Cooling Tower Common,,emaar
+351,CoolingTower,HVAC,ACTIVE,Cooling Tower,,emaar
+352,MakeupPumpCommon,HVAC,ACTIVE,Makeup Pump Common,,emaar
+353,MakeupPump,HVAC,ACTIVE,Makeup Pump,,emaar
+354,AHUDX,HVAC,ACTIVE,AHU DX,,emaar
+355,EjectorPump,HVAC,ACTIVE,Ejector Pump,,emaar
+356,CondensorPump,HVAC,ACTIVE,Condensor Pump,,emaar
+357,CorridorPressurizationFanCommon,HVAC,ACTIVE,Corridor Pressurization Fan Common,,emaar
+358,CPF,HVAC,ACTIVE,Corridor Pressurization Fan,,emaar
+359,DXUnit,HVAC,ACTIVE,DX Unit,,emaar
+360,SEFCommon,HVAC,ACTIVE,Smoke Extract Fan Common,,emaar
+361,MAFCommon,HVAC,ACTIVE,Makeup Air Fan Common,,emaar
+362,AirSide,HVAC,ACTIVE,Air Side,,emaar
+363,WaterSide,HVAC,ACTIVE,Water Side,,emaar
+364,Fans,HVAC,ACTIVE,Fans,,emaar
+365,Dampers,HVAC,ACTIVE,Dampers,,emaar
+366,AirQualitySystem,HVAC,ACTIVE,Air Quality System,,emaar
+367,AmbientTemperatureHumiditySensor,HVAC,ACTIVE,Ambient Temperature Humidity Sensor,,emaar
+368,MakeupAirFan,HVAC,ACTIVE,Makeup Air Fan,,emaar
+369,COPanel,AirQualitySystem,ACTIVE,CO Monitoring Panel,,emaar
+370,AirQuality,AirQualitySystem,ACTIVE,Air Quality,,emaar
+371,CO2Sensor,AirQualitySystem,ACTIVE,CO2 Sensor,,emaar
+372,COSensor,AirQualitySystem,ACTIVE,CO Sensor,,emaar
+373,LouverDamper,Dampers,ACTIVE,Louver Damper,,emaar
+374,SupplyAirDamper,Dampers,ACTIVE,Supply Air Damper,,emaar
+375,ExhaustAirDamper,Dampers,ACTIVE,Exhaust Air Damper,,emaar
+376,FreshAirFanCommon,Fans,ACTIVE,Fresh Air Fan Common,,emaar
+377,KitchenHood,Fans,ACTIVE,Kitchen Hood,,emaar
+378,CarParkMakeUpAirFan,Fans,ACTIVE,CarPark MakeUp AirFan,,emaar
+379,CPMAFCommon,Fans,ACTIVE,Car Park MakeUp Air Fan Common,,emaar
+380,CPMAF,Fans,ACTIVE,Car Park MakeUp Air Fan,,emaar
+381,GeneratorExhaustFan,Fans,ACTIVE,Generator Exhaust Fan,,emaar
+382,TransformerRoomExtractFanCommon,Fans,ACTIVE,Transformer Room Extract Fan Common,,emaar
+383,TransformerRoomExtractFan,Fans,ACTIVE,Transformer Room Extract Fan,,emaar
+384,LLSF,Fans,ACTIVE,Lift Lobby Supply Fan,,emaar
+385,CPSFCommon,Fans,ACTIVE,Car Park Supply Fan Common,,emaar
+386,KEF,Fans,ACTIVE,Kitchen Extract Fan,,emaar
+387,CTEFCommon,Fans,ACTIVE,Central Toilet Extract Fan Common,,emaar
+388,FreshAirFan,Fans,ACTIVE,Fresh Air Fan,,emaar
+389,ExhaustFan,Fans,ACTIVE,Exhaust Fan,,emaar
+390,CPSF,Fans,ACTIVE,Car Park Supply Fan,,emaar
+391,TRFCommon,Fans,ACTIVE,Transformer Room Fan Common,,emaar
+392,TRF,Fans,ACTIVE,Transformer Room Fan,,emaar
+393,CPEF,Fans,ACTIVE,Car Park Extract Fan,,emaar
+394,JETFan,Fans,ACTIVE,Jet Fan,,emaar
+395,CPEFCommon,Fans,ACTIVE,Car Park Extract Fan Common,,emaar
+396,ITFan,Fans,ACTIVE,IT Fan,,emaar
+397,CPIF,Fans,ACTIVE,Car Park Induction Fan,,emaar
+398,SupplyAirFan,Fans,ACTIVE,Supply Air Fan,,emaar
+399,CTEF,Fans,ACTIVE,Central Toilet Extract Fan,,emaar
+400,ChemicalExtractFan,Fans,ACTIVE,Chemical Extract Fan,,emaar
+401,CarParkVentillationFan,Fans,ACTIVE,Car Park Ventillation Fan,,emaar
+402,PrimaryPumpCommon,WaterSide,ACTIVE,Primary Pump Common,,emaar
+403,PICVCommon,WaterSide,ACTIVE,PICV Common,,emaar
+404,TertiaryPump,WaterSide,ACTIVE,Tertiary Pump,,emaar
+405,PrimaryPump,WaterSide,ACTIVE,Primary Pump,,emaar
+406,SecondaryPump,WaterSide,ACTIVE,Secondary Pump,,emaar
+407,CHWCommonHeader,WaterSide,ACTIVE,Chilled Water Common Header,,emaar
+408,HeatExchanger,WaterSide,ACTIVE,Heat Exchanger,,emaar
+409,SecondaryPumpCommon,WaterSide,ACTIVE,Secondary Pump Common,,emaar
+410,DosingUnit,WaterSide,ACTIVE,Dosing Unit,,emaar
+411,PressurizationUnit,WaterSide,ACTIVE,Pressurization Unit,,emaar
+412,Chiller,WaterSide,ACTIVE,Chiller,,emaar
+413,TertiaryPumpCommon,WaterSide,ACTIVE,Tertiary Pump Common,,emaar
+414,DCPCommonHeader,WaterSide,ACTIVE,DCP Common Header,,emaar
+415,CarrierChiller,Chiller,ACTIVE,Carrier Chiller,,emaar
+416,AHU,AirSide,ACTIVE,Air Handling Unit,,emaar
+417,CCU,AirSide,ACTIVE,Close Control Unit,,emaar
+418,RAHU,AirSide,ACTIVE,Recirculating Air Handling Unit,,emaar
+419,FanCoilUnit,AirSide,ACTIVE,Fan Coil Unit,,emaar
+420,PrecisionUnit,AirSide,ACTIVE,Precision Unit,,emaar
+421,FAHU,AirSide,ACTIVE,Fresh Air Handling Unit,,emaar
+422,VAV,AirSide,ACTIVE,VAV,,emaar
+423,FCUIT,AirSide,ACTIVE,Fan Coil Unit IT,,emaar
+424,CAV,AirSide,ACTIVE,CAV,,emaar
+425,BlowerCoilUnit,AirSide,ACTIVE,Blower Coil Unit,,emaar
+426,SwimmingPoolExhaustFan,AirSide,ACTIVE,Swimming Pool Exhaust Fan,,emaar
+427,VoiceEvacuation,LifeAndSafety,ACTIVE,Voice Evacuation,,emaar
+428,LPGleakage,LifeAndSafety,ACTIVE,LPGleakage,,emaar
+429,Fire Pump Set,LifeAndSafety,ACTIVE,FirePumpSet,,emaar
+430,RMSFireJockeyPump,LifeAndSafety,ACTIVE,RMS Fire Jockey Pump,,emaar
+431,FireFighting,LifeAndSafety,ACTIVE,Fire Fighting,,emaar
+432,GasMonitoringSystem,LifeAndSafety,ACTIVE,Gas Monitoring System,,emaar
+433,FirePumpSetCommon,LifeAndSafety,ACTIVE,Fire Pump Set Common,,emaar
+434,FireDieselPump,LifeAndSafety,ACTIVE,Fire Diesel Pump,,emaar
+435,FireJockeyPump,LifeAndSafety,ACTIVE,Fire Jockey Pump,,emaar
+436,FireElectricalPump,LifeAndSafety,ACTIVE,Fire Electrical Pump,,emaar
+437,FireWaterTank,LifeAndSafety,ACTIVE,Fire Water Tank,,emaar
+438,FoamSystem,LifeAndSafety,ACTIVE,Foam System,,emaar
+439,PreActionSystem,LifeAndSafety,ACTIVE,Pre Action System,,emaar
+440,RMSFireDieselPump,LifeAndSafety,ACTIVE,RMS Fire Diesel Pump,,emaar
+441,RMSFireElectricalPump,LifeAndSafety,ACTIVE,RMS Fire Electrical Pump,,emaar
+442,LPG,GasMonitoringSystem,ACTIVE,LPG,,emaar
+443,FireSuppression,FireFighting,ACTIVE,Fire Suppression,,emaar
+444,DieselTank,FireFighting,ACTIVE,Diesel Tank,,emaar
+445,FireCurtain,FireFighting,ACTIVE,Fire Curtain,,emaar
+446,Jockey Pump,FireFighting,ACTIVE,Jockey Pump,,emaar
+447,ElectricalPump,FireFighting,ACTIVE,Electrical Pump,,emaar
+448,LPF,FireFighting,ACTIVE,Lift Pressurization Fan,,emaar
+449,FirePumpSet,FireFighting,ACTIVE,Fire Pump Set,,emaar
+450,MSFD,FireFighting,ACTIVE,Motorized Smoke Fire Damper,,emaar
+451,DieselPump,FireFighting,ACTIVE,Diesel Pump,,emaar
+452,SPF,FireFighting,ACTIVE,Staircase Pressurization Fan,,emaar
+453,SmokeExtractFan,FireFighting,ACTIVE,Smoke Extract Fan,,emaar
+454,FireExtinguisherPanel,FireFighting,ACTIVE,Fire Extinguisher Panel,,emaar
+455,FM200,FireFighting,ACTIVE,FM 200,,emaar
+456,SPFCommon,FireFighting,ACTIVE,Staircase Pressurization Fan Common,,emaar
+457,LPFCommon,FireFighting,ACTIVE,Lift Pressurization Fan Common,,emaar
+458,FireHoseReel,FireFighting,ACTIVE,Fire Hose Reel,,emaar
+459,ZoneControlValve,FireFighting,ACTIVE,Zone Control Valve,,emaar
+460,CSEF,FireFighting,ACTIVE,Centrifugal Smoke Extract Fan,,emaar
+461,FirePumpRoomFan,FireFighting,ACTIVE,Fire Pump Room Fan,,emaar
+462,SortedRecyclablesBin,Bin,ACTIVE,Sorted Recyclables Bin,,emaar
+463,DogWasteBin,Bin,ACTIVE,Dog Waste Bin,,emaar
+464,CommonRecyclablesBin,Bin,ACTIVE,Common Recyclables Bin,,emaar
+465,GeneralBin,Bin,ACTIVE,General Bin,,emaar
+466,GeneralAndRecyclableBin,Bin,ACTIVE,General And Recyclable Bin,,emaar
+467,MimicPanel,FireAlarm,ACTIVE,Mimic Panel,,emaar
+468,UniversalModule,FireAlarm,ACTIVE,Universal Module,,emaar
+469,NCNonFire,FireAlarm,ACTIVE,NC Non Fire,,emaar
+470,WaterFlow,FireAlarm,ACTIVE,Water Flow,,emaar
+471,TrackSupervisor,FireAlarm,ACTIVE,Track Supervisor,,emaar
+472,Speaker,FireAlarm,ACTIVE,Speaker,,emaar
+473,Telephone,FireAlarm,ACTIVE,Telephone,,emaar
+474,Monitor,FireAlarm,ACTIVE,Monitor,,emaar
+475,MiniDualMonitor,FireAlarm,ACTIVE,Mini Dual Monitor,,emaar
+476,HornCircuit,FireAlarm,ACTIVE,Horn Circuit,,emaar
+477,DualInputSignal,FireAlarm,ACTIVE,Dual Input Signal,,emaar
+478,SingleInputSignal,FireAlarm,ACTIVE,Single Input Signal,,emaar
+479,AuxiliaryPowerSupply,FireAlarm,ACTIVE,Auxiliary Power Supply,,emaar
+480,FireCallPoint,FireAlarm,ACTIVE,Fire Call Point,,emaar
+481,SingleInputModule,FireAlarm,ACTIVE,Single Input Module,,emaar
+482,DualInputModule,FireAlarm,ACTIVE,Dual Input Module,,emaar
+483,UniversalClassModule,FireAlarm,ACTIVE,Universal Class Module,,emaar
+484,ControlRelay,FireAlarm,ACTIVE,Control Relay,,emaar
+485,AudioAmplifier,FireAlarm,ACTIVE,Audio Amplifier,,emaar
+486,OutputModule,FireAlarm,ACTIVE,Output Module,,emaar
+487,InterfaceModule,FireAlarm,ACTIVE,Interface Module,,emaar
+488,TroubleMonitor,FireAlarm,ACTIVE,Trouble Monitor,,emaar
+489,FireMonitor,FireAlarm,ACTIVE,Fire Monitor,,emaar
+490,BreakGlass,FireAlarm,ACTIVE,Break Glass,,emaar
+491,SupervisoryModule,FireAlarm,ACTIVE,Supervisory Module,,emaar
+492,ISO,FireAlarm,ACTIVE,ISO,,emaar
+493,InterfaceUnitMainsPowered,FireAlarm,ACTIVE,Interface Unit Mains Powered,,emaar
+494,InterfaceUnitLoopPowered,FireAlarm,ACTIVE,Interface Unit Loop Powered,,emaar
+495,BeamSensorReceiver,FireAlarm,ACTIVE,Beam Sensor Receiver,,emaar
+496,BeamSensorTransmitter,FireAlarm,ACTIVE,Beam Sensor Transmitter,,emaar
+497,UtilityDetectorMonitoringLine,FireAlarm,ACTIVE,Utility Detector Monitoring Line,,emaar
+498,SounderFlasher,FireAlarm,ACTIVE,Sounder Flasher,,emaar
+499,Sounder,FireAlarm,ACTIVE,Sounder,,emaar
+500,HeatDetectorSounder,FireAlarm,ACTIVE,Heat Detector Sounder,,emaar
+501,UtilityDetectorSounder,FireAlarm,ACTIVE,Utility Detector Sounder,,emaar
+502,FACP,FireAlarm,ACTIVE,Fire Alarm Control Panel,,emaar
+503,FireAlarmSystem,FireAlarm,ACTIVE,Fire Alarm System,,emaar
+504,AuxiliaryRelay,FireAlarm,ACTIVE,Auxiliary Relay,,emaar
+505,SmokeDetector,FireAlarm,ACTIVE,Smoke Detector,,emaar
+506,PullStation,FireAlarm,ACTIVE,Pull Station,,emaar
+507,UtilityDetector,FireAlarm,ACTIVE,Utility Detector,,emaar
+508,RepeaterPanel,FireAlarm,ACTIVE,Repeater Panel,,emaar
+509,HeatDetector,FireAlarm,ACTIVE,Heat Detector,,emaar
+510,WSO,FireAlarm,ACTIVE,WSO,,emaar
+511,DuctDetector,FireAlarm,ACTIVE,Duct Detector,,emaar

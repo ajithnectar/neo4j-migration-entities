@@ -1,0 +1,512 @@
+parent_name,child_name,child_template_name
+Equipment,Detector,Detector
+Equipment,Penstock,Penstock
+Equipment,MaceratorPump,Macerator Pump
+Equipment,PSU,PSU
+Equipment,OCUValuerFanCommon,OCU Valuer Fan Common
+Equipment,OCUValuerFan,OCU Valuer Fan
+Equipment,RMSOCUTSETank,RMS OCUTSE Tank
+Equipment,RMSSumpPumpCommon,RMS Sump Pump Common
+Equipment,OCURCPCommon,OCURCP Common
+Equipment,OCURCP,OCURCP
+Equipment,OCUQM,OCUQM
+Equipment,OCUPump,OCU Pump
+Equipment,OCUIntermediate,OCU Intermediate
+Equipment,RMSDosingPumpCommon,RMSDosingPumpCommon
+Equipment,OCUBTF,OCUBTF
+Equipment,OCUACF,OCUACF
+Equipment,OCUAFN,OCUAFN
+Equipment,OCUAFCommon,OCUAF Common
+Equipment,OCUAF,OCUAF
+Equipment,OCUMvaluens,OCU Mvaluens
+Equipment,RMSFireAlarmSystem,RMS Fire Alarm System
+Equipment,EVC,Electronic Volume Corrector
+Equipment,GasDetectors,Gas Detectors
+Equipment,GasPanelSwitch,Gas Panel Switch
+Equipment,IsolatorModule,Isolator Module
+Equipment,GeneralExtractFan,General Extract Fan
+Equipment,GarbageExtractFan,Garbage Extract Fan
+Equipment,CorridorMakeupFan,Corridor Extract Fan
+Equipment,CorridorExtractFan,Corridor Extract Fan
+Equipment,LifeAndSafety,LIFE & SAFETY SYSTEMS
+Equipment,HVAC,HVAC SYSTEMS
+Equipment,ELVSYSTEMS,ELV SYSTEMS
+Equipment,Electrical,ELECTRICAL SYSTEMS
+Equipment,Plumbing,PLUMBING SYSTEMS
+Equipment,Mechanical,MECHANICAL SYSTEMS
+Mechanical,DoorContact,Door Contact
+Mechanical,HydrogenSensorPanel,Hydrogen Sensor Panel
+Mechanical,HydrogenProductionPlant,Hydrogen Production Plant
+Mechanical,HydrogenProductionStorageEquipment,Hydrogen Production Storage Equipment
+Mechanical,ColdRoomUnit,Cold Room Unit
+Mechanical,CitricAcidDosingTank,Citric Acid Dosing Tank
+Mechanical,CitricAcidDosingPump,Citric Acid Dosing Pump
+Mechanical,CitricAcidDosingMixer,Citric Acid Dosing Mixer
+Mechanical,BeltFilterPress,Belt Filter Press
+Mechanical,BalancingTankPump,Balancing Tank Pump
+Mechanical,BalancingTankAirBlower,Balancing Tank Air Blower
+Mechanical,BalancingTank,Balancing Tank
+Mechanical,BFPPolymerDosingPump,BFP Polymer Dosing Pump
+Mechanical,AirCompressor,Air Compressor
+Mechanical,AerationTankMixer,Aeration Tank Mixer
+Mechanical,AerationAirBlower,Aeration Air Blower
+Mechanical,MotorVibrationSensor,Motor Vibration Sensor
+Mechanical,StaircaseVentilationFan,Staircase Ventilation Fan
+Mechanical,RMSAirBlower,RMS Air Blower
+Mechanical,RMSExtractFan,RMS Extract Fan
+Mechanical,RMSSupplyFan,RMS Supply Fan
+Mechanical,CPTF,Car Park Transfer Fan
+Mechanical,BMU,BMU
+Mechanical,Escalator,Escalator
+Mechanical,WasteManagement,Waste Management
+Mechanical,VerticalHorizontalTransport,Vertical/Horizontal Transport
+VerticalHorizontalTransport,Lift,Lift
+VerticalHorizontalTransport,LiftCommon,Lift Common
+WasteManagement,GCEFCommon,GCEF Common
+WasteManagement,GarbageSanitationSystem,Garbage Sanitation System
+WasteManagement,DissolvedOxygenAnalyzer,Dissolved OxygenAnalyzer
+WasteManagement,TSETank,TSE Tank
+WasteManagement,TSEPump,TSE Pump
+WasteManagement,SludgeHoldingTank,Sludge Holding Tank
+WasteManagement,SludgeDewateringFeedPump,Sludge Dewatering Feed Pump
+WasteManagement,ServiceWaterPump,Service Water Pump
+WasteManagement,ScrubberFan,Scrubber Fan
+WasteManagement,RASSASPump,RAS SAS Pump
+WasteManagement,PressureIndicatorTransmitter,Pressure Indicator Transmitter
+WasteManagement,PolymerInjectionUnitPowderFeeder,Polymer Injection Unit Powder Feeder
+WasteManagement,PolymerInjectionUnitMixer,Polymer Injection Unit Mixer
+WasteManagement,PolymerInjectionUnitLocalControlPanel,Polymer Injection Unit Local Control Panel
+WasteManagement,PolymerInjectionUnitDosingPump,Polymer Injection Unit Dosing Pump
+WasteManagement,PolymerInjectionUnit,Polymer Injection Unit
+WasteManagement,PermeatePump,Permeate Pump
+WasteManagement,PHAnalyzer,PH Analyzer
+WasteManagement,OdourFan,Odour Fan
+WasteManagement,MBRTankAirBlower,MBR Tank Air Blower
+WasteManagement,MBRTank,MBR Tank
+WasteManagement,MBRBackwashTank,MBR Backwash Tank
+WasteManagement,GCEF,Garbage Chute Extract Fan
+WasteManagement,GCC,Garbage Chute Compactor
+WasteManagement,GarbageChutePanel,Garbage Chute Panel
+WasteManagement,DrumScreen,Drum Screen
+WasteManagement,ElectromagneticFlowTransmitter,Electromagnetic Flow Transmitter
+WasteManagement,H2SAnalyzer,H2S Analyzer
+WasteManagement,HypoChloriteDosingPump,Hypo Chlorite Dosing Pump
+WasteManagement,HypoChloriteDosingPumpMC,Hypo Chlorite Dosing Pump MC
+WasteManagement,HypoChloriteDosingTank,Hypo Chlorite Dosing Tank
+WasteManagement,HypoChloriteDosingTankMC,Hypo Chlorite Dosing Tank MC
+WasteManagement,LevelIndicatorTransmitter,Level Indicator Transmitter
+WasteManagement,LiftingStationPump,Lifting Station Pump
+WasteManagement,LiftingStationTank,Lifting Station Tank
+WasteManagement,MBRBackwashPump,MBR Backwash Pump
+Plumbing,SwimmingPoolUnderWaterLight,Swimming Pool Under Water Light
+Plumbing,RMSCulvert,RMS Culvert
+Plumbing,StormWaterTank,Storm Water Tank
+Plumbing,SPHeater,SP Heater
+Plumbing,SPUVFilter,SP UV Filter
+Plumbing,WaterSoftner,Water Softner
+Plumbing,UVSterlizer,UV Sterlizer
+Plumbing,SoftWaterTank,Soft Water Tank
+Plumbing,MultimediaFilter,Multimedia Filter
+Plumbing,CondensorTank,Condensor Tank
+Plumbing,CarbonFilters,Carbon Filters
+Plumbing,Boiler,Boiler
+Plumbing,SwimmingPoolChlorineController,Swimming Pool Chlorine Controller
+Plumbing,SwimmingPoolHeatCool,Swimming Pool Heat Cool
+Plumbing,SwimmingPoolElectricStarter,Swimming Pool Electric Starter
+Plumbing,StormTank,Storm Tank
+Plumbing,RMSWaterQualityMeter,RMS Water Quality Meter
+Plumbing,SPSplashPlayUnit,SP Splash Play Unit
+Plumbing,SPHeatCoolUnit,SP Heat Cool Unit
+Plumbing,SPBackWashUnit,SP Back Wash Unit
+Plumbing,RMSStormScreenPenstockCommon,RMS Storm Screen Penstock Common
+Plumbing,RMSStormScreenPenstock,RMS Storm Screen Penstock
+Plumbing,SwimmingPoolUVFilter,Swimming Pool UV Filter
+Plumbing,SwimmingPoolTank,Swimming Pool Tank
+Plumbing,SwimmingPoolHeater,Swimming Pool Heater
+Plumbing,GreaseTrapSystem,Grease Trap System
+Plumbing,RMSFlowTransmitter,RMS Flow Transmitter
+Plumbing,RMSPressureTransmitter,RMS Pressure Transmitter
+Plumbing,RMSSewageScreenPenstockCommon,RMS Sewage Screen Penstock Common
+Plumbing,RMSLevelTransmitter,RMS Level Transmitter
+Plumbing,RMSOdourPump,RMS Odour Pump
+Plumbing,RMSSewageScreeningCompactor,RMS Sewage Screening Compactor
+Plumbing,RMSSewageScreenConveyor,RMS Sewage Screen Conveyor
+Plumbing,CompactInletHeadworksControlPanel,Compact Inlet Headworks Control Panel
+Plumbing,CompactInletHeadworks,Compact Inlet Headworks
+Plumbing,SPHeatPump,Swimming Pool Heat Pump
+Plumbing,ShowerPump,Shower Pump
+Plumbing,FilterationPumpCommon,Filteration Pump Common
+Plumbing,WaterFilterationSystem,Water Filteration System
+Plumbing,FountainPump,Fountain Pump
+Plumbing,HotWaterCirculationPump,Hot Water Circulation Pump
+Plumbing,SolarWaterHeatSystem,Solar Water Heat System
+Plumbing,GRPWaterTank,GRP Water Tank
+Plumbing,SurgeVessel,Surge Vessel
+Plumbing,FountainSystem,Fountain System
+Plumbing,RMSSewageScreenPenstock,RMS Sewage Screen Penstock
+Plumbing,RMSBoosterPump,RMS Booster Pump
+Plumbing,WaterHeater,Water Heater
+Plumbing,HWSecondaryPump,Hot Water Secondary Pump
+Plumbing,HWPrimaryPump,Hot Water Primary Pump
+Plumbing,DWHEX,Domestic Water Heat Exchanger
+Plumbing,DosingPump,Dosing Pump
+Plumbing,RawWaterPump,Raw Water Pump
+Plumbing,BackwashPump,Backwash Pump
+Plumbing,DomesticWaterCoolingPlant,Domestic Water Cooling Plant
+Plumbing,RMSIrrigationJockeyPump,RMS Irrigation Jockey Pump
+Plumbing,DrainagePumpCommon,Drainage Pump Common
+Plumbing,DrainagePump,Drainage Pump
+Plumbing,RMSSewageScrapper,RMS Sewage Scrapper
+Plumbing,RMSSewageSubmersibleMixer,RMS Sewage Submersible Mixer
+Plumbing,RMSSewageSurfaceAerator,RMS Sewage Surface Aerator
+Plumbing,RMSSewageAutoBarScreen,RMS Sewage Auto BarScreen
+Plumbing,RMSValves,RMSValves
+Plumbing,RMSMOV,RMS MOV
+Plumbing,RMSIrrigationPenstockValves,RMS Irrigation Penstock Valves
+Plumbing,RMSTransferPump,RMS Transfer Pump
+Plumbing,RMSPressurePump,RMS Pressure Pump
+Plumbing,RMSDosingMixer,RMSDosingMixer
+Plumbing,RMSDosingPump,RMSDosingPump
+Plumbing,RMSOdourFan,RMS Odour Fan
+Plumbing,RMSSumpPump,RMS Sump Pump
+Plumbing,RMSIrrigationTankOutletValve,RMS Irrigation Tank Outlet Valve
+Plumbing,RMSIrrigationTankInletValve,RMS Irrigation Tank Inlet Valve
+Plumbing,RMSStormTank,RMS Storm Tank
+Plumbing,RMSStormWaterPumpCommon,RMS Storm Water Pump Common
+Plumbing,RMSStormWaterPump,RMS Storm Water Pump
+Plumbing,RMSSewageTank,RMS Sewage Tank
+Plumbing,RMSIrrigationTank,RMS Irrigation Tank
+Plumbing,RMSIrrigationPumpCommon,RMS Irrigation Pump Common
+Plumbing,RMSIrrigationPump,RMS Irrigation Pump
+Plumbing,RMSSewagePumpCommon,RMS Sewage Pump Common
+Plumbing,RMSSewagePump,RMS Sewage Pump
+Plumbing,RMSPool,RMS Pool
+Plumbing,RMSLake,RMS Lake
+Plumbing,AGS,Automatic Greasing Seperator
+Plumbing,WaterTanks,Water Tanks
+Plumbing,Pumps,Pumps
+Plumbing,WaterCirculationPumpCommon,Water Circulation Pump Common
+Plumbing,FuelPump,Fuel Pump
+Plumbing,BulkFuelTank,Bulk Fuel Tank
+Plumbing,DayFuelTank,Day Fuel Tank
+Plumbing,IrrigationPumpCommon,Irrigation Pump Common
+Pumps,SPHeatingPump,SP Heating Pump
+Pumps,SPCoolingPump,SP Cooling Pump
+Pumps,CopperSilverIonisationPump,Copper Silver Ionisation Pump
+Pumps,ColdWaterTransferPumpCommon,Cold Water Transfer Pump Common
+Pumps,SwimmingPoolCirculationPump,Swimming Pool Circulation Pump
+Pumps,ColdWaterTransferPump,Cold Water Transfer Pump
+Pumps,COSpSelection,CO Sp Selection
+Pumps,PhysicalDisinfection,Physical Disinfection
+Pumps,WaterFeature,Water Feature
+Pumps,SwimmingPoolBackwashPump,Swimming Pool Back Wash Pump
+Pumps,SwimmingPoolWaterFilterPump,Swimming Pool Water Filter Pump
+Pumps,ReflectivePoolPump,Reflective Pool Pump
+Pumps,VacuumUnit,Vacuum Unit
+Pumps,HeatPump,Heat Pump
+Pumps,ChlorinationSystem,Chlorination System
+Pumps,ChemicalDosingUnit,Chemical Dosing Unit
+Pumps,CondensatePumpCommon,Condensate Pump Common
+Pumps,CondensatePump,Condensate Pump
+Pumps,FireWaterCirculationPump,Fire Water Circulation Pump
+Pumps,SPWaterCirculationPump,SP Water Circulation Pump
+Pumps,SPUVSterilizationPump,SP UV Sterilization Pump
+Pumps,SPChlorinePumpPump,SP ChlorinePump Pump
+Pumps,SPAcidInjectionPump,SP Acid Injection Pump
+Pumps,SPWaterFallPump,SP Water Fall Pump
+Pumps,SPHeatCoolPump,SP Heat Cool Pump
+Pumps,SPDosingPump,Swimming Pool Dosing Pump
+Pumps,SPCirculationPump,Swimming Pool Circulation Pump
+Pumps,LiftPitPumpCommon,Lift Pit Pump Common
+Pumps,LiftPitPump,Lift Pit Pump
+Pumps,SideSteamPumpPanel,Side Steam Pump Panel
+Pumps,CoolingTowerMakeupPump,Cooling Tower Makeup Pump
+Pumps,BoosterPump,Booster Pump
+Pumps,TransferPumpCommon,Transfer Pump Common
+Pumps,BoosterPumpCommon,Booster Pump Common
+Pumps,FilterationPump,Filteration Pump
+Pumps,SubSoilPumpCommon,Sub Soil Pump Common
+Pumps,TransferPump,Transfer Pump
+Pumps,SPFilterPump,Swimming Pool Filter Pump
+Pumps,SewagePumpCommon,Sewage Pump Common
+Pumps,WaterFeaturePump,Water Feature Pump
+Pumps,SubSoilPump,Sub Soil Pump
+Pumps,WaterCirculationPump,Water Circulation Pump
+Pumps,NozzlePump,Nozzle Pump
+Pumps,HydroMassagePump,Hydro Massage Pump
+Pumps,StormPumpCommon,Storm Water Pump Common
+Pumps,SPPlant,Swimming Pool Plant
+Pumps,SumpPumpCommon,Sump Pump Common
+Pumps,SewagePump,Sewage Pump
+Pumps,IrrigationPump,Irrigation Pump
+Pumps,SumpPump,Sump Pump
+Pumps,WeirPump,Weir Pump
+Pumps,StormPump,Storm Water Pump
+WaterTanks,PRV,Pressure Reducing Valve
+WaterTanks,IrrigationTank,Irrigation Tank
+WaterTanks,DomesticWaterTank,Domestic Water Tank
+WaterTanks,Calorifier,Calorifier
+RMSSewagePump,RMSMacerator,RMS Macerator
+Electrical,ELCB,Earth Leakage Circuit Breaker
+Electrical,VFD,Variable Frequency Drive
+Electrical,ControlPanel,Control Panel
+Electrical,CleanAgentSystem,Clean Agent System
+Electrical,VirtualMachine,Virtual Machine
+Electrical,RMSGenerator,RMS Generator
+Electrical,MCCB,MCCB
+Electrical,DB,Distribution Board
+Electrical,Generator Supply Fan,GeneratorSupplyFan
+Electrical,AutomaticTransferSwitch,Automatic Transfer Switch
+Electrical,LoadShed,Load Shed
+Electrical,FeederPillarLighting,Feeder Pillar Lighting
+Electrical,DistributionBoards,Distribution Boards
+Electrical,ElectricalPanels,Electrical Panels
+Electrical,EmergencyPower,Emergency Power
+Electrical,Lighting,Lighting
+Electrical,Metering,Metering
+Electrical,MainSwitchBoard,Main Switch Board
+Electrical,ACP,Automatic Capacitor Panel
+Electrical,RMSLVPSubmeter,RMS LVP Submeter
+Electrical,WaterLeakSystem,Water Leakage System
+Metering,BTUSubMeter,BTU Sub Meter
+Metering,GasMeter,Gas Meter
+Metering,LPGMeter,LPG Meter
+Metering,LVPMeter,LV Panel Meter
+Metering,LVPSubMeter,LV Panel Sub Meter
+Metering,WaterMeter,Water Meter
+Metering,BTUMeter,BTU Meter
+Metering,TSEMeter,TSE Meter
+Metering,TenantBTUMeter,Tenant BTU Meter
+Metering,RetailBTUMeter,Retail BTU Meter
+Metering,DCPBTUMeter,DCP BTU Meter
+LVPSubMeter,LoadwiseLVPSubMeters,Loadwise LVP Sub Meters
+LoadwiseLVPSubMeters,FAHULVPSubMeter,FAHU LV Panel Sub Meter
+LoadwiseLVPSubMeters,LiftLVPSubMeter,Lift LV Panel Sub Meter
+LoadwiseLVPSubMeters,CommonAreaLightingLVPSubMeter,Common Area Lighting LVP Sub Meter
+LoadwiseLVPSubMeters,SPPlantLVPSubMeter,SPPlant LV Panel Sub Meter
+LoadwiseLVPSubMeters,CBSLVPSubMeter,CBS LV Panel Sub Meter
+LoadwiseLVPSubMeters,WaterFeaturePumpLVPSubMeter,Water Feature Pump LV Panel Sub Meter
+LoadwiseLVPSubMeters,JetFanLVPSubMeter,Jet Fan LV Panel Sub Meter
+LoadwiseLVPSubMeters,GCEFLVPSubMeter,GCEF LV Panel Sub Meter
+LoadwiseLVPSubMeters,SteamUnitLVPSubMeter,Steam Unit LV Panel Sub Meter
+LoadwiseLVPSubMeters,TertiaryPumpLVPSubMeter,Tertiary Pump LV Panel Sub Meter
+LoadwiseLVPSubMeters,BoosterPumpLVPSubMeter,Booster Pump LV Panel Sub Meter
+LoadwiseLVPSubMeters,BMULVPSubMeter,BMU LV Panel Sub Meter
+LoadwiseLVPSubMeters,SecondaryPumpLVPSubMeter,Secondary Pump LV Panel Sub Meter
+LoadwiseLVPSubMeters,WaterLiftPumpLVPSubMeter,Water Lift Pump LV Panel Sub Meter
+LoadwiseLVPSubMeters,CPEFLVPSubMeter,CPEF LV Panel Sub Meter
+LoadwiseLVPSubMeters,IrrigationLVPSubMeter,Irrigation LV Panel Sub Meter
+LoadwiseLVPSubMeters,ParkingAreaLightingLVPSubMeter,Parking Area Lighting LV Panel Sub Meter
+Lighting,AircraftWarningLight,Aircraft Warning Light
+Lighting,LightingControls,Lighting Control System
+Lighting,WaterFeatureLight,Water Feature Light
+Lighting,LightCircuit,Light Circuit
+EmergencyPower,Generator,Generator
+EmergencyPower,UPS,UPS
+EmergencyPower,EmergencyLighting,Emergency Lighting
+EmergencyPower,CBS,Central Battery System
+ElectricalPanels,AutomaticCapacitorPanel,Automatic Capacitor Panel
+ElectricalPanels,MCCPanel,MCC Panel
+ElectricalPanels,ACBPanel,ACB Panel
+ElectricalPanels,ATSPanel,ATS Panel
+ElectricalPanels,LVPanel,LV Panel
+ElectricalPanels,EMCCPanel,EMCC Panel
+ElectricalPanels,FAVEPanel,FAVE Panel
+ElectricalPanels,CapacitorBank,Capacitor Bank
+DistributionBoards,ESMDB,Emergency SMDB
+DistributionBoards,EMDB,Emergency MDB
+DistributionBoards,SMDB,SMDB
+DB,MDB,MDB
+ELVSYSTEMS,ELV,ELV
+ELVSYSTEMS,DTAS,Disabled Toilet Alarm System
+ELVSYSTEMS,RMSUPS,RMS UPS
+ELVSYSTEMS,PeopleCounter,People Counter
+ELVSYSTEMS,MusicSystem,Music System
+ELVSYSTEMS,RMSController,RMS Controller
+ELVSYSTEMS,PLCPanel,PLC Panel
+ELV,ACS,Access Control System
+ELV,CCTV,CCTV
+ELV,PAS,Public Address System
+ELV,GateBarrier,Gate Barrier
+ELV,SignBoard,Sign Board
+ELV,DDCController,DDC Controller
+HVAC,ColdRoomCooler,Cold Room Cooler
+HVAC,AirSeperator,Air Seperator
+HVAC,EcologyUnit,Ecology Unit
+HVAC,CorridorPressurizationFan,Corridor Pressurization Fan Common
+HVAC,CRAC,Computer Room Air Conditioning
+HVAC,ERV,Energy Recovery Ventilator
+HVAC,GeneratorSupplyFan,Generator Supply Fan
+HVAC,CarParkVentillationFanCommon,Car Park Ventillation Fan Common
+HVAC,JetFanCommon,Jet Fan Common
+HVAC,HeatExchangerCommon,Heat Exchanger Common
+HVAC,FCUCommon,FCU Common
+HVAC,ElectrostaticPrecipitator,ElectrostaticPrecipitator
+HVAC,FlowMeter,Flow Meter
+HVAC,CoolingTowerFireAlarmSystem,Cooling Tower Fire Alarm System
+HVAC,CondensorPumpCommon,Condensor Pump Common
+HVAC,ChillerCommon,Chiller Common
+HVAC,TraneChiller,Trane Chiller
+HVAC,YorkChiller,York Chiller
+HVAC,CoolingTowerCommon,Cooling Tower Common
+HVAC,CoolingTower,Cooling Tower
+HVAC,MakeupPumpCommon,Makeup Pump Common
+HVAC,MakeupPump,Makeup Pump
+HVAC,AHUDX,AHU DX
+HVAC,EjectorPump,Ejector Pump
+HVAC,CondensorPump,Condensor Pump
+HVAC,CorridorPressurizationFanCommon,Corridor Pressurization Fan Common
+HVAC,CPF,Corridor Pressurization Fan
+HVAC,DXUnit,DX Unit
+HVAC,SEFCommon,Smoke Extract Fan Common
+HVAC,MAFCommon,Makeup Air Fan Common
+HVAC,AirSide,Air Side
+HVAC,WaterSide,Water Side
+HVAC,Fans,Fans
+HVAC,Dampers,Dampers
+HVAC,AirQualitySystem,Air Quality System
+HVAC,AmbientTemperatureHumiditySensor,Ambient Temperature Humidity Sensor
+HVAC,MakeupAirFan,Makeup Air Fan
+AirQualitySystem,COPanel,CO Monitoring Panel
+AirQualitySystem,AirQuality,Air Quality
+AirQualitySystem,CO2Sensor,CO2 Sensor
+AirQualitySystem,COSensor,CO Sensor
+Dampers,LouverDamper,Louver Damper
+Dampers,SupplyAirDamper,Supply Air Damper
+Dampers,ExhaustAirDamper,Exhaust Air Damper
+Fans,FreshAirFanCommon,Fresh Air Fan Common
+Fans,KitchenHood,Kitchen Hood
+Fans,CarParkMakeUpAirFan,CarPark MakeUp AirFan
+Fans,CPMAFCommon,Car Park MakeUp Air Fan Common
+Fans,CPMAF,Car Park MakeUp Air Fan
+Fans,GeneratorExhaustFan,Generator Exhaust Fan
+Fans,TransformerRoomExtractFanCommon,Transformer Room Extract Fan Common
+Fans,TransformerRoomExtractFan,Transformer Room Extract Fan
+Fans,LLSF,Lift Lobby Supply Fan
+Fans,CPSFCommon,Car Park Supply Fan Common
+Fans,KEF,Kitchen Extract Fan
+Fans,CTEFCommon,Central Toilet Extract Fan Common
+Fans,FreshAirFan,Fresh Air Fan
+Fans,ExhaustFan,Exhaust Fan
+Fans,CPSF,Car Park Supply Fan
+Fans,TRFCommon,Transformer Room Fan Common
+Fans,TRF,Transformer Room Fan
+Fans,CPEF,Car Park Extract Fan
+Fans,JETFan,Jet Fan
+Fans,CPEFCommon,Car Park Extract Fan Common
+Fans,ITFan,IT Fan
+Fans,CPIF,Car Park Induction Fan
+Fans,SupplyAirFan,Supply Air Fan
+Fans,CTEF,Central Toilet Extract Fan
+Fans,ChemicalExtractFan,Chemical Extract Fan
+Fans,CarParkVentillationFan,Car Park Ventillation Fan
+WaterSide,PrimaryPumpCommon,Primary Pump Common
+WaterSide,PICVCommon,PICV Common
+WaterSide,TertiaryPump,Tertiary Pump
+WaterSide,PrimaryPump,Primary Pump
+WaterSide,SecondaryPump,Secondary Pump
+WaterSide,CHWCommonHeader,Chilled Water Common Header
+WaterSide,HeatExchanger,Heat Exchanger
+WaterSide,SecondaryPumpCommon,Secondary Pump Common
+WaterSide,DosingUnit,Dosing Unit
+WaterSide,PressurizationUnit,Pressurization Unit
+WaterSide,Chiller,Chiller
+WaterSide,TertiaryPumpCommon,Tertiary Pump Common
+WaterSide,DCPCommonHeader,DCP Common Header
+Chiller,CarrierChiller,Carrier Chiller
+AirSide,AHU,Air Handling Unit
+AirSide,CCU,Close Control Unit
+AirSide,RAHU,Recirculating Air Handling Unit
+AirSide,FanCoilUnit,Fan Coil Unit
+AirSide,PrecisionUnit,Precision Unit
+AirSide,FAHU,Fresh Air Handling Unit
+AirSide,VAV,VAV
+AirSide,FCUIT,Fan Coil Unit IT
+AirSide,CAV,CAV
+AirSide,BlowerCoilUnit,Blower Coil Unit
+AirSide,SwimmingPoolExhaustFan,Swimming Pool Exhaust Fan
+LifeAndSafety,VoiceEvacuation,Voice Evacuation
+LifeAndSafety,LPGleakage,LPGleakage
+LifeAndSafety,Fire Pump Set,FirePumpSet
+LifeAndSafety,RMSFireJockeyPump,RMS Fire Jockey Pump
+LifeAndSafety,FireFighting,Fire Fighting
+LifeAndSafety,GasMonitoringSystem,Gas Monitoring System
+LifeAndSafety,FirePumpSetCommon,Fire Pump Set Common
+LifeAndSafety,FireDieselPump,Fire Diesel Pump
+LifeAndSafety,FireJockeyPump,Fire Jockey Pump
+LifeAndSafety,FireElectricalPump,Fire Electrical Pump
+LifeAndSafety,FireWaterTank,Fire Water Tank
+LifeAndSafety,FoamSystem,Foam System
+LifeAndSafety,PreActionSystem,Pre Action System
+LifeAndSafety,RMSFireDieselPump,RMS Fire Diesel Pump
+LifeAndSafety,RMSFireElectricalPump,RMS Fire Electrical Pump
+GasMonitoringSystem,LPG,LPG
+FireFighting,FireSuppression,Fire Suppression
+FireFighting,DieselTank,Diesel Tank
+FireFighting,FireCurtain,Fire Curtain
+FireFighting,Jockey Pump,Jockey Pump
+FireFighting,ElectricalPump,Electrical Pump
+FireFighting,LPF,Lift Pressurization Fan
+FireFighting,FirePumpSet,Fire Pump Set
+FireFighting,MSFD,Motorized Smoke Fire Damper
+FireFighting,DieselPump,Diesel Pump
+FireFighting,SPF,Staircase Pressurization Fan
+FireFighting,SmokeExtractFan,Smoke Extract Fan
+FireFighting,FireExtinguisherPanel,Fire Extinguisher Panel
+FireFighting,FM200,FM 200
+FireFighting,SPFCommon,Staircase Pressurization Fan Common
+FireFighting,LPFCommon,Lift Pressurization Fan Common
+FireFighting,FireHoseReel,Fire Hose Reel
+FireFighting,ZoneControlValve,Zone Control Valve
+FireFighting,CSEF,Centrifugal Smoke Extract Fan
+FireFighting,FirePumpRoomFan,Fire Pump Room Fan
+Bin,SortedRecyclablesBin,Sorted Recyclables Bin
+Bin,DogWasteBin,Dog Waste Bin
+Bin,CommonRecyclablesBin,Common Recyclables Bin
+Bin,GeneralBin,General Bin
+Bin,GeneralAndRecyclableBin,General And Recyclable Bin
+FireAlarm,MimicPanel,Mimic Panel
+FireAlarm,UniversalModule,Universal Module
+FireAlarm,NCNonFire,NC Non Fire
+FireAlarm,WaterFlow,Water Flow
+FireAlarm,TrackSupervisor,Track Supervisor
+FireAlarm,Speaker,Speaker
+FireAlarm,Telephone,Telephone
+FireAlarm,Monitor,Monitor
+FireAlarm,MiniDualMonitor,Mini Dual Monitor
+FireAlarm,HornCircuit,Horn Circuit
+FireAlarm,DualInputSignal,Dual Input Signal
+FireAlarm,SingleInputSignal,Single Input Signal
+FireAlarm,AuxiliaryPowerSupply,Auxiliary Power Supply
+FireAlarm,FireCallPoint,Fire Call Point
+FireAlarm,SingleInputModule,Single Input Module
+FireAlarm,DualInputModule,Dual Input Module
+FireAlarm,UniversalClassModule,Universal Class Module
+FireAlarm,ControlRelay,Control Relay
+FireAlarm,AudioAmplifier,Audio Amplifier
+FireAlarm,OutputModule,Output Module
+FireAlarm,InterfaceModule,Interface Module
+FireAlarm,TroubleMonitor,Trouble Monitor
+FireAlarm,FireMonitor,Fire Monitor
+FireAlarm,BreakGlass,Break Glass
+FireAlarm,SupervisoryModule,Supervisory Module
+FireAlarm,ISO,ISO
+FireAlarm,InterfaceUnitMainsPowered,Interface Unit Mains Powered
+FireAlarm,InterfaceUnitLoopPowered,Interface Unit Loop Powered
+FireAlarm,BeamSensorReceiver,Beam Sensor Receiver
+FireAlarm,BeamSensorTransmitter,Beam Sensor Transmitter
+FireAlarm,UtilityDetectorMonitoringLine,Utility Detector Monitoring Line
+FireAlarm,SounderFlasher,Sounder Flasher
+FireAlarm,Sounder,Sounder
+FireAlarm,HeatDetectorSounder,Heat Detector Sounder
+FireAlarm,UtilityDetectorSounder,Utility Detector Sounder
+FireAlarm,FACP,Fire Alarm Control Panel
+FireAlarm,FireAlarmSystem,Fire Alarm System
+FireAlarm,AuxiliaryRelay,Auxiliary Relay
+FireAlarm,SmokeDetector,Smoke Detector
+FireAlarm,PullStation,Pull Station
+FireAlarm,UtilityDetector,Utility Detector
+FireAlarm,RepeaterPanel,Repeater Panel
+FireAlarm,HeatDetector,Heat Detector
+FireAlarm,WSO,WSO
+FireAlarm,DuctDetector,Duct Detector

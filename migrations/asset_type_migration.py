@@ -96,7 +96,7 @@ def map_asset_types_to_rows(asset_type_data, start_id=1):
     - parent_name -> parent_name
     - child_template_name -> template_name
     - status -> "ACTIVE" (default)
-    - client_id -> "nectarit" (hardcoded)
+    - client_id -> "emaar" (hardcoded)
     - id -> auto-generated BIGINT (sequential starting from start_id)
     
     Args:
@@ -151,7 +151,7 @@ def map_asset_types_to_rows(asset_type_data, start_id=1):
                     parent_name,  # parent_name (None if empty)
                     "ACTIVE",  # status (default)
                     template_name,  # template_name (None if empty)
-                    "nectarit",  # client_id (hardcoded)
+                    "emaar",  # client_id (hardcoded)
                 )
             )
         except Exception as e:
