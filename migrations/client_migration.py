@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 def fetch_clients(session: Session):
     # type: (Session) -> Iterable[Dict]
     cypher = """
-        MATCH (root:DefaultTenant {clientId: 'emaar'})
+        MATCH (root:DefaultTenant {clientId: 'datalkz'})
         RETURN
             root.clientId AS client_id,
             root.clientName AS client_name,

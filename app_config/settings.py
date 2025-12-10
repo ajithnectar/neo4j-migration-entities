@@ -111,7 +111,7 @@ def get_config(env):
                 mode=_env_or_default("NEO4J_MODE", "CLUSTER"),
             )
             pg = PostgresConfig(
-                host=_env_or_default("PG_HOST", "10.95.6.62"),
+                host=_env_or_default("PG_HOST", "10.95.6.53"),
                 port=int(_env_or_default("PG_PORT", "5432")),
                 dbname=_env_or_default("PG_DB", "nectar"),
                 username=_env_or_default("PG_USERNAME", "appuser"),
