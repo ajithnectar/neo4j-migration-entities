@@ -79,11 +79,11 @@ def create_community_migration_fn(cfg) -> MigrationFn:
 # Order matches the step-by-step migration process in README.md
 MIGRATION_FACTORIES = [
     ("Type migration", lambda cfg: run_type_migration),
+    ("Client migration", lambda cfg: migrate_clients),
+    ("Community migration", create_community_migration_fn),
     ("Asset type migration", lambda cfg: run_asset_type_migration),
     ("Fetch asset types", lambda cfg: run_fetch_asset_types),
     ("Neo4j to CSV export", create_neo4j_export_fn),
-    ("Client migration", lambda cfg: migrate_clients),
-    ("Community migration", create_community_migration_fn),
     ("Step-by-step migration", lambda cfg: run_step_by_step_migration),
 ]
 
@@ -97,12 +97,12 @@ def build_migrations(cfg):
 
 MIGRATION_KEY_MAP_INDICES = {
     "type": 0,
-    "asset-type": 1,
-    "fetch-asset-types": 2,
-    "export": 3,
-    "neo4j-export": 3,
-    "client": 4,
-    "community": 5,
+    "client": 1,
+    "community": 2,
+    "asset-type": 3,
+    "fetch-asset-types": 4,
+    "export": 5,
+    "neo4j-export": 5,
     "step": 6,
 }
 
@@ -119,7 +119,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--migration",
-        choices=["export", "neo4j-export", "community", "client", "type", "asset-type", "fetch-asset-types", "step", "all"],
+        choices=["export", "neo4j-export", "community", "client", "type", "asset-type", "fetch-asset-types", "step"],
         help="Optional: run specific migration without interactive prompt",
     )
     return parser.parse_args()
@@ -134,15 +134,10 @@ def show_migration_menu(cfg):
     print("="*50)
     for idx, (name, _) in enumerate(migrations, start=1):
         print(f"{idx}. {name}")
-    print(f"{len(migrations) + 1}. Run all migrations")
     print("="*50)
 
     while True:
         choice = input("\nEnter option number: ").strip()
-        
-        # Run all migrations
-        if choice == str(len(migrations) + 1):
-            return migrations
         
         # Run single migration
         if choice.isdigit():
@@ -162,9 +157,6 @@ def get_selected_migrations(arg_choice, cfg):
         return show_migration_menu(cfg)
     
     # Map command line choices to migrations
-    if arg_choice == "all":
-        return migrations
-
     index = MIGRATION_KEY_MAP_INDICES.get(arg_choice)
     if index is not None and 0 <= index < len(migrations):
         return [migrations[index]]
